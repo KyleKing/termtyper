@@ -3,13 +3,13 @@ from rich.console import RenderableType
 from rich.text import Text
 from rich.tree import Tree
 
-from termtyper.events.events import (
+from ...events.events import (
     BarThemeChange,
     ModeChange,
     ParaSizeChange,
     TimeoutChange,
 )
-from termtyper.ui.widgets.menu import Menu
+from .menu import Menu
 
 
 class SizeMenu(Menu):

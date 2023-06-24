@@ -2,7 +2,7 @@ from rich.console import RenderableType
 from textual.events import Key
 from textual.layouts.grid import GridLayout
 from textual.message import Message
-from textual.widgets import ScrollView
+from textual.widgets import ScrollView  # FIXME: moved to scroll_view
 
 
 class MinimalScrollView(ScrollView):

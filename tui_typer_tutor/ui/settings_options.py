@@ -8,8 +8,7 @@ from rich.table import Table
 from textual.events import Key
 from textual.widget import Widget
 
-from termtyper.events.events import LoadScreen
-
+from ..events.events import LoadScreen
 from ..ui.widgets import NumberScroll, Option, banners
 from ..utils.getting_started import colored
 
@@ -117,7 +116,7 @@ menu['push_your_limits'] = SettingMenu(
         Setting(
             'Min Speed',
             {},
-            NumberScroll('min_speed', section='user'),
+            NumberScroll(name='min_speed', section='user'),
             info='Are you fast enough?'
             + '\n'
             + 'Note: If your speed falls below this speed you will be declared failed',
@@ -125,7 +124,7 @@ menu['push_your_limits'] = SettingMenu(
         Setting(
             'Min Accuracy',
             {},
-            NumberScroll('min_accuracy', section='user'),
+            NumberScroll(name='min_accuracy', section='user'),
             info="You can't go wrong with this"
             + '\n'
             + 'Note: If your accuracy falls below this accuracy you will be declared failed',
@@ -133,7 +132,7 @@ menu['push_your_limits'] = SettingMenu(
         Setting(
             'Min Burst:',
             {},
-            NumberScroll('min_burst', section='user'),
+            NumberScroll(name='min_burst', section='user'),
             info='Wanna make your life harder?'
             + '\n'
             + 'Note: If your accuracy for a word falls below this accuracy you will be declared failed',
@@ -238,7 +237,7 @@ menu['eye_candy'] = SettingMenu(
         Setting(
             'Cursor buddy',
             {},
-            NumberScroll('cursor_buddy_speed', section='user'),
+            NumberScroll(name='cursor_buddy_speed', section='user'),
             info='Feeling a little lonely?'
             + '\n'
             + 'A cursor will race along with you with this constant speed.'
@@ -275,7 +274,7 @@ menu['aesthetics'] = SettingMenu(
                 'heavy': 'Wanna feel like you are on a typewriter?',
             },
             Option(
-                'sound',
+                name='sound',
                 options=['cream', 'lubed', 'mech', 'heavy'],
                 section='theming',
                 # callback=play_keysound,

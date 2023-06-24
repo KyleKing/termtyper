@@ -1,24 +1,24 @@
-import asyncio
 
+from rich.align import Align
+from rich.panel import Panel
 from textual import events
 from textual.app import App
 from textual.widgets import Static
 
-from termtyper.events.events import (
+from ..events.events import (
     BarThemeChange,
     LoadScreen,
     ModeChange,
     ParaSizeChange,
     TimeoutChange,
 )
-from termtyper.ui.settings_options import MenuSlide
-from termtyper.ui.widgets.menu import Menu
-from termtyper.ui.widgets.menus import BarThemeMenu, ModeMenu, SizeMenu, TimeoutMenu
-from termtyper.ui.widgets.minimal_scrollview import MinimalScrollView
-
 from ..ui.widgets import *  # NOQA
 from ..utils import *  # NOQA
 from ..utils.parser import MAIN_PARSER
+from .settings_options import MenuSlide
+from .widgets.menu import Menu
+from .widgets.menus import BarThemeMenu, ModeMenu, SizeMenu, TimeoutMenu
+from .widgets.minimal_scrollview import MinimalScrollView
 
 
 def percent(part, total):
@@ -29,14 +29,8 @@ parser = MAIN_PARSER
 
 
 class TermTyper(App):
-    @classmethod
-    def run(cls, quiet: bool = False):
-        async def run_app() -> None:
-            app = cls()
-            app.quiet = quiet
-            await app.process_messages()
 
-        asyncio.run(run_app())
+    quiet: bool = False
 
     async def on_load(self) -> None:
         self.current_space = 'main_menu'
@@ -46,8 +40,9 @@ class TermTyper(App):
         self.mode_menu = ModeMenu()
         self.bar_theme_menu = BarThemeMenu()
 
-        self.top = Static('')
-        self.bottom = MinimalScrollView('')
+        placeholder = Panel(Align.center(''))
+        self.top = Static(placeholder)
+        self.bottom = MinimalScrollView(Static(placeholder))
         self.banner = Static(banners['welcome'])
 
         self.buttons = {
@@ -67,7 +62,7 @@ class TermTyper(App):
         self.race_hud = RaceHUD()
         self.typing_screen = Screen(self.quiet)
 
-        await self.bind('ctrl+q', 'quit', 'quit the application')
+        self.bind(keys='ctrl+q', action='quit', description='quit the application')
 
     async def on_mount(self) -> None:
         await self.setup_grid()
@@ -236,3 +231,8 @@ class TermTyper(App):
     async def handle_button_clicked(self, e: ButtonClicked):
         if e.value:
             await self.buttons[e.value]()
+
+
+def run():
+    app = TermTyper()
+    app.run()

@@ -25,13 +25,13 @@ class Option(Widget):
 
     def __init__(
         self,
-        name: str,
+        *widget_args,
         options: list[str],
         callback: Callable = lambda: None,
         section: SectionType | None = None,
+        **widget_kwargs,
     ) -> None:
-        super().__init__()
-        self.name = name
+        super().__init__(*widget_args, **widget_kwargs)
         self.options = [i.strip() for i in options]
         self._max_len = max(len(i) for i in self.options)
         self.section = section
@@ -121,7 +121,7 @@ if __name__ == '__main__':
     class MyApp(App):
         async def on_mount(self):
             await self.view.dock(
-                Option('test', ['Linux', 'MacPriceyOS', 'YourPCRanIntoAnError']),
+                Option(name='test', options=['Linux', 'MacPriceyOS', 'YourPCRanIntoAnError']),
             )
 
     MyApp.run()

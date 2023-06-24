@@ -9,9 +9,9 @@ from rich.text import Text
 from rich.tree import Tree
 from textual import events
 
-from termtyper.ui.widgets.option import Option
-from termtyper.utils.help_menu import percent
-from termtyper.utils.play_keysound import get_sound_location, play
+from ...utils.help_menu import percent
+from ...utils.play_keysound import get_sound_location, play
+from .option import Option
 
 HEIGHT = round(0.8 * get_terminal_size()[1])
 
@@ -36,7 +36,7 @@ class Menu(Option):
         live_change: bool = True,
         quiet: bool = False,
     ) -> None:
-        super().__init__(name, options, section=section)
+        super().__init__(name=name, options=options, section=section)
         self.message = message
         self.draw_border = draw_border
         self.draw_seperator = draw_seperator
@@ -120,7 +120,7 @@ if __name__ == '__main__':
     class MyApp(App):
         async def on_mount(self):
             await self.view.dock(
-                Option('test', ['Linux', 'MacPriceyOS', 'YourPCRanIntoAnError']),
+                Option(name='test', options=['Linux', 'MacPriceyOS', 'YourPCRanIntoAnError']),
             )
 
     MyApp.run()

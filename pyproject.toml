@@ -12,10 +12,7 @@ classifiers = [
   "Development Status :: 1 - Planning",
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
 ] # https://pypi.org/classifiers/
 description = "Fork of kraanzu/termtyper with a focus on special characters. Inspired by climech/typing-practice."
 documentation = "https://tui-typer-tutor.kyleking.me"
@@ -31,9 +28,14 @@ version = "0.0.1"
 [tool.poetry.dependencies]
 python = "^3.11.2"
 corallium = ">=0.2.2"
+textual = "0.1.18"
 
 [tool.poetry.group.dev.dependencies]
 calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=1.2.6"}
+
+[tool.poetry.scripts]
+ttt = "tui_typer_tutor.scripts:start"
+tui-typer-tutor = "tui_typer_tutor.scripts:start"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/kyleking/tui-typer-tutor/issues"

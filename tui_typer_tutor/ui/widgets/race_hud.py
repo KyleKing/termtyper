@@ -6,9 +6,8 @@ from rich.text import Text
 from textual.app import App
 from textual.widget import Widget
 
-from termtyper.ui.widgets.progress_bar import ProgressBar
-
 from ...utils.parser import MAIN_PARSER
+from .progress_bar import ProgressBar
 
 parser = MAIN_PARSER
 
@@ -23,7 +22,7 @@ class RaceHUD(Widget):
         name: str | None = None,
         total: float = 1,
     ) -> None:
-        super().__init__(name)
+        super().__init__(name=name)
         self.completed = 0
         self.accuracy = 0
         self.total = total

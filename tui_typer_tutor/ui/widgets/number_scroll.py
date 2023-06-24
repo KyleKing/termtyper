@@ -16,14 +16,14 @@ class NumberScroll(Widget):
 
     def __init__(
         self,
-        name: str,
+        *widget_args,
         step: int = 1,
         min_value: int = 0,
         max_value: int = 500,
         section: str | None = None,
+        **widget_kwargs,
     ) -> None:
-        super().__init__()
-        self.name = name
+        super().__init__(*widget_args, **widget_kwargs)
         self.section = section
         if section:
             self.value = int(parser.get(section, self.name))
@@ -76,6 +76,6 @@ if __name__ == '__main__':
 
     class MyApp(App):
         async def on_mount(self):
-            await self.view.dock(NumberScroll('test', 1))
+            await self.view.dock(NumberScroll(name='test'))
 
     MyApp.run()
