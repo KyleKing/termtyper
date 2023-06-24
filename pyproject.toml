@@ -28,7 +28,7 @@ version = "0.0.1"
 [tool.poetry.dependencies]
 python = "^3.11.2"
 corallium = ">=0.2.2"
-textual = "0.1.18"
+textual = ">=0.28.0"
 
 [tool.poetry.group.dev.dependencies]
 calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=1.2.6"}
