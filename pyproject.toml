@@ -1,22 +1,44 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
+
+[tool.commitizen]
+version = "0.0.1"
+version_files = ["pyproject.toml:^version", "terminal_typer_tutor/__init__.py:^__version"]
+
 [tool.poetry]
-name = "termtyper"
-version = "2.0.0"
-description = "A TUI based typing application"
-authors = ["kraanzu <kraanzu@gmail.com>"]
+authors = ["Kyle King <dev.act.kyle@gmail.com>"]
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+] # https://pypi.org/classifiers/
+description = "Fork of kraanzu/termtyper with a focus on special characters. Inspired by climech/typing-practice "
+documentation = "https://terminal-typer-tutor.kyleking.me"
+include = ["LICENSE"]
+keywords = []
 license = "MIT"
+maintainers = []
+name = "terminal_typer_tutor"
+readme = "docs/README.md"
+repository = "https://github.com/kyleking/terminal-typer-tutor"
+version = "0.0.1"
 
 [tool.poetry.dependencies]
-python = "^3.10"
-textual = "^0.1.15"
+python = "^3.11.2"
+corallium = ">=0.2.2"
 
-[tool.poetry.dev-dependencies]
-pre-commit = "^2.17.0"
-black = "^22.1.0"
-flake8 = "^4.0.1"
+[tool.poetry.group.dev.dependencies]
+calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=1.2.6"}
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/kyleking/terminal-typer-tutor/issues"
+"Changelog" = "https://github.com/kyleking/terminal-typer-tutor/blob/main/docs/docs/CHANGELOG.md"
 
-[tool.poetry.scripts]
-termtyper = 'termtyper.__init__:main'
+[tool.pyright]
+include = ["terminal_typer_tutor"]
+pythonVersion = "3.11"
