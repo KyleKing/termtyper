@@ -4,7 +4,7 @@ from pathlib import Path
 
 from corallium.tomllib import tomllib
 
-from terminal_typer_tutor import __version__
+from tui_typer_tutor import __version__
 
 
 def test_version():

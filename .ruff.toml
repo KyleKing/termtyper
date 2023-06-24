@@ -47,7 +47,7 @@ inline-quotes = 'single'
 'typing.TypeVar'.msg = 'Use beartype.typing.* instead.'
 
 [isort]
-known-first-party = ['terminal_typer_tutor']
+known-first-party = ['tui_typer_tutor']
 
 [per-file-ignores]
 '*/__init__.py' = [

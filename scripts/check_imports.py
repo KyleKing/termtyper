@@ -2,6 +2,6 @@
 
 from pprint import pprint
 
-from terminal_typer_tutor import replace_me
+from tui_typer_tutor import replace_me
 
 pprint(locals())  # noqa: T203

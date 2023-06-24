@@ -1,13 +1,13 @@
 ---
 name: CI Pipeline
 
-on: # yamllint disable-line rule:truthy
+on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
     paths:
-      - terminal_typer_tutor/**
+      - tui_typer_tutor/**
       - tests/**
       - poetry.lock
       - pyproject.toml

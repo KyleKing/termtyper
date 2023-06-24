@@ -12,7 +12,7 @@ import mkdocs_gen_files
 
 nav = mkdocs_gen_files.Nav()
 
-for path in sorted(Path('terminal_typer_tutor').rglob('*.py')):
+for path in sorted(Path('tui_typer_tutor').rglob('*.py')):
     module_path = path.with_suffix('')
     doc_path = path.with_suffix('.md')
     full_doc_path = Path('reference', doc_path)

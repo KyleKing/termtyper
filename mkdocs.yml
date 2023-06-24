@@ -1,10 +1,10 @@
 ---
-site_name: terminal_typer_tutor
+site_name: tui_typer_tutor
 site_author: Kyle King
-site_description: terminal_typer_tutor project documentation
-site_url: https://terminal-typer-tutor.kyleking.me
-repo_name: kyleking/terminal-typer-tutor
-repo_url: https://github.com/kyleking/terminal-typer-tutor
+site_description: tui_typer_tutor project documentation
+site_url: https://tui-typer-tutor.kyleking.me
+repo_name: kyleking/tui-typer-tutor
+repo_url: https://github.com/kyleking/tui-typer-tutor
 edit_uri: edit/main/docs
 docs_dir: docs
 site_dir: releases/site
@@ -20,7 +20,7 @@ theme:
     - toc.autohide
 
 watch:
-  - terminal_typer_tutor
+  - tui_typer_tutor
 
 plugins:
   - build_plantuml:

@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Please share your ideas for terminal_typer_tutor!
+about: Please share your ideas for tui_typer_tutor!
 title: ''
 labels: 'Type: Feature'
 assignees: kyleking

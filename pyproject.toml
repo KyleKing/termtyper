@@ -4,7 +4,7 @@ requires = ["poetry-core"]
 
 [tool.commitizen]
 version = "0.0.1"
-version_files = ["pyproject.toml:^version", "terminal_typer_tutor/__init__.py:^__version"]
+version_files = ["pyproject.toml:^version", "tui_typer_tutor/__init__.py:^__version"]
 
 [tool.poetry]
 authors = ["Kyle King <dev.act.kyle@gmail.com>"]
@@ -17,15 +17,15 @@ classifiers = [
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
 ] # https://pypi.org/classifiers/
-description = "Fork of kraanzu/termtyper with a focus on special characters. Inspired by climech/typing-practice "
-documentation = "https://terminal-typer-tutor.kyleking.me"
+description = "Fork of kraanzu/termtyper with a focus on special characters. Inspired by climech/typing-practice."
+documentation = "https://tui-typer-tutor.kyleking.me"
 include = ["LICENSE"]
 keywords = []
 license = "MIT"
 maintainers = []
-name = "terminal_typer_tutor"
+name = "tui_typer_tutor"
 readme = "docs/README.md"
-repository = "https://github.com/kyleking/terminal-typer-tutor"
+repository = "https://github.com/kyleking/tui-typer-tutor"
 version = "0.0.1"
 
 [tool.poetry.dependencies]
@@ -36,9 +36,9 @@ corallium = ">=0.2.2"
 calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=1.2.6"}
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/kyleking/terminal-typer-tutor/issues"
-"Changelog" = "https://github.com/kyleking/terminal-typer-tutor/blob/main/docs/docs/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/kyleking/tui-typer-tutor/issues"
+"Changelog" = "https://github.com/kyleking/tui-typer-tutor/blob/main/docs/docs/CHANGELOG.md"
 
 [tool.pyright]
-include = ["terminal_typer_tutor"]
+include = ["tui_typer_tutor"]
 pythonVersion = "3.11"
