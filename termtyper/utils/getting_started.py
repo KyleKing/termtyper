@@ -5,7 +5,6 @@ from rich.tree import Tree
 from textual.widget import Widget
 from textual.widgets import Static
 
-
 ascii = """
 ┌─┐┌─┐┌┬┐┌┬┐┬┌┐┌┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐┌─┐┌┬┐
 │ ┬├┤  │  │ │││││ ┬  └─┐ │ ├─┤├┬┘ │ ├┤  ││
@@ -15,9 +14,9 @@ ascii = """
 GETTING_STARTERD_BANNER = Static(
     Panel(
         Align.center(ascii),
-        style="bold blue",
-        border_style="bold magenta",
-    )
+        style='bold blue',
+        border_style='bold magenta',
+    ),
 )
 
 
@@ -26,14 +25,14 @@ def keybind(key: str, desc: str) -> str:
 
 
 def colored(text: str, color: str) -> str:
-    return f"[{color}]{text}[/{color}]"
+    return f'[{color}]{text}[/{color}]'
 
 
 seperator = f"{colored('─' * 70, 'bold dim black')}"
 
 
 INTRO = f"""
-{colored(f'''
+{colored('''
 Termtyper is a TUI typing application which was highly inspired
 by monkeytype -- An online web-based typing application which is
 by far the most customizable typing application
@@ -92,7 +91,7 @@ Also, you can exit the application by pressing {colored("ctrl+q", "bold blue")} 
 class GettingStarted(Widget):
     def render(self) -> RenderableType:
 
-        tree = Tree("")
+        tree = Tree('')
         tree.hide_root = True
         tree.expanded = True
 

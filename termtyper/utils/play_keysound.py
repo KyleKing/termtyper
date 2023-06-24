@@ -1,14 +1,14 @@
-from threading import Thread
-from .preferredsoundplayer import playsound
 from os import path
+from threading import Thread
 
 from ..utils.parser import MAIN_PARSER
+from .preferredsoundplayer import playsound
 
-SOUNDS_LOC = path.join(path.dirname(__file__), "..", "sounds")
+SOUNDS_LOC = path.join(path.dirname(__file__), '..', 'sounds')
 
 
 def get_sound_location(sound: str) -> str:
-    return str(path.join(SOUNDS_LOC, f"{sound}.wav"))
+    return str(path.join(SOUNDS_LOC, f'{sound}.wav'))
 
 
 def play(sound_file: str) -> None:
@@ -16,11 +16,11 @@ def play(sound_file: str) -> None:
 
 
 def play_keysound() -> None:
-    sound = MAIN_PARSER.get_theme("sound")
+    sound = MAIN_PARSER.get_theme('sound')
     sound_file = get_sound_location(sound)
     play(sound_file)
 
 
 def play_failed() -> None:
-    sound_file = get_sound_location("failed")
+    sound_file = get_sound_location('failed')
     play(sound_file)

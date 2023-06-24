@@ -1,10 +1,12 @@
-from typing import Callable, Literal
+from collections.abc import Callable
+from typing import Literal
+
 from rich import box
-from rich.tree import Tree
-from rich.console import RenderableType
 from rich.align import Align
-from rich.text import Text
+from rich.console import RenderableType
 from rich.panel import Panel
+from rich.text import Text
+from rich.tree import Tree
 from textual import events
 from textual.widget import Widget
 
@@ -12,13 +14,12 @@ from ...utils.parser import MAIN_PARSER
 
 parser = MAIN_PARSER
 SectionType = Literal[
-    "user", "theming", "paragraph", "speed records word", "speed records time"
+    'user', 'theming', 'paragraph', 'speed records word', 'speed records time',
 ]
 
 
 class Option(Widget):
-    """
-    A widget to show options in horizontal fashion
+    """A widget to show options in horizontal fashion
     with the selected option with a colored background
     """
 
@@ -85,13 +86,13 @@ class Option(Widget):
 
     async def key_press(self, event: events.Key):
         match event.key:
-            case "j" | "down":
+            case 'j' | 'down':
                 self.select_next_option()
-            case "k" | "up":
+            case 'k' | 'up':
                 self.select_prev_option()
 
     def render(self) -> RenderableType:
-        tree = Tree("")
+        tree = Tree('')
         tree.hide_root = True
         tree.expanded = True
         for index, i in enumerate(self.options):
@@ -99,28 +100,28 @@ class Option(Widget):
             label.pad(1)
 
             if index == self._cursor:
-                label.stylize("r green")
+                label.stylize('r green')
 
             tree.add(label)
 
         return Panel(
             Align.center(
                 tree,
-                vertical="middle",
+                vertical='middle',
             ),
-            border_style="magenta" if self.selected else "white",
+            border_style='magenta' if self.selected else 'white',
             height=8,
             box=box.HEAVY,
         )
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     from textual.app import App
 
     class MyApp(App):
         async def on_mount(self):
             await self.view.dock(
-                Option("test", ["Linux", "MacPriceyOS", "YourPCRanIntoAnError"])
+                Option('test', ['Linux', 'MacPriceyOS', 'YourPCRanIntoAnError']),
             )
 
     MyApp.run()

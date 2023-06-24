@@ -1,21 +1,22 @@
 import time
+from bisect import bisect, bisect_right
 from itertools import accumulate
 from os import get_terminal_size
 from textwrap import wrap
-from bisect import bisect, bisect_right
+
 from rich.align import Align
 from rich.box import MINIMAL
 from rich.console import RenderableType
-from rich.text import Span, Text, TextType
 from rich.panel import Panel
+from rich.text import Span, Text, TextType
 from textual.app import App
 from textual.widget import Widget
 
-from ...utils import generate, play_keysound, play_failed
+from ...events import ResetHUD, UpdateRaceHUD
+from ...utils import generate, play_failed, play_keysound
 from ...utils.parser import MAIN_PARSER
-from ...events import UpdateRaceHUD, ResetHUD
 
-EMPTY_SPAN = Span(0, 0, "")
+EMPTY_SPAN = Span(0, 0, '')
 x, y = get_terminal_size()
 HEIGHT = round(0.75 * y)
 WIDTH = round(0.80 * x)
@@ -30,56 +31,50 @@ class Screen(Widget):
         self.set_interval(0.2, self._update_race_hud)
 
     async def _refresh_settings(self) -> None:
-        self.min_speed = int(parser.get_data("min_speed"))
-        self.min_accuracy = int(parser.get_data("min_accuracy"))
-        self.min_burst = int(parser.get_data("min_burst"))
-        self.cursor_buddy_speed = int(parser.get_data("cursor_buddy_speed"))
-        self.force_correct = parser.get_data("force_correct")
-        self.tab_reset = parser.get_data("tab_reset")
-        self.difficulty = parser.get_data("difficulty")
-        self.blind_mode = parser.get_data("blind_mode")
-        self.confidence_mode = parser.get_data("confidence_mode")
-        self.single_line_words = parser.get_data("single_line_words")
-        self.caret_style = parser.get_theme("caret_style")
-        self.allow_numbers = parser.get_para_setting("numbers")
-        self.allow_puncs = parser.get_para_setting("punctuations")
-        self.allow_cap = parser.get_data("capitalization_mode")
-        self.mode = parser.get("mode", "writing mode")
-        self.timeout = int(parser.get("user", "timeout"))
-        self.keypress_sound = parser.get_theme("keypress_sound")
+        self.min_speed = int(parser.get_data('min_speed'))
+        self.min_accuracy = int(parser.get_data('min_accuracy'))
+        self.min_burst = int(parser.get_data('min_burst'))
+        self.cursor_buddy_speed = int(parser.get_data('cursor_buddy_speed'))
+        self.force_correct = parser.get_data('force_correct')
+        self.tab_reset = parser.get_data('tab_reset')
+        self.difficulty = parser.get_data('difficulty')
+        self.blind_mode = parser.get_data('blind_mode')
+        self.confidence_mode = parser.get_data('confidence_mode')
+        self.single_line_words = parser.get_data('single_line_words')
+        self.caret_style = parser.get_theme('caret_style')
+        self.allow_numbers = parser.get_para_setting('numbers')
+        self.allow_puncs = parser.get_para_setting('punctuations')
+        self.allow_cap = parser.get_data('capitalization_mode')
+        self.mode = parser.get('mode', 'writing mode')
+        self.timeout = int(parser.get('user', 'timeout'))
+        self.keypress_sound = parser.get_theme('keypress_sound')
         self.set_paragraph()
 
         match self.caret_style:
-            case "off":
-                self.cursor_style = ""
-            case "block":
-                self.cursor_style = "reverse"
-            case "underline":
-                self.cursor_style = "underline"
+            case 'off':
+                self.cursor_style = ''
+            case 'block':
+                self.cursor_style = 'reverse'
+            case 'underline':
+                self.cursor_style = 'underline'
 
-        if hasattr(self, "buddy_timer"):
+        if hasattr(self, 'buddy_timer'):
             await self.buddy_timer.stop()
 
         if self.cursor_buddy_speed:
             self.buddy_timer = self.set_interval(
-                60 / (5 * self.cursor_buddy_speed), self.move_cursor_buddy
+                60 / (5 * self.cursor_buddy_speed), self.move_cursor_buddy,
             )
 
     def _get_color(self, type: str) -> str:
-        """
-        returns color for typed letter
-        """
-
-        if self.blind_mode == "on":
-            return "yellow"
+        """returns color for typed letter"""
+        if self.blind_mode == 'on':
+            return 'yellow'
         else:
-            return "green" if type == "correct" else "red"
+            return 'green' if type == 'correct' else 'red'
 
     def _reset_params(self) -> None:
-        """
-        resets everyting on typing start
-        """
-
+        """resets everyting on typing start"""
         self.started = False
         self.finished = False
         self.failed = False
@@ -97,27 +92,21 @@ class Screen(Widget):
         return self.paragraph.plain[self.cursor_position - 1]
 
     def _update_speed_records(self) -> None:
-        """
-        Updates speed records when the typing is over
-        """
-
+        """Updates speed records when the typing is over"""
         if self.speed == -1:
             return
 
-        med = (parser.get_speed("med") + self.speed) / 2
-        parser.set_speed("med", med)
+        med = (parser.get_speed('med') + self.speed) / 2
+        parser.set_speed('med', med)
 
-        low = min(parser.get_speed("low"), self.speed)
-        parser.set_speed("low", low)
+        low = min(parser.get_speed('low'), self.speed)
+        parser.set_speed('low', low)
 
-        high = max(parser.get_speed("high"), self.speed)
-        parser.set_speed("high", high)
+        high = max(parser.get_speed('high'), self.speed)
+        parser.set_speed('high', high)
 
     def _update_measurements(self) -> None:
-        """
-        Recalibrate the measurements for speed, accuracy and progress
-        """
-
+        """Recalibrate the measurements for speed, accuracy and progress"""
         correct = self.correct_key_presses
         total = self.total_key_presses
         mistake = self.mistakes
@@ -139,14 +128,11 @@ class Screen(Widget):
             play_failed()
 
     async def _update_race_hud(self) -> None:
-        """
-        Simultaneously updates race HUD with typing
-        """
-
+        """Simultaneously updates race HUD with typing"""
         if self.started and not self.finished:
 
             self._update_measurements()
-            if self.mode == "words":
+            if self.mode == 'words':
                 progress = self.progress
             else:
                 progress = time.time() - self.start_time
@@ -158,29 +144,22 @@ class Screen(Widget):
 
             self.refresh()
         else:
-            if self.mode == "words":
+            if self.mode == 'words':
                 await self.emit(UpdateRaceHUD(self, 0, 0, 0))
             else:
                 await self.emit(UpdateRaceHUD(self, 1, 0, 0))
 
     def move_cursor_buddy(self) -> None:
-        """
-        Manages the cursor buddy if set
-        """
+        """Manages the cursor buddy if set"""
+        if self.started and self.cursor_buddy_position < self.paragraph_length - 1:
+            self.cursor_buddy_position += 1
+            self.refresh()
 
-        if self.started:
-            if self.cursor_buddy_position < self.paragraph_length - 1:
-                self.cursor_buddy_position += 1
-                self.refresh()
-
-    async def reset_screen(self, restart_same=parser.get_data("restart_same")) -> None:
-        """
-        Reset the screen when left in mid of typing or re-started
-        """
-
+    async def reset_screen(self, restart_same=parser.get_data('restart_same')) -> None:
+        """Reset the screen when left in mid of typing or re-started"""
         self._reset_params()
         await self._refresh_settings()
-        if restart_same == "on":
+        if restart_same == 'on':
             self.paragraph.spans = []
         else:
             self.set_paragraph()
@@ -189,17 +168,14 @@ class Screen(Widget):
         self.refresh()
 
     def set_paragraph(self) -> None:
-        """
-        Sets the paragraph for the Screen
-        """
-
-        if self.mode == "words":
-            size = parser.get_data("paragraph_size")
-            if size == "teensy":
+        """Sets the paragraph for the Screen"""
+        if self.mode == 'words':
+            size = parser.get_data('paragraph_size')
+            if size == 'teensy':
                 times = 1
-            elif size == "small":
+            elif size == 'small':
                 times = 5
-            elif size == "big":
+            elif size == 'big':
                 times = 10
             else:
                 times = 15
@@ -213,55 +189,46 @@ class Screen(Widget):
                 (self.allow_puncs),
                 self.allow_cap,
             )
-            + " "
+            + ' '
         )
         self.paragraph = Text(paragraph)
-        self.wrapped = [0] + list(
-            accumulate([len(i) + (len(i) != WIDTH) for i in wrap(paragraph, WIDTH)])
-        )
+        self.wrapped = [0, *list(accumulate([(len(i) + (len(i) != WIDTH)) for i in wrap(paragraph, WIDTH)]))]
         self.paragraph_length = len(self.paragraph.plain)
 
-        self.spaces = [i for i, j in enumerate(paragraph) if j == " "]
+        self.spaces = [i for i, j in enumerate(paragraph) if j == ' ']
         self.correct = [False] * (self.paragraph_length + 1)
         self.refresh()
 
     def report(self) -> TextType:
-        """
-        Generates a report when the typing is finised
-        """
-
-        highest_score = parser.get_speed("high")
-        style = "bold red"
+        """Generates a report when the typing is finised"""
+        highest_score = parser.get_speed('high')
+        style = 'bold red'
         if self.failed:
-            return f"[{style}]FAILED[/{style}]"
+            return f'[{style}]FAILED[/{style}]'
         else:
             return (
-                "\n"
-                + f"[{style}]RAW SPEED[/{style}]            : {self.raw_speed:.2f} WPM"
-                + "\n"
-                + f"[{style}]CORRECTED SPEED[/{style}]      : {self.speed:.2f} WPM"
-                + "\n"
-                + f"[{style}]ACCURACY[/{style}]             : {self.accuracy:.2f} %"
-                + "\n"
-                + f"[{style}]TIME TAKEN[/{style}]           : {self.finish_time - self.start_time:.2f} seconds"
-                + "\n"
-                + f"[{style}]HIGHEST SCORE[/{style}]        : {highest_score:.2f} WPM"
+                '\n'
+                + f'[{style}]RAW SPEED[/{style}]            : {self.raw_speed:.2f} WPM'
+                + '\n'
+                + f'[{style}]CORRECTED SPEED[/{style}]      : {self.speed:.2f} WPM'
+                + '\n'
+                + f'[{style}]ACCURACY[/{style}]             : {self.accuracy:.2f} %'
+                + '\n'
+                + f'[{style}]TIME TAKEN[/{style}]           : {self.finish_time - self.start_time:.2f} seconds'
+                + '\n'
+                + f'[{style}]HIGHEST SCORE[/{style}]        : {highest_score:.2f} WPM'
             )
 
     def _is_key_correct(self) -> bool:
         """Check if the current pressed key matches with the current cursor position"""
-
         return self.pressed_key == self.paragraph.plain[self.cursor_position]
 
     def _check_min_burst(self) -> bool:
-        """
-        Check if the min_burst rule is violated
-        """
-
+        """Check if the min_burst rule is violated"""
         pos = self.cursor_position - 1
         correct = 0
         total = 0
-        while pos >= 0 and self.paragraph.plain[pos] != " ":
+        while pos >= 0 and self.paragraph.plain[pos] != ' ':
             correct += self.correct[pos]
             total += 1
             pos -= 1
@@ -269,11 +236,8 @@ class Screen(Widget):
         return (100 * correct / total) >= self.min_burst
 
     async def key_add(self, key: str) -> None:
-        """
-        Process the pressed key
-        """
-
-        if key == "ctrl+i" and self.tab_reset == "on":  # TAB
+        """Process the pressed key"""
+        if key == 'ctrl+i' and self.tab_reset == 'on':  # TAB
             await self.reset_screen()
 
         if self.finished:
@@ -281,28 +245,28 @@ class Screen(Widget):
 
         if (
             not self.quiet
-            and self.keypress_sound != "off"
-            and not (key == "ctrl+h" and self.keypress_sound != "backspace")
+            and self.keypress_sound != 'off'
+            and not (key == 'ctrl+h' and self.keypress_sound != 'backspace')
         ):
             play_keysound()
 
         self.pressed_key = key
 
-        if key == "ctrl+w":
-            if self.cursor_position and self._get_previous_character() == " ":
-                await self.key_add("ctrl+h")
+        if key == 'ctrl+w':
+            if self.cursor_position and self._get_previous_character() == ' ':
+                await self.key_add('ctrl+h')
 
-            while self.cursor_position and self._get_previous_character() != " ":
-                await self.key_add("ctrl+h")
+            while self.cursor_position and self._get_previous_character() != ' ':
+                await self.key_add('ctrl+h')
 
-        elif key == "ctrl+h":  # BACKSPACE
-            if self.confidence_mode == "max":
+        elif key == 'ctrl+h':  # BACKSPACE
+            if self.confidence_mode == 'max':
                 return
 
             if self.cursor_position:
                 if (
-                    self.confidence_mode == "on"
-                    and self._get_previous_character() == " "
+                    self.confidence_mode == 'on'
+                    and self._get_previous_character() == ' '
                 ):
                     return
 
@@ -316,12 +280,12 @@ class Screen(Widget):
 
         elif len(key) == 1:
             self.total_key_presses += 1
-            if key == " ":
+            if key == ' ':
                 if not self._is_key_correct():
                     if (
-                        self.force_correct == "off"
+                        self.force_correct == 'off'
                         and self.cursor_position
-                        and self._get_previous_character() != " "
+                        and self._get_previous_character() != ' '
                     ):
                         next_space = self.spaces[
                             bisect(self.spaces, self.cursor_position)
@@ -338,7 +302,7 @@ class Screen(Widget):
                         return
                 else:
 
-                    if self.difficulty == "expert" and self.mistakes:
+                    if self.difficulty == 'expert' and self.mistakes:
                         self.failed = True
                     if not self._check_min_burst():
                         self.failed = True
@@ -351,16 +315,16 @@ class Screen(Widget):
                     Span(
                         self.cursor_position,
                         self.cursor_position + 1,
-                        self._get_color("correct"),
-                    )
+                        self._get_color('correct'),
+                    ),
                 )
                 self.correct_key_presses += 1
                 self.correct[self.cursor_position] = True
 
             else:
                 if (
-                    self.paragraph.plain[self.cursor_position] == " "
-                    or self.force_correct == "on"
+                    self.paragraph.plain[self.cursor_position] == ' '
+                    or self.force_correct == 'on'
                 ):
                     return
 
@@ -368,12 +332,12 @@ class Screen(Widget):
                     Span(
                         self.cursor_position,
                         self.cursor_position + 1,
-                        self._get_color("mistake"),
-                    )
+                        self._get_color('mistake'),
+                    ),
                 )
 
                 self.mistakes += 1
-                if self.difficulty == "master":
+                if self.difficulty == 'master':
                     self.failed = True
 
             self.cursor_position += 1
@@ -403,51 +367,32 @@ class Screen(Widget):
                 Panel(
                     Text(
                         self.paragraph.plain,
-                        spans=self.paragraph.spans
-                        + [
-                            Span(
-                                self.cursor_position + 1,
-                                len(self.paragraph.plain),
-                                "dim white",
-                            )
-                        ]
-                        + [
-                            Span(
-                                self.cursor_position,
-                                self.cursor_position + 1,
-                                self.cursor_style,
-                            )
-                        ]
-                        + [
-                            Span(
-                                self.cursor_buddy_position,
-                                self.cursor_buddy_position + 1,
-                                "reverse magenta",
-                            )
-                            if self.cursor_buddy_speed
-                            else EMPTY_SPAN
-                        ],
+                        spans=[
+                            * self.paragraph.spans, Span(self.cursor_position +
+                                                         1, len(self.paragraph.plain), 'dim white'), Span(self.cursor_position, self.cursor_position
+                                                                                                          + 1, self.cursor_style), Span(self.cursor_buddy_position, self.cursor_buddy_position
+                                                                                                                                        + 1, 'reverse magenta') if self.cursor_buddy_speed else EMPTY_SPAN],
                     )[
-                        self.wrapped[line - 1] : self.wrapped[
+                        self.wrapped[line - 1]: self.wrapped[
                             min(len(self.wrapped) - 1, line + 2)
                         ]
                     ],
                     width=WIDTH + 4,
                     box=MINIMAL,
                 ),
-                vertical="middle",
+                vertical='middle',
                 height=HEIGHT,
             )
 
         else:
             self._update_speed_records()
             return Panel(
-                Align.center(self.report(), vertical="middle", height=HEIGHT),
+                Align.center(self.report(), vertical='middle', height=HEIGHT),
                 box=MINIMAL,
             )
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 
     class MyApp(App):
         async def on_mount(self):

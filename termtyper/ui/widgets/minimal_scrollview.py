@@ -6,9 +6,7 @@ from textual.widgets import ScrollView
 
 
 class MinimalScrollView(ScrollView):
-    """
-    Just a ScrollView without bars
-    """
+    """Just a ScrollView without bars"""
 
     async def update(self, renderable: RenderableType, home: bool = False) -> None:
         await super().update(renderable, home)
@@ -27,13 +25,13 @@ class MinimalScrollView(ScrollView):
 
     async def key_press(self, event: Key):
         match event.key:
-            case "j" | "down":
+            case 'j' | 'down':
                 super().scroll_up()
-            case "k" | "up":
+            case 'k' | 'up':
                 super().scroll_down()
-            case "g" | "home":
+            case 'g' | 'home':
                 await super().key_home()
-            case "G" | "end":
+            case 'G' | 'end':
                 await super().key_end()
 
     async def handle_window_change(self, message: Message) -> None:

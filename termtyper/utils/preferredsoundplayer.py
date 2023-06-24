@@ -15,7 +15,7 @@
 #       See references:
 #       “Programming Windows: the Definitive Guide to the WIN32 API,
 #           Chapter 22 Sound and Music Section III Advanced Topics
-#           ‘The MCI Command String Approach.’”
+#           `The MCI Command String Approach.`”
 #           Programming Windows: the Definitive Guide to the WIN32 API,
 #           by Charles Petzold, Microsoft Press, 1999.
 #       https://stackoverflow.com/questions/22253074/how-to-play-or-open-mp3-or-wav-sound-file-in-c-program
@@ -41,28 +41,28 @@
 #   -MacOS uses the afplay module which is present OS X 10.5 and later
 #
 
-from random import random
-from platform import system
-import subprocess
-from subprocess import Popen, PIPE
 import os
+import sndhdr
+import subprocess
+from platform import system
+from random import random
+from subprocess import PIPE
 from threading import Thread
 from time import sleep
-import sndhdr
 
-if system() == "Linux":
+if system() == 'Linux':
     import shutil
 
     try:
         import gi
 
-        gi.require_version("Gst", "1.0")
+        gi.require_version('Gst', '1.0')
         from gi.repository import Gst
-    except:
+    except BaseException:
         pass
     import os
 
-if system() == "Windows":
+if system() == 'Windows':
     from ctypes import c_buffer, windll
     from sys import getfilesystemencoding
     from threading import Thread
@@ -72,13 +72,13 @@ if system() == "Windows":
 
 
 class WinMMSoundPlayer:
-    def __init__(self):
+    def __init__(self) -> None:
         self.isSongPlaying = False
         self.sync = False
         self.P = None
-        self.fileName = ""
-        self.alias = ""
-        self.loopAlias = ""
+        self.fileName = ''
+        self.alias = ''
+        self.loopAlias = ''
         self.aliasList = []
 
     # typical process for using winmm.dll
@@ -105,7 +105,7 @@ class WinMMSoundPlayer:
         # make a list of sounds that are no longer playing
         removalList = []
         for i in range(len(self.aliasList)):
-            if self.getIsPlaying(self.aliasList[i]) == False:
+            if self.getIsPlaying(self.aliasList[i]) is False:
                 # print("adding",self.aliasList[i],"to garbage collector removal list.")
                 removalList.append(i)
 
@@ -125,27 +125,27 @@ class WinMMSoundPlayer:
 
         self.fileName = fileName
         # make an alias
-        self.alias = "soundplay_" + str(random())
+        self.alias = 'soundplay_' + str(random())
         # print("adding ", self.alias)# <------- unprint
         self.aliasList.append(self.alias)
 
-        str1 = 'open "' + os.path.abspath(self.fileName) + '"' + " alias " + self.alias
+        str1 = 'open "' + os.path.abspath(self.fileName) + '"' + ' alias ' + self.alias
         self._processWindowsCommand(str1)
 
         # use the wait feature to block or not block when constructing mciSendString command
-        if block == False:
-            str1 = "play " + self.alias
+        if block is False:
+            str1 = 'play ' + self.alias
             # play the sound
             self._processWindowsCommand(str1)
         else:
             # construct mciSendString command to wait i.e. blocking
-            str1 = "play " + self.alias + " wait"
+            str1 = 'play ' + self.alias + ' wait'
             # play the sound (blocking)
             self._processWindowsCommand(str1)
             # stop and close the sound after done
-            str1 = "stop " + self.alias
+            str1 = 'stop ' + self.alias
             self._processWindowsCommand(str1)
-            str1 = "close " + self.alias
+            str1 = 'close ' + self.alias
             self._processWindowsCommand(str1)
 
         # return the alias of the sound
@@ -154,7 +154,7 @@ class WinMMSoundPlayer:
     # this function uses the mci/windows api with a repeat call to loop sound
     def loopsound(self, fileName):
         self._collectGarbarge()
-        self.loopAlias = "loopalias_" + str(random())
+        self.loopAlias = 'loopalias_' + str(random())
         # print("adding looper alias",self.loopAlias) #<-------unprint
         self.aliasList.append(self.loopAlias)
         str1 = (
@@ -164,7 +164,7 @@ class WinMMSoundPlayer:
             + self.loopAlias
         )
         self._processWindowsCommand(str1)
-        str1 = "play " + self.loopAlias + " repeat"
+        str1 = 'play ' + self.loopAlias + ' repeat'
         self._processWindowsCommand(str1)
         return self.loopAlias
 
@@ -172,37 +172,37 @@ class WinMMSoundPlayer:
     def stopsound(self, sound):
         # print("------------------------")
         try:
-            str1 = "stop " + sound
+            str1 = 'stop ' + sound
             self._processWindowsCommand(str1)
-            str1 = "close " + sound
+            str1 = 'close ' + sound
             self._processWindowsCommand(str1)
-        except:
+        except BaseException:
             pass
 
     # return True or False if song alias 'status' is 'playing'
     def getIsPlaying(self, song):
         try:
-            str1 = "status " + song + " mode"
+            str1 = 'status ' + song + ' mode'
             myvalue = self._processWindowsCommand(str1)
-            if myvalue == b"playing":
+            if myvalue == b'playing':
                 self.isSongPlaying = True
             else:
                 self.isSongPlaying = False
-        except:
+        except BaseException:
             self.isSongPlaying = False
         return self.isSongPlaying
 
 
 def isFileAWav(fileName):
     try:
-        if sndhdr.what(fileName)[0] == "wav":
+        if sndhdr.what(fileName)[0] == 'wav':
             return True
-    except:
+    except BaseException:
         return False
 
 
 class MusicLooper:
-    def __init__(self, fileName):
+    def __init__(self, fileName) -> None:
         self.fileName = fileName
         self.playing = False
         self.songProcess = None
@@ -212,15 +212,15 @@ class MusicLooper:
         self.songProcess = playwave(self.fileName)
 
     def _playloop(self):
-        while self.playing == True:
+        while self.playing is True:
             # it is easy to get duration of wave file
-            if isFileAWav(self.fileName) == True:
+            if isFileAWav(self.fileName) is True:
                 self.songProcess = playwave(self.fileName)
                 sleep(self._getWavDurationFromFile())
             else:
                 # it is hard to get duration of non wave files so check 5 times a second and relaunch if ended
                 if self.songProcess is not None:
-                    if getIsPlaying(self.songProcess) == False:
+                    if getIsPlaying(self.songProcess) is False:
                         self.songProcess = playwave(self.fileName)
                 else:
                     self.songProcess = playwave(self.fileName)
@@ -232,9 +232,9 @@ class MusicLooper:
         # def startMusicLoopWave(self,optionalForMp3s_CheckRestartHowOften=.2):
         # self.optionalForMp3s_CheckRestartHowOften=optionalForMp3s_CheckRestartHowOften
         if (
-            self.playing == True
+            self.playing is True
         ):  # don't allow more than one background loop per instance of MusicLooper
-            print("Already playing, stop before starting new.")
+            print('Already playing, stop before starting new.')
             return
         else:
             self.playing = True
@@ -244,9 +244,9 @@ class MusicLooper:
 
     # stop looping a sound
     def stopMusicLoop(self):
-        if self.playing == False:
+        if self.playing is False:
             print(
-                str(self.songProcess) + " already stopped, play before trying to stop."
+                str(self.songProcess) + ' already stopped, play before trying to stop.',
             )
             return
         else:
@@ -258,8 +258,7 @@ class MusicLooper:
     def _getWavDurationFromFile(self):
         frames = sndhdr.what(self.fileName)[3]
         rate = sndhdr.what(self.fileName)[1]
-        duration = float(frames) / rate
-        return duration
+        return float(frames) / rate
 
     def getSongProcess(self):
         return self.songProcess
@@ -272,15 +271,15 @@ class MusicLooper:
 
 
 class SingleSoundLinux:
-    def __init__(self):
+    def __init__(self) -> None:
         import gi
 
-        gi.require_version("Gst", "1.0")
+        gi.require_version('Gst', '1.0')
         from gi.repository import Gst
 
         self.pl = None
         self.gst = Gst.init()
-        self.playerType = ""
+        self.playerType = ''
 
     def _gstPlayProcess(self):
         self.pl.set_state(Gst.State.PLAYING)
@@ -289,35 +288,34 @@ class SingleSoundLinux:
         self.pl.set_state(Gst.State.NULL)
 
     def soundplay(self, fileName, block=False):
-        if self.getIsPlaying(self.pl) == False:
-            self.pl = Gst.ElementFactory.make("playbin", "player")
-            self.pl.set_property("uri", "file://" + os.path.abspath(fileName))
-            self.playerType = "gstreamer"
+        if self.getIsPlaying(self.pl) is False:
+            self.pl = Gst.ElementFactory.make('playbin', 'player')
+            self.pl.set_property('uri', 'file://' + os.path.abspath(fileName))
+            self.playerType = 'gstreamer'
             self.T = Thread(target=self._gstPlayProcess, daemon=True)
             self.T.start()
-            if block == True:
+            if block is True:
                 self.T.join()
             return [self.pl, self.playerType]
         else:
             print(
-                "already playing, open new SingleSound if you need to play simoultaneously"
+                'already playing, open new SingleSound if you need to play simoultaneously',
             )
+            return None
 
     def stopsound(self, sound):
         # print(sound[1])
-        if sound[1] == "gstreamer":
+        if sound[1] == 'gstreamer':
             sound[0].set_state(Gst.State.NULL)
 
     def getIsPlaying(self, song):
         if song is None:
             return False
         # print(song[1])
-        if song[1] == "gstreamer":
+        if song[1] == 'gstreamer':
             state = str(song[0].get_state(Gst.State.PLAYING)[1]).split()[1]
-            if state == "GST_STATE_READY" or state == "GST_STATE_PLAYING":
-                return True
-            else:
-                return False
+            return bool(state == 'GST_STATE_READY' or state == 'GST_STATE_PLAYING')
+        return None
 
 
 #########################################################################
@@ -332,57 +330,52 @@ class SingleSoundLinux:
 
 
 def _soundplayWindows(fileName, block=False):
-    song = windowsPlayer.soundplay(fileName, block)  # change
-    return song
+    return windowsPlayer.soundplay(fileName, block)  # change
 
 
 def _soundplayLinux(fileName, block=False):
-    if isFileAWav(fileName) == True:  # use alsa if .wav
+    if isFileAWav(fileName) is True:  # use alsa if .wav
         # print("using alsa because its a wav")
-        command = "exec aplay --quiet " + os.path.abspath(fileName)
-    elif (
-        shutil.which("gst-play-1.0") is not None
-    ) == True:  # use gst-play-1.0 if available
+        command = 'exec aplay --quiet ' + os.path.abspath(fileName)
+    elif (shutil.which('gst-play-1.0') is not None) is True:  # use gst-play-1.0 if available
         # print("using gst-play-1.0 since available")
-        command = "exec gst-play-1.0 " + os.path.abspath(fileName)
-    elif (shutil.which("ffplay") is not None) == True:  # use ffplay if present
+        command = 'exec gst-play-1.0 ' + os.path.abspath(fileName)
+    elif (shutil.which('ffplay') is not None) is True:  # use ffplay if present
         # print("using ffplay since available")
-        command = "exec ffplay -nodisp -autoexit -loglevel quiet " + os.path.abspath(
-            fileName
+        command = 'exec ffplay -nodisp -autoexit -loglevel quiet ' + os.path.abspath(
+            fileName,
         )
     else:
         try:
             import gi
 
-            gi.require_version("Gst", "1.0")
-            from gi.repository import Gst
+            gi.require_version('Gst', '1.0')
 
-            song = SingleSoundLinux().soundplay(fileName, block)
+            return SingleSoundLinux().soundplay(fileName, block)
             # print("using gst playbin - successful try")
-            return song
-        except:
-            print("must use ALSA, all else failed")
-            command = "exec aplay --quiet " + os.path.abspath(fileName)
-    if block == True:
+        except BaseException:
+            print('must use ALSA, all else failed')
+            command = 'exec aplay --quiet ' + os.path.abspath(fileName)
+    if block is True:
         P = subprocess.Popen(
-            command, universal_newlines=True, shell=True, stdout=PIPE, stderr=PIPE
+            command, universal_newlines=True, shell=True, stdout=PIPE, stderr=PIPE,
         ).communicate()
     else:
         P = subprocess.Popen(
-            command, universal_newlines=True, shell=True, stdout=PIPE, stderr=PIPE
+            command, universal_newlines=True, shell=True, stdout=PIPE, stderr=PIPE,
         )
     return P
 
 
 def _soundplayMacOS(fileName, block=False):
     command = "exec afplay '" + os.path.abspath(fileName) + "'"
-    if block == True:
+    if block is True:
         P = subprocess.Popen(
-            command, universal_newlines=True, shell=True, stdout=PIPE, stderr=PIPE
+            command, universal_newlines=True, shell=True, stdout=PIPE, stderr=PIPE,
         ).communicate()
     else:
         P = subprocess.Popen(
-            command, universal_newlines=True, shell=True, stdout=PIPE, stderr=PIPE
+            command, universal_newlines=True, shell=True, stdout=PIPE, stderr=PIPE,
         )
     return P
 
@@ -395,17 +388,17 @@ def stopsound(process):
     if process is not None:
         try:
             if process is not None:
-                if system() == "Windows":
+                if system() == 'Windows':
                     windowsPlayer.stopsound(process)
-                elif system() == "Linux":
+                elif system() == 'Linux':
                     # see if process is GSTPlaybin
-                    if str(process).find("gstreamer") != -1:
+                    if str(process).find('gstreamer') != -1:
                         SingleSoundLinux().stopsound(process)
                     else:
                         process.terminate()  # Linux but not GSTPlaybin
                 else:
                     process.terminate()  # MacOS
-        except:
+        except BaseException:
             pass
             # print("process is not playing")
     else:
@@ -417,25 +410,25 @@ def stopsound(process):
 
 
 def getIsPlaying(process):
-    if system() == "Windows":
+    if system() == 'Windows':
         return windowsPlayer.getIsPlaying(process)
     else:
         isSongPlaying = False
         if process is not None:
             # see if process is GSTPlaybin
-            if system() == "Linux":
+            if system() == 'Linux':
                 # see if process is GSTPlaybin
-                if str(process).find("gstreamer") != -1:
+                if str(process).find('gstreamer') != -1:
                     return SingleSoundLinux().getIsPlaying(process)
                 else:  # Linux but not GSTPlaybin
                     try:
                         return process.poll() is None
-                    except:
+                    except BaseException:
                         pass
             else:
                 try:
                     return process.poll() is None
-                except:
+                except BaseException:
                     pass
 
         return isSongPlaying
@@ -456,7 +449,7 @@ def loopsound(fileName,optionalForMp3s_CheckRestartHowOften=.2):
 
 
 def loopsound(fileName):
-    if system() == "Windows":
+    if system() == 'Windows':
         return windowsPlayer.loopsound(fileName)
     else:
         looper = MusicLooper(fileName)
@@ -464,12 +457,13 @@ def loopsound(fileName):
         return looper
 
 
-# pass an instance of a MusicLooper object and stop the loop, in Windows, use the Windows SingleSoundWindows class method
+# pass an instance of a MusicLooper object and stop the loop, in Windows,
+# use the Windows SingleSoundWindows class method
 
 
 def stoploop(looperObject):
     if looperObject is not None:
-        if system() == "Windows":
+        if system() == 'Windows':
             stopsound(looperObject)
         else:
             looperObject.stopMusicLoop()
@@ -478,12 +472,13 @@ def stoploop(looperObject):
         # print("looperObject ", str(looperObject), " not playing")
 
 
-# checks to see if song process is playing, (or if song alias's status is 'playing' in the case of Windows), returns True or False
+# checks to see if song process is playing, (or if song alias's status is
+# 'playing' in the case of Windows), returns True or False
 
 
 def getIsLoopPlaying(looperObject):
     if looperObject is not None:
-        if system() == "Windows":
+        if system() == 'Windows':
             return getIsPlaying(looperObject)
         else:
             return looperObject.getPlaying()
@@ -500,13 +495,13 @@ def playsound(fileName, block=True):
 
 
 # --------------------------------------------------------------------------------------------
-if system() == "Windows":
+if system() == 'Windows':
     windowsPlayer = (
         WinMMSoundPlayer()
     )  # uses a single instance of the WinMMSoundPlayer class
     soundplay = windowsPlayer.soundplay
 
-elif system() == "Darwin":
+elif system() == 'Darwin':
     soundplay = _soundplayMacOS
 
 else:

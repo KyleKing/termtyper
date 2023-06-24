@@ -17,7 +17,7 @@ minimum_python: 3.11.2
 minimum_python_short: '3.11'
 package_name_py: terminal_typer_tutor
 project_description: 'Fork of kraanzu/termtyper with a focus on special characters.
-    Inspired by climech/typing-practice '
+    Inspired by climech/typing-practice'
 project_name: terminal-typer-tutor
 repository_namespace: kyleking
 repository_provider: https://github.com

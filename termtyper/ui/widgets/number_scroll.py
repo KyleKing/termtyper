@@ -1,10 +1,10 @@
-from rich.align import Align
 from rich import box
+from rich.align import Align
 from rich.console import RenderableType
+from rich.panel import Panel
+from rich.text import Text
 from textual import events
 from textual.widget import Widget
-from rich.text import Text
-from rich.panel import Panel
 
 from ...utils.parser import MAIN_PARSER
 
@@ -12,9 +12,7 @@ parser = MAIN_PARSER
 
 
 class NumberScroll(Widget):
-    """
-    A number scroll that acts as an option to set a particular value
-    """
+    """A number scroll that acts as an option to set a particular value"""
 
     def __init__(
         self,
@@ -64,20 +62,20 @@ class NumberScroll(Widget):
     def render(self) -> RenderableType:
         return Panel(
             Align.center(
-                Text(str(self.value).center(5), style="reverse green"),
-                vertical="middle",
+                Text(str(self.value).center(5), style='reverse green'),
+                vertical='middle',
             ),
-            border_style="magenta" if self.selected else "white",
+            border_style='magenta' if self.selected else 'white',
             height=8,
             box=box.HEAVY,
         )
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     from textual.app import App
 
     class MyApp(App):
         async def on_mount(self):
-            await self.view.dock(NumberScroll("test", 1))
+            await self.view.dock(NumberScroll('test', 1))
 
     MyApp.run()

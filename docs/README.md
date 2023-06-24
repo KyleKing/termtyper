@@ -1,6 +1,6 @@
 # terminal-typer-tutor
 
-Fork of kraanzu/termtyper with a focus on special characters. Inspired by climech/typing-practice 
+Fork of kraanzu/termtyper with a focus on special characters. Inspired by climech/typing-practice
 
 ## Installation
 
@@ -9,7 +9,7 @@ Fork of kraanzu/termtyper with a focus on special characters. Inspired by climec
 1. ...
 
     ```sh
-    import 
+    import
 
     # < TODO: Add example code here >
     ```

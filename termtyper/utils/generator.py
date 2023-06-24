@@ -1,6 +1,6 @@
-from .words import words
-from random import choice, random, randint
+from random import choice, randint, random
 
+from .words import words
 
 PUNCS = "$%&'(),-.:;?"
 words = words.split()
@@ -10,29 +10,27 @@ def generate(
     times: int = 1,
     numbers: bool = False,
     punctuations: bool = False,
-    capitalizitions: str = "off",
+    capitalizitions: str = 'off',
 ) -> str:
-    """
-    produces a paragraph
-    """
+    """produces a paragraph"""
     times *= 30
     extra = []
     if numbers:
-        extra.extend([str(choice(range(1, 10000))) for _ in " " * 200])
+        extra.extend([str(choice(range(1, 10000))) for _ in ' ' * 200])
     if punctuations:
-        extra.extend([choice(PUNCS) for _ in " " * 200])
+        extra.extend([choice(PUNCS) for _ in ' ' * 200])
 
-    arr = [choice(words + extra) for _ in " " * times]
-    para = ""
+    arr = [choice(words + extra) for _ in ' ' * times]
+    para = ''
     for i in arr:
         if i in PUNCS:
             para += i
         else:
             match capitalizitions:
-                case "on":
+                case 'on':
                     if random() > 0.7:
                         i = i.capitalize()
-                case "max":
+                case 'max':
                     r = random()
                     if r > 0.7:
                         i = i.capitalize()
@@ -43,9 +41,9 @@ def generate(
                             randint(0, len(i) - 1) for _ in range(randint(1, len(i)))
                         ]
                         for index in upper_indexs:
-                            i = i[:index] + i[index].upper() + i[index + 1 :]
+                            i = i[:index] + i[index].upper() + i[index + 1:]
                 case _:
                     pass
-            para += " " + i
+            para += ' ' + i
 
     return para.strip()

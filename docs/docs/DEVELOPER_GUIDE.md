@@ -5,7 +5,7 @@
 ```sh
 git clone https://github.com/kyleking/terminal-typer-tutor.git
 cd terminal-typer-tutor
-poetry install --sync 
+poetry install --sync
 
 # See the available tasks
 poetry run calcipy
@@ -44,5 +44,10 @@ poetry config pypi-token.pypi ...
 ## Current Status
 
 <!-- {cts} COVERAGE -->
+| File                               |   Statements |   Missing |   Excluded | Coverage   |
+|------------------------------------|--------------|-----------|------------|------------|
+| `terminal_typer_tutor/__init__.py` |            2 |         0 |          0 | 100.0%     |
+| **Totals**                         |            2 |         0 |          0 | 100.0%     |
 
+Generated on: 2023-06-23
 <!-- {cte} -->
