@@ -359,6 +359,14 @@
         "name": "lazy-object-proxy",
         "version": "1.9.0"
     },
+    "linkify-it-py": {
+        "datetime": "2023-05-02T08:12:00.235541+00:00",
+        "domain": "https://pypi.org/pypi/{name}/json",
+        "latest_datetime": "2023-05-02T08:12:00.235541+00:00",
+        "latest_version": "2.0.2",
+        "name": "linkify-it-py",
+        "version": "2.0.2"
+    },
     "markdown": {
         "datetime": "2022-05-05T19:08:38.155612+00:00",
         "domain": "https://pypi.org/pypi/{name}/json",
@@ -368,12 +376,12 @@
         "version": "3.3.7"
     },
     "markdown-it-py": {
-        "datetime": "2023-06-03T06:41:11.019475+00:00",
+        "datetime": "2023-02-22T05:54:29.508565+00:00",
         "domain": "https://pypi.org/pypi/{name}/json",
         "latest_datetime": "2023-06-03T06:41:11.019475+00:00",
         "latest_version": "3.0.0",
         "name": "markdown-it-py",
-        "version": "3.0.0"
+        "version": "2.2.0"
     },
     "markupsafe": {
         "datetime": "2023-06-02T21:42:33.954412+00:00",
@@ -390,6 +398,14 @@
         "latest_version": "0.7.0",
         "name": "mccabe",
         "version": "0.7.0"
+    },
+    "mdit-py-plugins": {
+        "datetime": "2023-06-05T19:27:17.761144+00:00",
+        "domain": "https://pypi.org/pypi/{name}/json",
+        "latest_datetime": "2023-06-05T19:27:17.761144+00:00",
+        "latest_version": "0.4.0",
+        "name": "mdit-py-plugins",
+        "version": "0.4.0"
     },
     "mdurl": {
         "datetime": "2022-08-14T12:40:09.779676+00:00",
@@ -871,6 +887,14 @@
         "name": "terminaltables",
         "version": "3.1.10"
     },
+    "textual": {
+        "datetime": "2023-06-20T08:27:45.965355+00:00",
+        "domain": "https://pypi.org/pypi/{name}/json",
+        "latest_datetime": "2023-06-20T08:27:45.965355+00:00",
+        "latest_version": "0.28.1",
+        "name": "textual",
+        "version": "0.28.1"
+    },
     "tomli": {
         "datetime": "2022-02-08T10:54:02.017593+00:00",
         "domain": "https://pypi.org/pypi/{name}/json",
@@ -910,6 +934,14 @@
         "latest_version": "2023.3",
         "name": "tzdata",
         "version": "2023.3"
+    },
+    "uc-micro-py": {
+        "datetime": "2023-05-01T16:10:39.143987+00:00",
+        "domain": "https://pypi.org/pypi/{name}/json",
+        "latest_datetime": "2023-05-01T16:10:39.143987+00:00",
+        "latest_version": "1.0.2",
+        "name": "uc-micro-py",
+        "version": "1.0.2"
     },
     "ujson": {
         "datetime": "2023-06-11T08:49:51.075023+00:00",

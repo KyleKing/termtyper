@@ -2,7 +2,23 @@
 
 ### Feat
 
+- merge runnable version of termtyper
+- rename to tui-typer-tutor to avoid confusion with terminal-typing-tutor
 - initialize with calcipy template
+
+### Fix
+
+- restore latest textual
+
+### Refactor
+
+- remove sounds
+- run automated tooling
+
+## 0.0.0 (2023-06-24)
+
+### Feat
+
 - Add `-q` flag for quiet mode (closes #12)
 - `Time/Word` progress
 - dim untyped-characters

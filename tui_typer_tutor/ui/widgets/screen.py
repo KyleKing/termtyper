@@ -62,7 +62,8 @@ class Screen(Widget):
 
         if self.cursor_buddy_speed:
             self.buddy_timer = self.set_interval(
-                60 / (5 * self.cursor_buddy_speed), self.move_cursor_buddy,
+                60 / (5 * self.cursor_buddy_speed),
+                self.move_cursor_buddy,
             )
 
     def _get_color(self, type: str) -> str:
@@ -128,7 +129,6 @@ class Screen(Widget):
     async def _update_race_hud(self) -> None:
         """Simultaneously updates race HUD with typing"""
         if self.started and not self.finished:
-
             self._update_measurements()
             if self.mode == 'words':
                 progress = self.progress
@@ -190,7 +190,14 @@ class Screen(Widget):
             + ' '
         )
         self.paragraph = Text(paragraph)
-        self.wrapped = [0, *list(accumulate([(len(i) + (len(i) != WIDTH)) for i in wrap(paragraph, WIDTH)]))]
+        self.wrapped = [
+            0,
+            *list(
+                accumulate(
+                    [(len(i) + (len(i) != WIDTH)) for i in wrap(paragraph, WIDTH)],
+                ),
+            ),
+        ]
         self.paragraph_length = len(self.paragraph.plain)
 
         self.spaces = [i for i, j in enumerate(paragraph) if j == ' ']
@@ -292,7 +299,6 @@ class Screen(Widget):
                     else:
                         return
                 else:
-
                     if self.difficulty == 'expert' and self.mistakes:
                         self.failed = True
                     if not self._check_min_burst():
@@ -359,10 +365,25 @@ class Screen(Widget):
                     Text(
                         self.paragraph.plain,
                         spans=[
-                            * self.paragraph.spans, Span(self.cursor_position +
-                                                         1, len(self.paragraph.plain), 'dim white'), Span(self.cursor_position, self.cursor_position
-                                                                                                          + 1, self.cursor_style), Span(self.cursor_buddy_position, self.cursor_buddy_position
-                                                                                                                                        + 1, 'reverse magenta') if self.cursor_buddy_speed else EMPTY_SPAN],
+                            *self.paragraph.spans,
+                            Span(
+                                self.cursor_position + 1,
+                                len(self.paragraph.plain),
+                                'dim white',
+                            ),
+                            Span(
+                                self.cursor_position,
+                                self.cursor_position + 1,
+                                self.cursor_style,
+                            ),
+                            Span(
+                                self.cursor_buddy_position,
+                                self.cursor_buddy_position + 1,
+                                'reverse magenta',
+                            )
+                            if self.cursor_buddy_speed
+                            else EMPTY_SPAN,
+                        ],
                     )[
                         self.wrapped[line - 1]: self.wrapped[
                             min(len(self.wrapped) - 1, line + 2)

@@ -4,14 +4,29 @@ from beartype import beartype
 from invoke.context import Context
 from invoke.tasks import task
 
-# FIXME: This should probably just be like tail-jsonl without tasks
-
 
 @task()
 @beartype
 def start(_ctx: Context) -> None:
     """Start Task."""
-    raise NotImplementedError
+    # FIXME: Accept paths to:
+    # - JSON files with "command name": "character sequence" pairs
+    # - or a text file with token per line
+    # TODO: Use a bidict to convert from vim to textual key binds (i.e. `that = bidict({"<c-a>": "ctrl+a"})`, then `that['<c-a>']` and `that.inverse['ctrl+a']`)
+    # TODO: Export from AstronVim the keybindings:
+    #   https://github.com/AstroNvim/AstroNvim/blob/377db3f7d6273779533c988dadc07a08e0e43f2e/lua/astronvim/mappings.lua
+    from ..app.typer import run
+
+    run()
+
+
+@task()
+@beartype
+def keys(_ctx: Context) -> None:
+    """Keys Task."""
+    from ..keys import run
+
+    run()
 
 
 @task()
