@@ -46,8 +46,6 @@ SPEED_RECORDS_TIME = {
 THEMING = {
     'caret_style': 'block',
     'bar_theme': 'minimal',
-    'sound': 'mech',
-    'keypress_sound': 'off',
 }
 
 MODE = {

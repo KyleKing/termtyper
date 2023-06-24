@@ -10,7 +10,6 @@ from rich.tree import Tree
 from textual import events
 
 from ...utils.help_menu import percent
-from ...utils.play_keysound import get_sound_location, play
 from .option import Option
 
 HEIGHT = round(0.8 * get_terminal_size()[1])
@@ -56,9 +55,6 @@ class Menu(Option):
 
         if self.live_change:
             self.update()
-
-        if not self.quiet:
-            play(get_sound_location('mech'))
 
         self.refresh()
 

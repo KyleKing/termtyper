@@ -13,7 +13,7 @@ from textual.app import App
 from textual.widget import Widget
 
 from ...events import ResetHUD, UpdateRaceHUD
-from ...utils import generate, play_failed, play_keysound
+from ...utils import generate
 from ...utils.parser import MAIN_PARSER
 
 EMPTY_SPAN = Span(0, 0, '')
@@ -47,7 +47,6 @@ class Screen(Widget):
         self.allow_cap = parser.get_data('capitalization_mode')
         self.mode = parser.get('mode', 'writing mode')
         self.timeout = int(parser.get('user', 'timeout'))
-        self.keypress_sound = parser.get_theme('keypress_sound')
         self.set_paragraph()
 
         match self.caret_style:
@@ -125,7 +124,6 @@ class Screen(Widget):
             self.finish_time = time.time()
             self.failed = True
             self.speed = -1
-            play_failed()
 
     async def _update_race_hud(self) -> None:
         """Simultaneously updates race HUD with typing"""
@@ -242,13 +240,6 @@ class Screen(Widget):
 
         if self.finished:
             return
-
-        if (
-            not self.quiet
-            and self.keypress_sound != 'off'
-            and not (key == 'ctrl+h' and self.keypress_sound != 'backspace')
-        ):
-            play_keysound()
 
         self.pressed_key = key
 

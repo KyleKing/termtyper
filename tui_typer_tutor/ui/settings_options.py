@@ -248,43 +248,6 @@ menu['eye_candy'] = SettingMenu(
 )
 
 # Fifth Menu
-menu['aesthetics'] = SettingMenu(
-    banners['aesthetics'],
-    [
-        Setting(
-            'Keypress Sound',
-            {
-                'off': 'Already have good switches? There will be no sound on keypress',
-                'on': 'Pressing a key will trigger a click sound except backspace',
-                'backspace': 'Pressing key, including backspace, will trigger click sound',
-            },
-            Option(
-                name='keypress_sound',
-                options=['off', 'on', 'backspace'],
-                section='theming',
-            ),
-            'Sounds good?',
-        ),
-        Setting(
-            'Click sound',
-            {
-                'cream': 'Smooth soothing sound to the ears :)',
-                'lubed': 'Just the right amount',
-                'mech': 'Mechanical feel baby!',
-                'heavy': 'Wanna feel like you are on a typewriter?',
-            },
-            Option(
-                name='sound',
-                options=['cream', 'lubed', 'mech', 'heavy'],
-                section='theming',
-                # callback=play_keysound,
-            ),
-            'Choose whats most pleasing to you ears :)',
-        ),
-    ],
-)
-
-# Sixth Menu
 menu['misc'] = SettingMenu(
     banners['misc'],
     [
