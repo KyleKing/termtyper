@@ -14,8 +14,3 @@ class TuiTyperTutor(App[None]):
     def on_mount(self) -> None:
         """Set up the application after the DOM is ready."""
         self.push_screen(Main())
-
-
-def run() -> None:
-    """Main entry point for running the app."""
-    TuiTyperTutor().run()

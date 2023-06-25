@@ -5,6 +5,7 @@ from os import get_terminal_size
 from string import ascii_lowercase, digits, punctuation
 from typing import ClassVar
 
+from beartype import beartype
 from textual import on
 from textual.app import ComposeResult
 from textual.containers import Horizontal, Vertical
@@ -14,11 +15,11 @@ from textual.widgets import Button, Footer, Header, Label, Static
 
 from ..constants import VIM_TO_TEXTUAL
 
-TERM_X, _TERM_Y = get_terminal_size()
-MAX_CHARS = math.floor(0.80 * TERM_X)
+MAX_CHARS = math.floor(0.80 * get_terminal_size()[0])
+"""Determine maximum characters that can fit in 80% of the terminal width."""
 
 
-class Main(Screen[None]):  # pylint:disable=too-many-public-methods
+class Main(Screen[None]):
     """The main screen for the application."""
 
     DEFAULT_CSS: ClassVar[str] = """
@@ -55,9 +56,10 @@ class Main(Screen[None]):  # pylint:disable=too-many-public-methods
     typed_text: str = ''
     # FIXME: I need a display key b/c some VIM keys are multiple letters
     display_text: str = 'start!' + (ascii_lowercase + punctuation + digits)
-    is_testing: bool = False
+    is_typing: bool = False
 
     def compose(self) -> ComposeResult:
+        """Layout."""
         yield Header()
         with Horizontal():
             yield Vertical(id='left-pad')
@@ -67,17 +69,16 @@ class Main(Screen[None]):  # pylint:disable=too-many-public-methods
                 with Horizontal(id='text-container', classes='tutor-container'):
                     yield Label('', id='text')
                 yield Horizontal(id='typed-container', classes='tutor-container')
-                # TODO: Show the 'command name' somewhere
-                # TODO: Show commands as separated groups that don't need a delimiter
                 yield Button('Loading...', id='focus-toggle')
                 yield Static('If using WezTerm, adjust font size with <C-> and <C+>, reset with <C0>')
-        yield Footer()
+        yield Footer()  # PLANNED: Add Ctrl+Q for safe exit (and save)
 
     @on(Button.Pressed, '#focus-toggle')
     def _toggle_focus(self) -> None:
+        """Toggle is_typing and associated button state."""
         toggle = self.query_one('#focus-toggle', Button)
-        self.is_testing = not self.is_testing
-        if self.is_testing:
+        self.is_typing = not self.is_typing
+        if self.is_typing:
             toggle.label = 'Pause'
             toggle.variant = 'error'
         else:
@@ -85,15 +86,18 @@ class Main(Screen[None]):  # pylint:disable=too-many-public-methods
             toggle.variant = 'success'
 
     def on_mount(self) -> None:
+        """On widget mount."""
         self.query_one('#text', Label).update(self.display_text[:MAX_CHARS])
         self._toggle_focus()
 
+    @beartype
     def on_key(self, event: Key) -> None:
         """Capture all key presses and show in the typed input."""
         # TODO: emit events of: typed key, expected key, index for tracking
-        if not self.is_testing:
+        if not self.is_typing:
             return
 
+        # FIXME: Move this logic outside of Textual for testability
         if event.key == 'backspace':
             if self.typed_text:
                 self.typed_text = self.typed_text[:-1]
