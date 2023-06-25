@@ -1,3 +1,5 @@
+"""Vim to Textual Key Maps."""
+
 from string import ascii_lowercase
 
 from bidict import bidict
@@ -22,7 +24,6 @@ _special_keys = {
     ':': 'colon',
     ';': 'semicolon',
     '<Bar>': 'vertical_line',
-    '<BS>': 'backspace',
     '<Bslash>': 'backslash',
     '<Del>': 'delete',
     '<down>': 'down',
@@ -54,3 +55,4 @@ VIM_TO_TEXTUAL = bidict({
     **{f'<C-{vim_key}>': f'ctrl+{textual_key}' for vim_key, textual_key in _special_keys.items()},
     **{f'<F{idx}>': f'f{idx}' for idx in range(1, 13)},
 })
+"""Bi-directional mapping of VIM key maps to textual."""

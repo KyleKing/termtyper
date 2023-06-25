@@ -1,22 +1,28 @@
 """The main screen for the application."""
 
 import math
+from contextlib import suppress
 from os import get_terminal_size
-from string import ascii_lowercase, digits, punctuation
+from string import ascii_lowercase, digits  # punctuation
 from typing import ClassVar
 
 from beartype import beartype
-from textual import on
 from textual.app import ComposeResult
 from textual.containers import Horizontal, Vertical
+from textual.css.query import NoMatches
 from textual.events import Key
 from textual.screen import Screen
-from textual.widgets import Button, Footer, Header, Label, Static
+from textual.widgets import Footer, Header, Label
 
 from ..constants import VIM_TO_TEXTUAL
+from ..core.typing import ExpectedKey, Keys, on_keypress
 
 MAX_CHARS = math.floor(0.80 * get_terminal_size()[0])
 """Determine maximum characters that can fit in 80% of the terminal width."""
+
+# FIXME: Support more flexible/semi-random input
+_seed_keys = [*f'start!{ascii_lowercase}{digits}', *VIM_TO_TEXTUAL.values()]
+_DISP_KEYS = [ExpectedKey(raw=_s) for _s in _seed_keys]
 
 
 class Main(Screen[None]):
@@ -37,7 +43,7 @@ class Main(Screen[None]):
 
     .tutor-container {
         content-align-horizontal: left;
-        height: 3;
+        height: 2;
     }
     #text {
         color: #7e8993;
@@ -45,18 +51,12 @@ class Main(Screen[None]):
     #typed-container .error {
         color: #ec5f67;
     }
-    #typed-container .warning {
-        color: #fac863;
-    }
     #typed-container .success {
         color: #99c794;
     }
     """
 
-    typed_text: str = ''
-    # FIXME: I need a display key b/c some VIM keys are multiple letters
-    display_text: str = 'start!' + (ascii_lowercase + punctuation + digits)
-    is_typing: bool = False
+    keys: ClassVar[Keys] = Keys(expected=_DISP_KEYS)
 
     def compose(self) -> ComposeResult:
         """Layout."""
@@ -69,51 +69,36 @@ class Main(Screen[None]):
                 with Horizontal(id='text-container', classes='tutor-container'):
                     yield Label('', id='text')
                 yield Horizontal(id='typed-container', classes='tutor-container')
-                yield Button('Loading...', id='focus-toggle')
-                yield Static('If using WezTerm, adjust font size with <C-> and <C+>, reset with <C0>')
+                # FYI: If using WezTerm, adjust font size with <C-> and <C+>, reset with <C0>
         yield Footer()  # PLANNED: Add Ctrl+Q for safe exit (and save)
-
-    @on(Button.Pressed, '#focus-toggle')
-    def _toggle_focus(self) -> None:
-        """Toggle is_typing and associated button state."""
-        toggle = self.query_one('#focus-toggle', Button)
-        self.is_typing = not self.is_typing
-        if self.is_typing:
-            toggle.label = 'Pause'
-            toggle.variant = 'error'
-        else:
-            toggle.label = 'Resume'
-            toggle.variant = 'success'
 
     def on_mount(self) -> None:
         """On widget mount."""
-        self.query_one('#text', Label).update(self.display_text[:MAX_CHARS])
-        self._toggle_focus()
+        display_text = ''.join([_k.text for _k in self.keys.expected[:MAX_CHARS]])
+        self.query_one('#text', Label).update(display_text)
+
+    # FIXME: Extract logic for managing add/removing labels?
+    #  Both displayed and typed should be handled the same way
+    def _scroll_text(self) -> None:
+        ...
 
     @beartype
     def on_key(self, event: Key) -> None:
         """Capture all key presses and show in the typed input."""
-        # TODO: emit events of: typed key, expected key, index for tracking
-        if not self.is_typing:
-            return
+        # TODO: Export metrics from the session
+        self.keys = on_keypress(event.key, self.keys)
 
-        # FIXME: Move this logic outside of Textual for testability
-        if event.key == 'backspace':
-            if self.typed_text:
-                self.typed_text = self.typed_text[:-1]
+        count = len(self.keys.typed)
+        if self.keys.last_was_delete:
+            with suppress(NoMatches):
                 self.query('Label.typed').last().remove()
-        else:
-            key = VIM_TO_TEXTUAL.inverse.get(event.key) or event.key
-            self.typed_text += key
-            count = len(self.typed_text)
-            color_class = 'warning'
-            if count <= len(self.display_text):
-                was_correct = key == self.display_text[count - 1]
-                color_class = 'success' if was_correct else 'error'
-            next_label = Label(key, classes=f'typed {color_class}')
+        elif count:
             if count >= MAX_CHARS:
                 self.query('Label.typed').first().remove()
+            color_class = 'success' if self.keys.typed[-1].was_correct else 'error'
+            next_label = Label(self.keys.typed[-1].text, classes=f'typed {color_class}')
             self.query_one('#typed-container', Horizontal).mount(next_label)
 
-        start = max(len(self.typed_text) - MAX_CHARS, 0)
-        self.query_one('#text', Label).update(self.display_text[start:][:MAX_CHARS])
+        start = max(count - MAX_CHARS, 0)
+        display_text = ''.join([_k.text for _k in self.keys.expected[start:start + MAX_CHARS]])
+        self.query_one('#text', Label).update(display_text)
