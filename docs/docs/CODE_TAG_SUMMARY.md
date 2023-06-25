@@ -10,7 +10,8 @@
 | TODO   | Support user-configurable seed data file and more customization | 2023-06-25  | [tui_typer_tutor/screens/main.py:83](https://github.com/KyleKing/tui-typer-tutor/blame/6abff10b3e66c937b45bed64dcf8c5712d0f64cd/tui_typer_tutor/screens/main.py#L83) |
 | TODO   | Export metrics from the session                                 | 2023-06-25  | [tui_typer_tutor/screens/main.py:92](https://github.com/KyleKing/tui-typer-tutor/blame/e9fbe5aa4ec3c0c9bfbd0c63dcb31d0191ff69fa/tui_typer_tutor/screens/main.py#L88) |
 | FIXME  | Handle reaching the end!                                        | 2023-06-25  | [tui_typer_tutor/screens/main.py:93](https://github.com/KyleKing/tui-typer-tutor/blame/6abff10b3e66c937b45bed64dcf8c5712d0f64cd/tui_typer_tutor/screens/main.py#L93) |
+| FIXME  | Expose this somehow?                                            | 2023-06-25  | [tui_typer_tutor/screens/main.py:96](https://github.com/KyleKing/tui-typer-tutor/blame/3309ff0d11a09fe6c9dbb8e6095e9b0e51810675/tui_typer_tutor/screens/main.py#L96) |
 
-Found code tags for FIXME (3), TODO (4), HACK (1)
+Found code tags for FIXME (4), TODO (4), HACK (1)
 
 <!-- calcipy_skip_tags -->
