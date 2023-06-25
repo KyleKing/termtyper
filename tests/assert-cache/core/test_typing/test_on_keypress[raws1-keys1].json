@@ -1,0 +1,98 @@
+{
+  "_info": [
+    {
+      "func_args": {
+        "keys": {
+          "accum": {
+            "expected": [],
+            "typed": [
+              1
+            ]
+          },
+          "expected": [
+            {
+              "raw": "l"
+            },
+            {
+              "raw": "o"
+            },
+            {
+              "raw": "l"
+            }
+          ],
+          "last_was_delete": false,
+          "typed": [
+            {
+              "expected": {
+                "raw": "l"
+              },
+              "raw": "l"
+            }
+          ],
+          "typed_all": [
+            {
+              "expected": {
+                "raw": "l"
+              },
+              "raw": "l"
+            }
+          ]
+        },
+        "raws": [
+          "t"
+        ]
+      },
+      "test_file": "core/test_typing.py",
+      "test_name": "test_on_keypress"
+    }
+  ],
+  "_json": {
+    "accum": {
+      "expected": [],
+      "typed": [
+        1,
+        2
+      ]
+    },
+    "expected": [
+      {
+        "raw": "l"
+      },
+      {
+        "raw": "o"
+      },
+      {
+        "raw": "l"
+      }
+    ],
+    "last_was_delete": false,
+    "typed": [
+      {
+        "expected": {
+          "raw": "l"
+        },
+        "raw": "l"
+      },
+      {
+        "expected": {
+          "raw": "o"
+        },
+        "raw": "t"
+      }
+    ],
+    "typed_all": [
+      {
+        "expected": {
+          "raw": "l"
+        },
+        "raw": "l"
+      },
+      {
+        "expected": {
+          "raw": "o"
+        },
+        "raw": "t"
+      }
+    ]
+  }
+}

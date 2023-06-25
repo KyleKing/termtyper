@@ -34,6 +34,7 @@ textual = ">=0.28.0"
 
 [tool.poetry.group.dev.dependencies]
 calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=1.2.6"}
+pytest-cache-assert = ">=3.0.8"
 
 [tool.poetry.scripts]
 ttt = "tui_typer_tutor.scripts:start"

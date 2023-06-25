@@ -1,0 +1,65 @@
+{
+  "_info": [
+    {
+      "func_args": {
+        "raw": "0",
+        "was_correct": false
+      },
+      "test_file": "core/test_typing.py",
+      "test_name": "test_on_keypress___extended"
+    }
+  ],
+  "_json": {
+    "accum": {
+      "expected": [
+        1,
+        2,
+        3
+      ],
+      "typed": [
+        1,
+        2
+      ]
+    },
+    "expected": [
+      {
+        "raw": "l"
+      },
+      {
+        "raw": "o"
+      },
+      {
+        "raw": "l"
+      }
+    ],
+    "last_was_delete": false,
+    "typed": [
+      {
+        "expected": {
+          "raw": "l"
+        },
+        "raw": "l"
+      },
+      {
+        "expected": {
+          "raw": "o"
+        },
+        "raw": "0"
+      }
+    ],
+    "typed_all": [
+      {
+        "expected": {
+          "raw": "l"
+        },
+        "raw": "l"
+      },
+      {
+        "expected": {
+          "raw": "o"
+        },
+        "raw": "0"
+      }
+    ]
+  }
+}

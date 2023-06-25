@@ -25,7 +25,6 @@ _special_keys = {
     ';': 'semicolon',
     '<Bar>': 'vertical_line',
     '<Bslash>': 'backslash',
-    '<Del>': 'delete',
     '<down>': 'down',
     '<Enter>': 'enter',
     '<Esc>': 'escape',
