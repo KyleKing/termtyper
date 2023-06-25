@@ -4,7 +4,7 @@ from string import ascii_lowercase
 
 from bidict import bidict
 
-# Replace '<leader>' with ' ' on load
+# FYI: Re-mapping '<leader>' must be done separately
 _special_keys = {
     "'": 'apostrophe',
     '!': 'exclamation_mark',

@@ -15,15 +15,11 @@ from textual.events import Key
 from textual.screen import Screen
 from textual.widgets import Footer, Header, Label
 
-from ..constants import VIM_TO_TEXTUAL
-from ..core.typing import ExpectedKey, Keys, on_keypress
+from ..core.seed_data import DEFAULT_SEED_FILE, load_seed_data
+from ..core.typing import Keys, on_keypress
 
 MAX_CHARS = math.floor(0.80 * get_terminal_size()[0])
 """Determine maximum characters that can fit in 80% of the terminal width."""
-
-# FIXME: Support more flexible/semi-random input
-_seed_keys = [*'start!', *VIM_TO_TEXTUAL.values()]
-_DISP_KEYS = [ExpectedKey(raw=_s) for _s in _seed_keys]
 
 
 class Main(Screen[None]):
@@ -61,7 +57,7 @@ class Main(Screen[None]):
         Binding('ctrl+q', 'quit_and_save', 'Quit and Save'),
     ]
 
-    keys: ClassVar[Keys] = Keys(expected=_DISP_KEYS)
+    keys: Keys
 
     def action_quit_and_save(self) -> None:
         """Quit and save."""
@@ -75,7 +71,8 @@ class Main(Screen[None]):
             yield Vertical(id='left-pad')
             # HACK: ^^ couldn't get 'center' alignment to work
             with Vertical(id='content'):
-                # PLANNED: Add a horizontal progress bar above the content
+                # TOOD: Add a horizontal progress bar above the content
+                #   Docs: https://textual.textualize.io/widgets/progress_bar/#__tabbed_1_4
                 yield Horizontal(id='text-container', classes='tutor-container')
                 yield Horizontal(id='typed-container', classes='tutor-container')
         # FYI: If using WezTerm, adjust font size with <C-> and <C+>, reset with <C0>
@@ -83,6 +80,8 @@ class Main(Screen[None]):
 
     def on_mount(self) -> None:
         """On widget mount."""
+        # TODO: Support user-configurable seed data file and more customization
+        self.keys = Keys(expected=load_seed_data(seed_data=DEFAULT_SEED_FILE.read_text()))
         cont = self.query_one('#text-container', Horizontal)
         for key in self.keys.get_expected(0, MAX_CHARS):
             cont.mount(Label(key.text, classes='text'))
@@ -91,6 +90,7 @@ class Main(Screen[None]):
     def on_key(self, event: Key) -> None:
         """Capture all key presses and show in the typed input."""
         # TODO: Export metrics from the session
+        # FIXME: Handle reaching the end!
         on_keypress(event.key, self.keys)
 
         count = len(self.keys.typed)
