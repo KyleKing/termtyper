@@ -2,6 +2,7 @@
 
 ### Feat
 
+- load seed data from default file
 - use the actual character width per Key when displaying
 - implement an MVP of the TUI
 - merge runnable version of termtyper
@@ -10,6 +11,7 @@
 
 ### Fix
 
+- correctly parse the adjusted index
 - restore latest textual
 
 ### Refactor

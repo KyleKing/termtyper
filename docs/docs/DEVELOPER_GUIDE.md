@@ -50,15 +50,15 @@ poetry config pypi-token.pypi ...
 | `tui_typer_tutor/app/__init__.py`             |            0 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/app/ttt.py`                  |            6 |         6 |          0 | 0.0%       |
 | `tui_typer_tutor/constants/__init__.py`       |            1 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/constants/seed_data.py`      |            5 |         5 |          0 | 0.0%       |
 | `tui_typer_tutor/constants/vim_to_textual.py` |            5 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/core/__init__.py`            |            0 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/core/scrolled_labels.py`     |            0 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/core/typing.py`              |           69 |         0 |          0 | 100.0%     |
+| `tui_typer_tutor/core/seed_data.py`           |           21 |         1 |          0 | 93.9%      |
+| `tui_typer_tutor/core/typing.py`              |           75 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/screens/__init__.py`         |            0 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/screens/main.py`             |           53 |        53 |          0 | 0.0%       |
+| `tui_typer_tutor/screens/main.py`             |           52 |        52 |          0 | 0.0%       |
 | `tui_typer_tutor/scripts.py`                  |            6 |         6 |          6 | 0.0%       |
-| **Totals**                                    |          147 |        70 |          6 | 52.8%      |
+| **Totals**                                    |          168 |        65 |          6 | 63.5%      |
 
 Generated on: 2023-06-25
 <!-- {cte} -->
