@@ -2,6 +2,8 @@
 
 ### Feat
 
+- use the actual character width per Key when displaying
+- implement an MVP of the TUI
 - merge runnable version of termtyper
 - rename to tui-typer-tutor to avoid confusion with terminal-typing-tutor
 - initialize with calcipy template
@@ -12,6 +14,10 @@
 
 ### Refactor
 
+- initial support for multi-char text & remove focus toggle
+- delete invoke task logic and use argparse like tail-jsonl
+- remove legacy code with event references
+- remove pre-ttt code
 - remove sounds
 - run automated tooling
 

@@ -1,6 +1,6 @@
 """Typing Logic."""
 
-import bisect
+from bisect import bisect_left
 
 from beartype import beartype
 from pydantic import BaseModel, Field
@@ -17,6 +17,8 @@ class ExpectedKey(BaseModel):
     @property
     def text(self) -> str:
         """Displayed text."""
+        # FIXME: ExpectedKey needs to handle '<Leader>', ' ', and '<Space>'
+        #   may need a 'display' and a 'textual_str' rather than just raw
         return VIM_TO_TEXTUAL.inverse.get(self.raw) or self.raw
 
     @property
@@ -46,12 +48,19 @@ class _KeysAccum(BaseModel):
     typed: list[int] = Field(default_factory=list)
     """Accumulating count of character width per Key."""
 
-    @beartype
-    def get_indices(self, accum: list[int], start: int, end: int) -> tuple[int, int]:
-        """Return the adjusted start and end."""
-        adj_start = bisect.bisect(accum, start)
-        adj_end = bisect.bisect(accum, end - start + adj_start) if len(accum) > end else len(accum)
+
+@beartype
+def get_adjusted_indices(accum: list[int], start: int, end: int) -> tuple[int, int]:
+    """Return the adjusted start and end."""
+    adj_start = bisect_left(accum, start)
+    if adj_start and accum[adj_start] > start:
+        adj_start -= 1
+    if accum and max(accum) > end:
+        adj_end = bisect_left(accum, end)
+        if accum[adj_end] == end:
+            adj_end += 1
         return (adj_start, adj_end)
+    return (adj_start, len(accum))
 
 
 class Keys(BaseModel):
@@ -61,10 +70,10 @@ class Keys(BaseModel):
     """The expected keys for practice."""
 
     typed_all: list[TypedKey] = Field(default_factory=list)
-    """Append-only."""
+    """Append-only list of typed keys."""
 
     typed: list[TypedKey] = Field(default_factory=list)
-    """Only tracks non-deleted keys."""
+    """Only tracks non-deleted typed keys."""
 
     last_was_delete: bool = False
     """Indicate if last operation was a delete."""
@@ -80,13 +89,13 @@ class Keys(BaseModel):
             for exp in self.expected:
                 counter += exp.width
                 self.accum.expected.append(counter)
-        adj_start, adj_end = self.accum.get_indices(self.accum.expected, start, end)
+        adj_start, adj_end = get_adjusted_indices(self.accum.expected, start, end)
         return self.expected[adj_start:adj_end]
 
     @beartype
     def get_typed(self, start: int, end: int) -> list[TypedKey]:
         """Retrieve the next page of typed keys."""
-        adj_start, adj_end = self.accum.get_indices(self.accum.typed, start, end)
+        adj_start, adj_end = get_adjusted_indices(self.accum.typed, start, end)
         return self.typed[adj_start:adj_end]
 
     @beartype
