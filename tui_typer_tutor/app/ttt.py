@@ -1,6 +1,5 @@
 """Main application."""
 
-
 from textual.app import App
 
 from ..screens.main import Main

@@ -72,16 +72,6 @@ class Keys(BaseModel):
     accum: _KeysAccum = Field(default_factory=_KeysAccum)
     """Accumulating index store (private)."""
 
-    def copy(self) -> 'Keys':
-        """Ensure that the lists are deep-copied."""
-        keys = super().copy()
-        keys.expected = [*keys.expected]
-        keys.typed_all = [*keys.typed_all]
-        keys.typed = [*keys.typed]
-        keys.accum.expected = [*keys.accum.expected]
-        keys.accum.typed = [*keys.accum.typed]
-        return keys
-
     @beartype
     def get_expected(self, start: int, end: int) -> list[ExpectedKey]:
         """Retrieve the next page of expected keys."""

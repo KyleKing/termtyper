@@ -25,7 +25,7 @@ def _lol_text() -> Keys:
         ],
         last_was_delete=False,
         accum=_KeysAccum(expected=[], typed=[1]),
-    ).copy()
+    )
 
 
 @pytest.mark.parametrize(
