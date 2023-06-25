@@ -29,6 +29,7 @@ version = "0.0.1"
 python = "^3.11.2"
 bidict = ">=0.22.1"
 corallium = ">=0.2.2"
+pydantic = ">=1.10.9"
 textual = ">=0.28.0"
 
 [tool.poetry.group.dev.dependencies]
