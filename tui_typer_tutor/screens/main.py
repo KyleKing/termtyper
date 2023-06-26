@@ -16,7 +16,7 @@ from textual.screen import Screen
 from textual.widgets import Footer, Header, Label
 
 from ..core.seed_data import DEFAULT_SEED_FILE, load_seed_data
-from ..core.typing import Keys, on_keypress
+from ..core.typing import AtEndOfExpectedError, Keys, on_keypress
 
 MAX_CHARS = math.floor(0.80 * get_terminal_size()[0])
 """Determine maximum characters that can fit in 80% of the terminal width."""
@@ -87,18 +87,19 @@ class Main(Screen[None]):
             cont.mount(Label(key.text, classes='text'))
 
     @beartype
-    def on_key(self, event: Key) -> None:
+    def on_key(self, event: Key) -> None:  # noqa: CAC001
         """Capture all key presses and show in the typed input."""
-        # TODO: Export metrics from the session
-        on_keypress(event.key, self.keys)
+        try:
+            # TODO: Export metrics from the session
+            on_keypress(event.key, self.keys)
+        except AtEndOfExpectedError:
+            # FIXME: Handle reaching the end!
+            return
 
         width = len(self.keys.typed)
         if self.keys.last_was_delete:
             with suppress(NoMatches):
                 self.query('Label.typed').last().remove()
-        elif len(self.keys.typed) == len(self.keys.expected):
-            # FIXME: Handle reaching the end!
-            raise RuntimeError('You did it!')
         elif width:
             if width >= MAX_CHARS:
                 self.query('Label.typed').first().remove()

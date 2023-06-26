@@ -10,6 +10,12 @@ BACKSPACE = 'backspace'
 UNKNOWN = '�'
 
 
+class AtEndOfExpectedError(Exception):
+    """Reached end of the expected keys."""
+
+    ...
+
+
 class ExpectedKey(BaseModel):
     """Expected Key."""
 
@@ -25,13 +31,13 @@ class ExpectedKey(BaseModel):
 class TypedKey(ExpectedKey):
     """Typed Key."""
 
-    expected: ExpectedKey
+    expected: ExpectedKey | None
     """Store the expected key when typed and expected become out-of-sync."""
 
     @property
     def was_correct(self) -> bool:
         """If typed key matches expected."""
-        return self.text == self.expected.text
+        return self.expected is not None and self.text == self.expected.text
 
 
 class Keys(BaseModel):
@@ -50,20 +56,22 @@ class Keys(BaseModel):
     """Indicate if last operation was a delete."""
 
     @beartype
-    def store(self, key: TypedKey) -> None:
+    def store(self, *, key: TypedKey, is_delete: bool) -> None:
         """Store a new typed key."""
         self.typed_all.append(key)
-        self.last_was_delete = key.textual == BACKSPACE
-        if self.last_was_delete:
-            if self.typed:
-                self.typed = self.typed[:-1]
-        else:
+        self.last_was_delete = is_delete
+        if not is_delete:
             self.typed.append(key)
+        elif self.typed:
+            self.typed = self.typed[:-1]
 
 
 @beartype
 def on_keypress(textual: str, keys: Keys) -> None:
     """Process a key press."""
-    expected = keys.expected[len(keys.typed)]
+    is_delete = textual == BACKSPACE
+    if not is_delete and len(keys.typed) == len(keys.expected):
+        raise AtEndOfExpectedError
+    expected = None if is_delete else keys.expected[len(keys.typed)]
     key = TypedKey(textual=textual, expected=expected)
-    keys.store(key)
+    keys.store(key=key, is_delete=is_delete)
