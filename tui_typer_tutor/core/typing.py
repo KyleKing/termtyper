@@ -5,21 +5,19 @@ from bisect import bisect_left
 from beartype import beartype
 from pydantic import BaseModel, Field
 
-from ..constants import VIM_TO_TEXTUAL
+from ..constants import DISPLAY_TO_TEXTUAL
 
 
 class ExpectedKey(BaseModel):
     """Expected Key."""
 
-    raw: str
+    textual: str
     """Textual Key Name."""
 
     @property
     def text(self) -> str:
         """Displayed text."""
-        # FIXME: ExpectedKey needs to handle '<Leader>', ' ', and '<Space>'
-        #   may need a 'display' and a 'textual_str' rather than just raw
-        return VIM_TO_TEXTUAL.inverse.get(self.raw) or self.raw
+        return DISPLAY_TO_TEXTUAL.inverse.get(self.textual) or '�'
 
     @property
     def width(self) -> int:
@@ -102,7 +100,7 @@ class Keys(BaseModel):
     def store(self, key: TypedKey) -> None:
         """Store a new typed key."""
         self.typed_all.append(key)
-        self.last_was_delete = key.raw == 'backspace'
+        self.last_was_delete = key.textual == 'backspace'
         if self.last_was_delete:
             if self.typed:
                 self.typed = self.typed[:-1]
@@ -114,8 +112,8 @@ class Keys(BaseModel):
 
 
 @beartype
-def on_keypress(raw: str, keys: Keys) -> None:
+def on_keypress(textual: str, keys: Keys) -> None:
     """Process a key press."""
     expected = keys.expected[len(keys.typed)]
-    key = TypedKey(raw=raw, expected=expected)
+    key = TypedKey(textual=textual, expected=expected)
     keys.store(key)

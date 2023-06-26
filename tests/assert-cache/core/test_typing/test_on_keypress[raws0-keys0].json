@@ -9,7 +9,7 @@
           },
           "expected": [
             {
-              "raw": "s"
+              "textual": "s"
             }
           ],
           "last_was_delete": false,
@@ -28,29 +28,29 @@
     "accum": {
       "expected": [],
       "typed": [
-        5
+        1
       ]
     },
     "expected": [
       {
-        "raw": "s"
+        "textual": "s"
       }
     ],
     "last_was_delete": false,
     "typed": [
       {
         "expected": {
-          "raw": "s"
+          "textual": "s"
         },
-        "raw": "ctrl+q"
+        "textual": "ctrl+q"
       }
     ],
     "typed_all": [
       {
         "expected": {
-          "raw": "s"
+          "textual": "s"
         },
-        "raw": "ctrl+q"
+        "textual": "ctrl+q"
       }
     ]
   }

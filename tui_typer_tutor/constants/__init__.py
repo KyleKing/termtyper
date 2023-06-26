@@ -1,1 +1,1 @@
-from .vim_to_textual import VIM_TO_TEXTUAL
+from .display_to_textual import DISPLAY_TO_TEXTUAL

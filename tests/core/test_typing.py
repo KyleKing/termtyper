@@ -33,15 +33,15 @@ def _lol_text() -> Keys:
     """Expected 'lol' with only 'l' typed initially."""
     return Keys(
         expected=[
-            ExpectedKey(raw='l'),
-            ExpectedKey(raw='o'),
-            ExpectedKey(raw='l'),
+            ExpectedKey(textual='l'),
+            ExpectedKey(textual='o'),
+            ExpectedKey(textual='l'),
         ],
         typed_all=[
-            TypedKey(raw='l', expected=ExpectedKey(raw='l')),
+            TypedKey(textual='l', expected=ExpectedKey(textual='l')),
         ],
         typed=[
-            TypedKey(raw='l', expected=ExpectedKey(raw='l')),
+            TypedKey(textual='l', expected=ExpectedKey(textual='l')),
         ],
         last_was_delete=False,
         accum=_KeysAccum(expected=[], typed=[1]),
@@ -51,7 +51,7 @@ def _lol_text() -> Keys:
 @pytest.mark.parametrize(
     ('raws', 'keys'),
     [
-        (['ctrl+q'], Keys(expected=[ExpectedKey(raw='s')])),
+        (['ctrl+q'], Keys(expected=[ExpectedKey(textual='s')])),
         (['t'], _lol_text()),
         (['backspace'], _lol_text()),
         (['backspace', 'backspace', 'l', 'o', 'l'], _lol_text()),

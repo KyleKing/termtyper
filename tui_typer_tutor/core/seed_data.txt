@@ -1,9 +1,11 @@
-def __init__(self, *args, **kwargs):<Return>super().__init__()<Return>self._counter = 0<Esc>
+def __init__(self, *args, **kwargs):
+super().__init__()
+self._counter = 0
 YY
 ciw
 vt"p
 Vkky
-<Space>ld
+ ld
 '
 !
 "
@@ -21,10 +23,8 @@ $
 /
 :
 ;
-<Bar>
-<Bslash>
-<Return>
-<Tab>
+|
+\
 =
 ?
 @

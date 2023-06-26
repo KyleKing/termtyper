@@ -11,30 +11,30 @@
           },
           "expected": [
             {
-              "raw": "l"
+              "textual": "l"
             },
             {
-              "raw": "o"
+              "textual": "o"
             },
             {
-              "raw": "l"
+              "textual": "l"
             }
           ],
           "last_was_delete": false,
           "typed": [
             {
               "expected": {
-                "raw": "l"
+                "textual": "l"
               },
-              "raw": "l"
+              "textual": "l"
             }
           ],
           "typed_all": [
             {
               "expected": {
-                "raw": "l"
+                "textual": "l"
               },
-              "raw": "l"
+              "textual": "l"
             }
           ]
         },
@@ -61,72 +61,72 @@
     },
     "expected": [
       {
-        "raw": "l"
+        "textual": "l"
       },
       {
-        "raw": "o"
+        "textual": "o"
       },
       {
-        "raw": "l"
+        "textual": "l"
       }
     ],
     "last_was_delete": false,
     "typed": [
       {
         "expected": {
-          "raw": "l"
+          "textual": "l"
         },
-        "raw": "l"
+        "textual": "l"
       },
       {
         "expected": {
-          "raw": "o"
+          "textual": "o"
         },
-        "raw": "o"
+        "textual": "o"
       },
       {
         "expected": {
-          "raw": "l"
+          "textual": "l"
         },
-        "raw": "l"
+        "textual": "l"
       }
     ],
     "typed_all": [
       {
         "expected": {
-          "raw": "l"
+          "textual": "l"
         },
-        "raw": "l"
+        "textual": "l"
       },
       {
         "expected": {
-          "raw": "o"
+          "textual": "o"
         },
-        "raw": "backspace"
+        "textual": "backspace"
       },
       {
         "expected": {
-          "raw": "l"
+          "textual": "l"
         },
-        "raw": "backspace"
+        "textual": "backspace"
       },
       {
         "expected": {
-          "raw": "l"
+          "textual": "l"
         },
-        "raw": "l"
+        "textual": "l"
       },
       {
         "expected": {
-          "raw": "o"
+          "textual": "o"
         },
-        "raw": "o"
+        "textual": "o"
       },
       {
         "expected": {
-          "raw": "l"
+          "textual": "l"
         },
-        "raw": "l"
+        "textual": "l"
       }
     ]
   }
