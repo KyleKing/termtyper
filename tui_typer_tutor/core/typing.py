@@ -7,6 +7,8 @@ from pydantic import BaseModel, Field
 from ..constants import DISPLAY_TO_TEXTUAL
 
 BACKSPACE = 'backspace'
+SPACE = 'space'
+FILLED_SPACE = '█'
 UNKNOWN = '�'
 
 
@@ -19,6 +21,8 @@ class ExpectedKey(BaseModel):
     @property
     def text(self) -> str:
         """Displayed text."""
+        if self.textual == SPACE:
+            return FILLED_SPACE
         return DISPLAY_TO_TEXTUAL.inverse.get(self.textual) or UNKNOWN
 
 
