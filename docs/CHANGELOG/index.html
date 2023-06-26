@@ -646,8 +646,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/tui_typer_tutor/constants/vim_to_textual/" class="md-nav__link">
-        vim_to_textual
+      <a href="../../reference/tui_typer_tutor/constants/display_to_textual/" class="md-nav__link">
+        display_to_textual
       </a>
     </li>
   
@@ -948,12 +948,17 @@
 </ul>
 <h3 id="fix">Fix<a class="headerlink" href="#fix" title="Permanent link">⚓︎</a></h3>
 <ul>
+<li>catch at the end of the input</li>
+<li>show whitespace as a block for the fill color to work</li>
+<li>remove accumulator for multi-width keys</li>
+<li>drop Vim bindings and being enforcing single character width Keys</li>
 <li>test the UI and resolve minor bugs</li>
 <li>correctly parse the adjusted index</li>
 <li>restore latest textual</li>
 </ul>
 <h3 id="refactor">Refactor<a class="headerlink" href="#refactor" title="Permanent link">⚓︎</a></h3>
 <ul>
+<li>move whitespace logic to the GUI</li>
 <li>try to</li>
 <li>initial support for multi-char text &amp; remove focus toggle</li>
 <li>delete invoke task logic and use argparse like tail-jsonl</li>
@@ -1061,7 +1066,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 25, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 26, 2023</span>
       
         <br>
         Created:
