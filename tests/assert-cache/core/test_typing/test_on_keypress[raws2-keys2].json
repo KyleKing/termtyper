@@ -62,9 +62,7 @@
         "textual": "l"
       },
       {
-        "expected": {
-          "textual": "o"
-        },
+        "expected": null,
         "textual": "backspace"
       }
     ]

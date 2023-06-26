@@ -11,11 +11,18 @@
 
 ### Fix
 
+- catch at the end of the input
+- show whitespace as a block for the fill color to work
+- remove accumulator for multi-width keys
+- drop Vim bindings and being enforcing single character width Keys
+- test the UI and resolve minor bugs
 - correctly parse the adjusted index
 - restore latest textual
 
 ### Refactor
 
+- move whitespace logic to the GUI
+- try to
 - initial support for multi-char text & remove focus toggle
 - delete invoke task logic and use argparse like tail-jsonl
 - remove legacy code with event references

@@ -44,21 +44,21 @@ poetry config pypi-token.pypi ...
 ## Current Status
 
 <!-- {cts} COVERAGE -->
-| File                                          |   Statements |   Missing |   Excluded | Coverage   |
-|-----------------------------------------------|--------------|-----------|------------|------------|
-| `tui_typer_tutor/__init__.py`                 |            2 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/app/__init__.py`             |            0 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/app/ttt.py`                  |            6 |         6 |          0 | 0.0%       |
-| `tui_typer_tutor/constants/__init__.py`       |            1 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/constants/vim_to_textual.py` |            5 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/core/__init__.py`            |            0 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/core/scrolled_labels.py`     |            0 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/core/seed_data.py`           |           21 |         1 |          0 | 93.9%      |
-| `tui_typer_tutor/core/typing.py`              |           75 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/screens/__init__.py`         |            0 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/screens/main.py`             |           52 |        52 |          0 | 0.0%       |
-| `tui_typer_tutor/scripts.py`                  |            6 |         6 |          6 | 0.0%       |
-| **Totals**                                    |          168 |        65 |          6 | 63.5%      |
+| File                                              |   Statements |   Missing |   Excluded | Coverage   |
+|---------------------------------------------------|--------------|-----------|------------|------------|
+| `tui_typer_tutor/__init__.py`                     |            2 |         0 |          0 | 100.0%     |
+| `tui_typer_tutor/app/__init__.py`                 |            0 |         0 |          0 | 100.0%     |
+| `tui_typer_tutor/app/ttt.py`                      |            6 |         6 |          0 | 0.0%       |
+| `tui_typer_tutor/constants/__init__.py`           |            1 |         0 |          0 | 100.0%     |
+| `tui_typer_tutor/constants/display_to_textual.py` |            5 |         0 |          0 | 100.0%     |
+| `tui_typer_tutor/core/__init__.py`                |            0 |         0 |          0 | 100.0%     |
+| `tui_typer_tutor/core/scrolled_labels.py`         |            0 |         0 |          0 | 100.0%     |
+| `tui_typer_tutor/core/seed_data.py`               |           11 |         0 |          0 | 100.0%     |
+| `tui_typer_tutor/core/typing.py`                  |           44 |         1 |          0 | 96.6%      |
+| `tui_typer_tutor/screens/__init__.py`             |            0 |         0 |          0 | 100.0%     |
+| `tui_typer_tutor/screens/main.py`                 |           61 |        61 |          0 | 0.0%       |
+| `tui_typer_tutor/scripts.py`                      |            6 |         6 |          6 | 0.0%       |
+| **Totals**                                        |          136 |        74 |          6 | 46.0%      |
 
 Generated on: 2023-06-25
 <!-- {cte} -->
