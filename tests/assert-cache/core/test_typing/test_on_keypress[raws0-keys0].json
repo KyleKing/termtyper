@@ -3,10 +3,6 @@
     {
       "func_args": {
         "keys": {
-          "accum": {
-            "expected": [],
-            "typed": []
-          },
           "expected": [
             {
               "textual": "s"
@@ -25,12 +21,6 @@
     }
   ],
   "_json": {
-    "accum": {
-      "expected": [],
-      "typed": [
-        1
-      ]
-    },
     "expected": [
       {
         "textual": "s"

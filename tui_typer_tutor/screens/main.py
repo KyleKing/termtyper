@@ -83,7 +83,7 @@ class Main(Screen[None]):
         # TODO: Support user-configurable seed data file and more customization
         self.keys = Keys(expected=load_seed_data(seed_text=DEFAULT_SEED_FILE.read_text()))
         cont = self.query_one('#text-container', Horizontal)
-        for key in self.keys.get_expected(0, MAX_CHARS):
+        for key in self.keys.expected[:MAX_CHARS]:
             cont.mount(Label(key.text, classes='text'))
 
     @beartype
@@ -93,18 +93,19 @@ class Main(Screen[None]):
         # FIXME: Handle reaching the end!
         on_keypress(event.key, self.keys)
 
-        count = max(self.keys.accum.typed)  # FIXME: Expose this somehow?
+        width = len(self.keys.typed)
         if self.keys.last_was_delete:
             with suppress(NoMatches):
                 self.query('Label.typed').last().remove()
-        elif count:
-            if count >= MAX_CHARS:
+        elif width:
+            if width >= MAX_CHARS:
                 self.query('Label.typed').first().remove()
                 self.query('Label.text').first().remove()
             color_class = 'success' if self.keys.typed[-1].was_correct else 'error'
-            next_label = Label(self.keys.typed[-1].text, classes=f'typed {color_class}')
-            self.query_one('#typed-container', Horizontal).mount(next_label)
+            typed_label = Label(self.keys.typed[-1].text, classes=f'typed {color_class}')
+            self.query_one('#typed-container', Horizontal).mount(typed_label)
 
-            if (start := (count - MAX_CHARS)) > 0:
-                next_expected = self.keys.get_expected(start, start + MAX_CHARS)[-1]
-                self.query_one('#text-container', Horizontal).mount(Label(next_expected.text, classes='text'))
+            if (start := (width - MAX_CHARS)) > 0:
+                expected = self.keys.expected[start:start + MAX_CHARS]
+                next_label = Label(expected[-1].text, classes='text')
+                self.query_one('#text-container', Horizontal).mount(next_label)

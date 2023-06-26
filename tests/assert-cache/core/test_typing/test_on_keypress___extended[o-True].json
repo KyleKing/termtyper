@@ -10,17 +10,6 @@
     }
   ],
   "_json": {
-    "accum": {
-      "expected": [
-        1,
-        2,
-        3
-      ],
-      "typed": [
-        1,
-        2
-      ]
-    },
     "expected": [
       {
         "textual": "l"
