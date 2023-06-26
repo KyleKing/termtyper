@@ -90,19 +90,27 @@ class Main(Screen[None]):
     def on_key(self, event: Key) -> None:
         """Capture all key presses and show in the typed input."""
         # TODO: Export metrics from the session
-        # FIXME: Handle reaching the end!
         on_keypress(event.key, self.keys)
 
         width = len(self.keys.typed)
         if self.keys.last_was_delete:
             with suppress(NoMatches):
                 self.query('Label.typed').last().remove()
+        elif len(self.keys.typed) == len(self.keys.expected):
+            # FIXME: Handle reaching the end!
+            raise RuntimeError('You did it!')
         elif width:
             if width >= MAX_CHARS:
                 self.query('Label.typed').first().remove()
                 self.query('Label.text').first().remove()
-            color_class = 'success' if self.keys.typed[-1].was_correct else 'error'
-            typed_label = Label(self.keys.typed[-1].text, classes=f'typed {color_class}')
+            # Choose the class
+            color_class = 'success'
+            display_text = self.keys.typed[-1].text
+            if not self.keys.typed[-1].was_correct:
+                color_class = 'error'
+                # Ensure that invisible characters are displayed
+                display_text = display_text.strip() or '█'
+            typed_label = Label(display_text, classes=f'typed {color_class}')
             self.query_one('#typed-container', Horizontal).mount(typed_label)
 
             if (start := (width - MAX_CHARS)) > 0:
