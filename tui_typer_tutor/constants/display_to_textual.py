@@ -33,6 +33,7 @@ _special_keys = {
     ']': 'right_square_bracket',
     '^': 'circumflex_accent',
     '_': 'underscore',
+    '`': 'grave_accent',
     '{': 'left_curly_bracket',
     '|': 'vertical_line',
     '}': 'right_curly_bracket',

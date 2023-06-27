@@ -1,14 +1,11 @@
 """Load Seed Data."""
 
 import random
-from pathlib import Path
 
 from beartype import beartype
 
 from ..constants import DISPLAY_TO_TEXTUAL
 from .typing import ExpectedKey
-
-DEFAULT_SEED_FILE = Path(__file__).with_suffix('.txt')
 
 
 @beartype

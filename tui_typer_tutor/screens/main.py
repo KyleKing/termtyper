@@ -15,8 +15,9 @@ from textual.events import Key
 from textual.screen import Screen
 from textual.widgets import Footer, Header, Label
 
+from ..core.config import get_config
 from ..core.metrics import SessionMetrics, append_csv
-from ..core.seed_data import DEFAULT_SEED_FILE, load_seed_data
+from ..core.seed_data import load_seed_data
 from ..core.typing import AtEndOfExpectedError, Keys, on_keypress
 
 MAX_CHARS = math.floor(0.80 * get_terminal_size()[0])
@@ -82,8 +83,8 @@ class Main(Screen[None]):
 
     def on_mount(self) -> None:
         """On widget mount."""
-        # TODO: Support user-configurable seed data file and more customization
-        seed_file = DEFAULT_SEED_FILE
+        # TODO: Support more customization
+        seed_file = get_config().seed_file
         self.keys = Keys(expected=load_seed_data(seed_text=seed_file.read_text()))
         self.metrics = SessionMetrics.from_filename(filename=seed_file.name)
         cont = self.query_one('#text-container', Horizontal)
