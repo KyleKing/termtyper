@@ -3,36 +3,19 @@ import pytest
 from tui_typer_tutor.core.typing import (
     ExpectedKey,
     Keys,
-    TypedKey,
     on_keypress,
 )
 
-
-def _lol_text() -> Keys:
-    """Expected 'lol' with only 'l' typed initially."""
-    return Keys(
-        expected=[
-            ExpectedKey(textual='l'),
-            ExpectedKey(textual='o'),
-            ExpectedKey(textual='l'),
-        ],
-        typed_all=[
-            TypedKey(textual='l', expected=ExpectedKey(textual='l')),
-        ],
-        typed=[
-            TypedKey(textual='l', expected=ExpectedKey(textual='l')),
-        ],
-        last_was_delete=False,
-    )
+from ..seed_data import lol_keys
 
 
 @pytest.mark.parametrize(
     ('raws', 'keys'),
     [
         (['ctrl+q'], Keys(expected=[ExpectedKey(textual='s')])),
-        (['t'], _lol_text()),
-        (['backspace'], _lol_text()),
-        (['backspace', 'backspace', 'l', 'o', 'l'], _lol_text()),
+        (['t'], lol_keys()),
+        (['backspace'], lol_keys()),
+        (['backspace', 'backspace', 'l', 'o', 'l'], lol_keys()),
     ],
 )
 def test_on_keypress(
@@ -59,7 +42,7 @@ def test_on_keypress___extended(
     was_correct: bool,
     assert_against_cache,
 ):
-    keys = _lol_text()
+    keys = lol_keys()
 
     on_keypress(raw, keys)  # act
 

@@ -7,6 +7,7 @@ from beartype import beartype
 
 from . import __version__
 from .app.ttt import TuiTyperTutor
+from .core.uninstall import uninstall
 
 
 @beartype
@@ -17,6 +18,12 @@ def start() -> None:  # pragma: no cover
         '-v', '--version', action='version',
         version=f'%(prog)s {__version__}', help="Show program's version number and exit.",
     )
-    parser.parse_args(sys.argv[1:])
+    parser.add_argument(
+        '--uninstall', action='store_true', help='Remove all files created by tui-typer-tutor.',
+    )
+    args = parser.parse_args(sys.argv[1:])
 
-    TuiTyperTutor().run()
+    if args.uninstall:
+        uninstall()
+    else:
+        TuiTyperTutor().run()

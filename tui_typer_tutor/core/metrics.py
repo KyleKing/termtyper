@@ -2,13 +2,13 @@
 
 import csv
 from datetime import datetime
-from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from beartype import beartype
 from pydantic import BaseModel
 
 from .typing import Keys
+from .uninstall import get_cache_dir
 
 
 @beartype
@@ -43,20 +43,18 @@ class SessionMetrics(BaseModel):
         return self
 
 
-# PLANNED: Support Linux/Windows
-CSV_PATH = Path.home() / '.config/tui-typer-tutor/metrics.csv'
-
-
 @beartype
 def append_csv(metrics: SessionMetrics) -> None:
     """Write metrics to the global CSV."""
+    csv_path = get_cache_dir() / 'metrics.csv'
+
     csv_columns = ['filename', 'session_start', 'session_end', 'typed_correct', 'typed_incorrect']
-    if not CSV_PATH.is_file():
-        CSV_PATH.parent.mkdir(exist_ok=True, parents=True)
-        with CSV_PATH.open(mode='w', newline='', encoding='utf-8') as _f:
+    if not csv_path.is_file():
+        csv_path.parent.mkdir(exist_ok=True, parents=True)
+        with csv_path.open(mode='w', newline='', encoding='utf-8') as _f:
             csv.writer(_f).writerow(csv_columns)  # nosemgrep
 
     ser_metrics = metrics.dict()
     metrics_row = [ser_metrics[_c] for _c in csv_columns]
-    with CSV_PATH.open('a', newline='', encoding='utf-8') as _f:
+    with csv_path.open('a', newline='', encoding='utf-8') as _f:
         csv.writer(_f).writerow(metrics_row)  # nosemgrep
