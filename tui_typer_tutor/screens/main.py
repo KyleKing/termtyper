@@ -15,6 +15,7 @@ from textual.events import Key
 from textual.screen import Screen
 from textual.widgets import Footer, Header, Label
 
+from ..core.metrics import SessionMetrics, append_csv
 from ..core.seed_data import DEFAULT_SEED_FILE, load_seed_data
 from ..core.typing import AtEndOfExpectedError, Keys, on_keypress
 
@@ -54,15 +55,16 @@ class Main(Screen[None]):
     """
 
     BINDINGS: ClassVar[list[Binding]] = [  # type: ignore[assignment]
-        Binding('ctrl+q', 'quit_and_save', 'Quit and Save'),
+        Binding('ctrl+q', 'save_and_quit', 'Save and Quit'),
     ]
 
     keys: Keys
+    metrics: SessionMetrics
 
-    def action_quit_and_save(self) -> None:
-        """Quit and save."""
+    def action_save_and_quit(self) -> None:
+        """Save and quit."""
+        append_csv(self.metrics.end_session(self.keys))
         sys.exit(0)
-        # FIXME: Save metrics
 
     def compose(self) -> ComposeResult:
         """Layout."""
@@ -81,7 +83,9 @@ class Main(Screen[None]):
     def on_mount(self) -> None:
         """On widget mount."""
         # TODO: Support user-configurable seed data file and more customization
-        self.keys = Keys(expected=load_seed_data(seed_text=DEFAULT_SEED_FILE.read_text()))
+        seed_file = DEFAULT_SEED_FILE
+        self.keys = Keys(expected=load_seed_data(seed_text=seed_file.read_text()))
+        self.metrics = SessionMetrics.from_filename(filename=seed_file.name)
         cont = self.query_one('#text-container', Horizontal)
         for key in self.keys.expected[:MAX_CHARS]:
             cont.mount(Label(key.text, classes='text'))
@@ -92,9 +96,9 @@ class Main(Screen[None]):
         try:
             # TODO: Export metrics from the session
             on_keypress(event.key, self.keys)
-        except AtEndOfExpectedError:
+        except AtEndOfExpectedError as exc:
             # FIXME: Handle reaching the end!
-            return
+            raise NotImplementedError('Should be a modal that asks if ready to quit!') from exc
 
         width = len(self.keys.typed)
         if self.keys.last_was_delete:
