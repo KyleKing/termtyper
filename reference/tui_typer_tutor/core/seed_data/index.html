@@ -606,6 +606,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../config/" class="md-nav__link">
+        config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics/" class="md-nav__link">
+        metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../scrolled_labels/" class="md-nav__link">
         scrolled_labels
       </a>
@@ -713,6 +741,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uninstall/" class="md-nav__link">
+        uninstall
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -752,6 +794,20 @@
           screens
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../screens/help/" class="md-nav__link">
+        help
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -924,15 +980,16 @@
 
       <details class="quote">
         <summary>Source code in <code>tui_typer_tutor/core/seed_data.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="14 "></span><span class="nd">@beartype</span>
-<span class="linenos" data-linenos="15 "></span><span class="k">def</span> <span class="nf">load_seed_data</span><span class="p">(</span><span class="n">seed_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ExpectedKey</span><span class="p">]:</span>
-<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Load Seed Data in Vim format.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="17 "></span>    <span class="n">grouped_keys</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos" data-linenos="18 "></span>        <span class="p">[</span><span class="n">ExpectedKey</span><span class="p">(</span><span class="n">textual</span><span class="o">=</span><span class="n">DISPLAY_TO_TEXTUAL</span><span class="p">[</span><span class="n">token</span><span class="p">])</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">line</span><span class="p">]</span>
-<span class="linenos" data-linenos="19 "></span>        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">seed_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="20 "></span>    <span class="p">]</span>
-<span class="linenos" data-linenos="21 "></span>    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">grouped_keys</span><span class="p">)</span>  <span class="c1"># noqa: DUO102</span>
-<span class="linenos" data-linenos="22 "></span>    <span class="k">return</span> <span class="p">[</span><span class="n">_k</span> <span class="k">for</span> <span class="n">_keys</span> <span class="ow">in</span> <span class="n">grouped_keys</span> <span class="k">for</span> <span class="n">_k</span> <span class="ow">in</span> <span class="n">_keys</span><span class="p">]</span>
+        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="11 "></span><span class="nd">@beartype</span>
+<span class="linenos" data-linenos="12 "></span><span class="k">def</span> <span class="nf">load_seed_data</span><span class="p">(</span><span class="n">seed_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ExpectedKey</span><span class="p">]:</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Load Seed Data in Vim format.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="14 "></span>    <span class="n">grouped_keys</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos" data-linenos="15 "></span>        <span class="p">[</span><span class="n">ExpectedKey</span><span class="p">(</span><span class="n">textual</span><span class="o">=</span><span class="n">DISPLAY_TO_TEXTUAL</span><span class="p">[</span><span class="n">token</span><span class="p">])</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()]</span>
+<span class="linenos" data-linenos="16 "></span>        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">seed_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="17 "></span>        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="linenos" data-linenos="18 "></span>    <span class="p">]</span>
+<span class="linenos" data-linenos="19 "></span>    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">grouped_keys</span><span class="p">)</span>  <span class="c1"># noqa: DUO102</span>
+<span class="linenos" data-linenos="20 "></span>    <span class="k">return</span> <span class="p">[</span><span class="n">_k</span> <span class="k">for</span> <span class="n">_keys</span> <span class="ow">in</span> <span class="n">grouped_keys</span> <span class="k">for</span> <span class="n">_k</span> <span class="ow">in</span> <span class="n">_keys</span><span class="p">]</span>
 </code></pre></div>
       </details>
   </div>
@@ -952,11 +1009,11 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 26, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 28, 2023</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 26, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 28, 2023</span>
       
     
   </small>

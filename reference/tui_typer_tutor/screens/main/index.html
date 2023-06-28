@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://tui-typer-tutor.kyleking.me/reference/tui_typer_tutor/screens/main/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../help/">
       
       
         <link rel="next" href="../../scripts/">
@@ -604,6 +604,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core/config/" class="md-nav__link">
+        config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../core/metrics/" class="md-nav__link">
+        metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core/scrolled_labels/" class="md-nav__link">
         scrolled_labels
       </a>
@@ -634,6 +662,20 @@
     <li class="md-nav__item">
       <a href="../../core/typing/" class="md-nav__link">
         typing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../core/uninstall/" class="md-nav__link">
+        uninstall
       </a>
     </li>
   
@@ -686,6 +728,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../help/" class="md-nav__link">
+        help
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -733,6 +789,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#tui_typer_tutor.screens.main.CHAR_OFFSET" class="md-nav__link">
+    CHAR_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tui_typer_tutor.screens.main.MAX_CHARS" class="md-nav__link">
     MAX_CHARS
   </a>
@@ -769,8 +832,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#tui_typer_tutor.screens.main.Main.action_quit_and_save" class="md-nav__link">
-    action_quit_and_save()
+  <a href="#tui_typer_tutor.screens.main.Main.action_save_and_quit" class="md-nav__link">
+    action_save_and_quit()
   </a>
   
 </li>
@@ -901,6 +964,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#tui_typer_tutor.screens.main.CHAR_OFFSET" class="md-nav__link">
+    CHAR_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tui_typer_tutor.screens.main.MAX_CHARS" class="md-nav__link">
     MAX_CHARS
   </a>
@@ -937,8 +1007,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#tui_typer_tutor.screens.main.Main.action_quit_and_save" class="md-nav__link">
-    action_quit_and_save()
+  <a href="#tui_typer_tutor.screens.main.Main.action_save_and_quit" class="md-nav__link">
+    action_save_and_quit()
   </a>
   
 </li>
@@ -1012,7 +1082,7 @@
 <a id="tui_typer_tutor.screens.main"></a>
   <div class="doc doc-contents first">
   
-      <p>The main screen for the application.</p>
+      <p>The main screen.</p>
 
   
 
@@ -1023,6 +1093,29 @@
 
 
 <h2 id="tui_typer_tutor.screens.main-attributes">Attributes<a href="#tui_typer_tutor.screens.main-attributes" class="headerlink" title="Permanent link">⚓︎</a></h2>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="tui_typer_tutor.screens.main.CHAR_OFFSET" class="doc doc-heading">
+        <span class="doc doc-object-name doc-attribute-name">CHAR_OFFSET</span>
+
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#tui_typer_tutor.screens.main.CHAR_OFFSET" class="headerlink" title="Permanent link">⚓︎</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">CHAR_OFFSET</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">MAX_CHARS</span><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Offset to keep the next characters visible.</p>
+  </div>
+
+</div>
 
 <div class="doc doc-object doc-attribute">
 
@@ -1069,102 +1162,103 @@
 
         <details class="quote">
           <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 25 "></span><span class="k">class</span> <span class="nc">Main</span><span class="p">(</span><span class="n">Screen</span><span class="p">[</span><span class="kc">None</span><span class="p">]):</span>
-<span class="linenos" data-linenos=" 26 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;The main screen for the application.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos=" 27 "></span>
-<span class="linenos" data-linenos=" 28 "></span>    <span class="n">DEFAULT_CSS</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos=" 29 "></span><span class="s2">    Screen {</span>
-<span class="linenos" data-linenos=" 30 "></span><span class="s2">        background: #1b2b34;</span>
-<span class="linenos" data-linenos=" 31 "></span><span class="s2">    }</span>
+          <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 30 "></span><span class="k">class</span> <span class="nc">Main</span><span class="p">(</span><span class="n">Screen</span><span class="p">[</span><span class="kc">None</span><span class="p">]):</span>
+<span class="linenos" data-linenos=" 31 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;The main screen for the application.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos=" 32 "></span>
-<span class="linenos" data-linenos=" 33 "></span><span class="s2">    #left-pad {</span>
-<span class="linenos" data-linenos=" 34 "></span><span class="s2">        width: 10%;</span>
-<span class="linenos" data-linenos=" 35 "></span><span class="s2">    }</span>
-<span class="linenos" data-linenos=" 36 "></span><span class="s2">    #content {</span>
-<span class="linenos" data-linenos=" 37 "></span><span class="s2">        width: 80%;</span>
-<span class="linenos" data-linenos=" 38 "></span><span class="s2">        align: center middle;</span>
-<span class="linenos" data-linenos=" 39 "></span><span class="s2">    }</span>
-<span class="linenos" data-linenos=" 40 "></span>
-<span class="linenos" data-linenos=" 41 "></span><span class="s2">    .tutor-container {</span>
-<span class="linenos" data-linenos=" 42 "></span><span class="s2">        content-align-horizontal: left;</span>
-<span class="linenos" data-linenos=" 43 "></span><span class="s2">        height: 2;</span>
+<span class="linenos" data-linenos=" 33 "></span>    <span class="n">DEFAULT_CSS</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos=" 34 "></span><span class="s2">    Screen {</span>
+<span class="linenos" data-linenos=" 35 "></span><span class="s2">        background: #1b2b34;</span>
+<span class="linenos" data-linenos=" 36 "></span><span class="s2">    }</span>
+<span class="linenos" data-linenos=" 37 "></span>
+<span class="linenos" data-linenos=" 38 "></span><span class="s2">    #left-pad {</span>
+<span class="linenos" data-linenos=" 39 "></span><span class="s2">        width: 10%;</span>
+<span class="linenos" data-linenos=" 40 "></span><span class="s2">    }</span>
+<span class="linenos" data-linenos=" 41 "></span><span class="s2">    #content {</span>
+<span class="linenos" data-linenos=" 42 "></span><span class="s2">        width: 80%;</span>
+<span class="linenos" data-linenos=" 43 "></span><span class="s2">        align: center middle;</span>
 <span class="linenos" data-linenos=" 44 "></span><span class="s2">    }</span>
-<span class="linenos" data-linenos=" 45 "></span><span class="s2">    #text-container {</span>
-<span class="linenos" data-linenos=" 46 "></span><span class="s2">        color: #7e8993;</span>
-<span class="linenos" data-linenos=" 47 "></span><span class="s2">    }</span>
-<span class="linenos" data-linenos=" 48 "></span><span class="s2">    #typed-container .error {</span>
-<span class="linenos" data-linenos=" 49 "></span><span class="s2">        color: #ec5f67;</span>
-<span class="linenos" data-linenos=" 50 "></span><span class="s2">    }</span>
-<span class="linenos" data-linenos=" 51 "></span><span class="s2">    #typed-container .success {</span>
-<span class="linenos" data-linenos=" 52 "></span><span class="s2">        color: #99c794;</span>
-<span class="linenos" data-linenos=" 53 "></span><span class="s2">    }</span>
-<span class="linenos" data-linenos=" 54 "></span><span class="s2">    &quot;&quot;&quot;</span>
-<span class="linenos" data-linenos=" 55 "></span>
-<span class="linenos" data-linenos=" 56 "></span>    <span class="n">BINDINGS</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Binding</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span>  <span class="c1"># type: ignore[assignment]</span>
-<span class="linenos" data-linenos=" 57 "></span>        <span class="n">Binding</span><span class="p">(</span><span class="s1">&#39;ctrl+q&#39;</span><span class="p">,</span> <span class="s1">&#39;quit_and_save&#39;</span><span class="p">,</span> <span class="s1">&#39;Quit and Save&#39;</span><span class="p">),</span>
-<span class="linenos" data-linenos=" 58 "></span>    <span class="p">]</span>
-<span class="linenos" data-linenos=" 59 "></span>
-<span class="linenos" data-linenos=" 60 "></span>    <span class="n">keys</span><span class="p">:</span> <span class="n">Keys</span>
-<span class="linenos" data-linenos=" 61 "></span>
-<span class="linenos" data-linenos=" 62 "></span>    <span class="k">def</span> <span class="nf">action_quit_and_save</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 63 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Quit and save.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos=" 64 "></span>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 65 "></span>        <span class="c1"># FIXME: Save metrics</span>
-<span class="linenos" data-linenos=" 66 "></span>
-<span class="linenos" data-linenos=" 67 "></span>    <span class="k">def</span> <span class="nf">compose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ComposeResult</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 68 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Layout.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos=" 69 "></span>        <span class="k">yield</span> <span class="n">Header</span><span class="p">()</span>
-<span class="linenos" data-linenos=" 70 "></span>        <span class="k">with</span> <span class="n">Horizontal</span><span class="p">():</span>
-<span class="linenos" data-linenos=" 71 "></span>            <span class="k">yield</span> <span class="n">Vertical</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;left-pad&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 72 "></span>            <span class="c1"># HACK: ^^ couldn&#39;t get &#39;center&#39; alignment to work</span>
-<span class="linenos" data-linenos=" 73 "></span>            <span class="k">with</span> <span class="n">Vertical</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;content&#39;</span><span class="p">):</span>
-<span class="linenos" data-linenos=" 74 "></span>                <span class="c1"># TOOD: Add a horizontal progress bar above the content</span>
-<span class="linenos" data-linenos=" 75 "></span>                <span class="c1">#   Docs: https://textual.textualize.io/widgets/progress_bar/#__tabbed_1_4</span>
-<span class="linenos" data-linenos=" 76 "></span>                <span class="k">yield</span> <span class="n">Horizontal</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;text-container&#39;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;tutor-container&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 77 "></span>                <span class="k">yield</span> <span class="n">Horizontal</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;typed-container&#39;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;tutor-container&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 78 "></span>        <span class="c1"># FYI: If using WezTerm, adjust font size with &lt;C-&gt; and &lt;C+&gt;, reset with &lt;C0&gt;</span>
-<span class="linenos" data-linenos=" 79 "></span>        <span class="k">yield</span> <span class="n">Footer</span><span class="p">()</span>
-<span class="linenos" data-linenos=" 80 "></span>
-<span class="linenos" data-linenos=" 81 "></span>    <span class="k">def</span> <span class="nf">on_mount</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 82 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;On widget mount.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos=" 83 "></span>        <span class="c1"># TODO: Support user-configurable seed data file and more customization</span>
-<span class="linenos" data-linenos=" 84 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">keys</span> <span class="o">=</span> <span class="n">Keys</span><span class="p">(</span><span class="n">expected</span><span class="o">=</span><span class="n">load_seed_data</span><span class="p">(</span><span class="n">seed_text</span><span class="o">=</span><span class="n">DEFAULT_SEED_FILE</span><span class="o">.</span><span class="n">read_text</span><span class="p">()))</span>
-<span class="linenos" data-linenos=" 85 "></span>        <span class="n">cont</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_one</span><span class="p">(</span><span class="s1">&#39;#text-container&#39;</span><span class="p">,</span> <span class="n">Horizontal</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 86 "></span>        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">expected</span><span class="p">[:</span><span class="n">MAX_CHARS</span><span class="p">]:</span>
-<span class="linenos" data-linenos=" 87 "></span>            <span class="n">cont</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">Label</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">))</span>
+<span class="linenos" data-linenos=" 45 "></span>
+<span class="linenos" data-linenos=" 46 "></span><span class="s2">    .tutor-container {</span>
+<span class="linenos" data-linenos=" 47 "></span><span class="s2">        content-align-horizontal: left;</span>
+<span class="linenos" data-linenos=" 48 "></span><span class="s2">        height: 2;</span>
+<span class="linenos" data-linenos=" 49 "></span><span class="s2">    }</span>
+<span class="linenos" data-linenos=" 50 "></span><span class="s2">    #text-container {</span>
+<span class="linenos" data-linenos=" 51 "></span><span class="s2">        color: #7e8993;</span>
+<span class="linenos" data-linenos=" 52 "></span><span class="s2">    }</span>
+<span class="linenos" data-linenos=" 53 "></span><span class="s2">    #typed-container .error {</span>
+<span class="linenos" data-linenos=" 54 "></span><span class="s2">        color: #ec5f67;</span>
+<span class="linenos" data-linenos=" 55 "></span><span class="s2">    }</span>
+<span class="linenos" data-linenos=" 56 "></span><span class="s2">    #typed-container .success {</span>
+<span class="linenos" data-linenos=" 57 "></span><span class="s2">        color: #99c794;</span>
+<span class="linenos" data-linenos=" 58 "></span><span class="s2">    }</span>
+<span class="linenos" data-linenos=" 59 "></span><span class="s2">    #typed-unknown {</span>
+<span class="linenos" data-linenos=" 60 "></span><span class="s2">        color: #b69855;</span>
+<span class="linenos" data-linenos=" 61 "></span><span class="s2">    }</span>
+<span class="linenos" data-linenos=" 62 "></span><span class="s2">    &quot;&quot;&quot;</span>
+<span class="linenos" data-linenos=" 63 "></span>
+<span class="linenos" data-linenos=" 64 "></span>    <span class="n">BINDINGS</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Binding</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span>  <span class="c1"># type: ignore[assignment]</span>
+<span class="linenos" data-linenos=" 65 "></span>        <span class="n">Binding</span><span class="p">(</span><span class="s1">&#39;ctrl+q&#39;</span><span class="p">,</span> <span class="s1">&#39;save_and_quit&#39;</span><span class="p">,</span> <span class="s1">&#39;Save and Quit&#39;</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 66 "></span>    <span class="p">]</span>
+<span class="linenos" data-linenos=" 67 "></span>
+<span class="linenos" data-linenos=" 68 "></span>    <span class="n">keys</span><span class="p">:</span> <span class="n">Keys</span>
+<span class="linenos" data-linenos=" 69 "></span>    <span class="n">metrics</span><span class="p">:</span> <span class="n">SessionMetrics</span>
+<span class="linenos" data-linenos=" 70 "></span>
+<span class="linenos" data-linenos=" 71 "></span>    <span class="k">def</span> <span class="nf">action_save_and_quit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 72 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Save and quit.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos=" 73 "></span>        <span class="n">append_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">end_session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">))</span>
+<span class="linenos" data-linenos=" 74 "></span>        <span class="c1"># TODO: Print out or display a success message on completion!</span>
+<span class="linenos" data-linenos=" 75 "></span>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 76 "></span>
+<span class="linenos" data-linenos=" 77 "></span>    <span class="k">def</span> <span class="nf">compose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ComposeResult</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 78 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Layout.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos=" 79 "></span>        <span class="k">yield</span> <span class="n">Header</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 80 "></span>        <span class="k">with</span> <span class="n">Horizontal</span><span class="p">():</span>
+<span class="linenos" data-linenos=" 81 "></span>            <span class="k">yield</span> <span class="n">Vertical</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;left-pad&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 82 "></span>            <span class="c1"># FYI: ^^ couldn&#39;t get &#39;center&#39; alignment to work</span>
+<span class="linenos" data-linenos=" 83 "></span>            <span class="k">with</span> <span class="n">Vertical</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;content&#39;</span><span class="p">):</span>
+<span class="linenos" data-linenos=" 84 "></span>                <span class="k">yield</span> <span class="n">Horizontal</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;text-container&#39;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;tutor-container&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 85 "></span>                <span class="k">yield</span> <span class="n">Horizontal</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;typed-container&#39;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;tutor-container&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 86 "></span>                <span class="k">yield</span> <span class="n">Label</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;typed-unknown&#39;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;warning&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 87 "></span>        <span class="k">yield</span> <span class="n">Footer</span><span class="p">()</span>
 <span class="linenos" data-linenos=" 88 "></span>
-<span class="linenos" data-linenos=" 89 "></span>    <span class="nd">@beartype</span>
-<span class="linenos" data-linenos=" 90 "></span>    <span class="k">def</span> <span class="nf">on_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">Key</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># noqa: CAC001</span>
-<span class="linenos" data-linenos=" 91 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Capture all key presses and show in the typed input.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos=" 92 "></span>        <span class="k">try</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 93 "></span>            <span class="c1"># TODO: Export metrics from the session</span>
-<span class="linenos" data-linenos=" 94 "></span>            <span class="n">on_keypress</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 95 "></span>        <span class="k">except</span> <span class="n">AtEndOfExpectedError</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 96 "></span>            <span class="c1"># FIXME: Handle reaching the end!</span>
-<span class="linenos" data-linenos=" 97 "></span>            <span class="k">return</span>
+<span class="linenos" data-linenos=" 89 "></span>    <span class="k">def</span> <span class="nf">on_mount</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 90 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;On widget mount.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos=" 91 "></span>        <span class="c1"># TODO: Support more customization</span>
+<span class="linenos" data-linenos=" 92 "></span>        <span class="n">seed_file</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">seed_file</span>
+<span class="linenos" data-linenos=" 93 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">keys</span> <span class="o">=</span> <span class="n">Keys</span><span class="p">(</span><span class="n">expected</span><span class="o">=</span><span class="n">load_seed_data</span><span class="p">(</span><span class="n">seed_text</span><span class="o">=</span><span class="n">seed_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">()))</span>
+<span class="linenos" data-linenos=" 94 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span> <span class="o">=</span> <span class="n">SessionMetrics</span><span class="o">.</span><span class="n">from_filename</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">seed_file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 95 "></span>        <span class="n">cont</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_one</span><span class="p">(</span><span class="s1">&#39;#text-container&#39;</span><span class="p">,</span> <span class="n">Horizontal</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 96 "></span>        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">expected</span><span class="p">:</span>  <span class="c1"># FYI: Mounts all expected keys and crops</span>
+<span class="linenos" data-linenos=" 97 "></span>            <span class="n">cont</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">Label</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">))</span>
 <span class="linenos" data-linenos=" 98 "></span>
-<span class="linenos" data-linenos=" 99 "></span>        <span class="n">width</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">)</span>
-<span class="linenos" data-linenos="100 "></span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">last_was_delete</span><span class="p">:</span>
-<span class="linenos" data-linenos="101 "></span>            <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="n">NoMatches</span><span class="p">):</span>
-<span class="linenos" data-linenos="102 "></span>                <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Label.typed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
-<span class="linenos" data-linenos="103 "></span>        <span class="k">elif</span> <span class="n">width</span><span class="p">:</span>
-<span class="linenos" data-linenos="104 "></span>            <span class="k">if</span> <span class="n">width</span> <span class="o">&gt;=</span> <span class="n">MAX_CHARS</span><span class="p">:</span>
-<span class="linenos" data-linenos="105 "></span>                <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Label.typed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
-<span class="linenos" data-linenos="106 "></span>                <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Label.text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
-<span class="linenos" data-linenos="107 "></span>            <span class="c1"># Choose the class</span>
-<span class="linenos" data-linenos="108 "></span>            <span class="n">color_class</span> <span class="o">=</span> <span class="s1">&#39;success&#39;</span>
-<span class="linenos" data-linenos="109 "></span>            <span class="n">display_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
-<span class="linenos" data-linenos="110 "></span>            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">was_correct</span><span class="p">:</span>
-<span class="linenos" data-linenos="111 "></span>                <span class="n">color_class</span> <span class="o">=</span> <span class="s1">&#39;error&#39;</span>
-<span class="linenos" data-linenos="112 "></span>                <span class="c1"># Ensure that invisible characters are displayed</span>
-<span class="linenos" data-linenos="113 "></span>                <span class="n">display_text</span> <span class="o">=</span> <span class="n">display_text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">&#39;█&#39;</span>
-<span class="linenos" data-linenos="114 "></span>            <span class="n">typed_label</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">display_text</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;typed </span><span class="si">{</span><span class="n">color_class</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="115 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">query_one</span><span class="p">(</span><span class="s1">&#39;#typed-container&#39;</span><span class="p">,</span> <span class="n">Horizontal</span><span class="p">)</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">typed_label</span><span class="p">)</span>
-<span class="linenos" data-linenos="116 "></span>
-<span class="linenos" data-linenos="117 "></span>            <span class="k">if</span> <span class="p">(</span><span class="n">start</span> <span class="o">:=</span> <span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="n">MAX_CHARS</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="linenos" data-linenos="118 "></span>                <span class="n">expected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">expected</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">start</span> <span class="o">+</span> <span class="n">MAX_CHARS</span><span class="p">]</span>
-<span class="linenos" data-linenos="119 "></span>                <span class="n">next_label</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">expected</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="120 "></span>                <span class="bp">self</span><span class="o">.</span><span class="n">query_one</span><span class="p">(</span><span class="s1">&#39;#text-container&#39;</span><span class="p">,</span> <span class="n">Horizontal</span><span class="p">)</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">next_label</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 99 "></span>    <span class="nd">@beartype</span>
+<span class="linenos" data-linenos="100 "></span>    <span class="k">def</span> <span class="nf">on_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">Key</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># noqa: CAC001</span>
+<span class="linenos" data-linenos="101 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Capture all key presses and show in the typed input.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="102 "></span>        <span class="k">try</span><span class="p">:</span>
+<span class="linenos" data-linenos="103 "></span>            <span class="n">on_keypress</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">)</span>
+<span class="linenos" data-linenos="104 "></span>        <span class="k">except</span> <span class="n">AtEndOfExpectedError</span><span class="p">:</span>
+<span class="linenos" data-linenos="105 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">action_save_and_quit</span><span class="p">()</span>
+<span class="linenos" data-linenos="106 "></span>
+<span class="linenos" data-linenos="107 "></span>        <span class="n">width</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">)</span>
+<span class="linenos" data-linenos="108 "></span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">last_was_delete</span><span class="p">:</span>
+<span class="linenos" data-linenos="109 "></span>            <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="n">NoMatches</span><span class="p">):</span>
+<span class="linenos" data-linenos="110 "></span>                <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Label.typed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="linenos" data-linenos="111 "></span>        <span class="k">elif</span> <span class="n">width</span><span class="p">:</span>
+<span class="linenos" data-linenos="112 "></span>            <span class="n">cursor_width</span> <span class="o">=</span> <span class="n">MAX_CHARS</span> <span class="o">-</span> <span class="n">CHAR_OFFSET</span>
+<span class="linenos" data-linenos="113 "></span>            <span class="k">if</span> <span class="n">width</span> <span class="o">&gt;=</span> <span class="n">cursor_width</span><span class="p">:</span>
+<span class="linenos" data-linenos="114 "></span>                <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Label.typed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="linenos" data-linenos="115 "></span>                <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Label.text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="linenos" data-linenos="116 "></span>            <span class="c1"># Choose the class</span>
+<span class="linenos" data-linenos="117 "></span>            <span class="n">color_class</span> <span class="o">=</span> <span class="s1">&#39;success&#39;</span>
+<span class="linenos" data-linenos="118 "></span>            <span class="n">display_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+<span class="linenos" data-linenos="119 "></span>            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">was_correct</span><span class="p">:</span>
+<span class="linenos" data-linenos="120 "></span>                <span class="n">color_class</span> <span class="o">=</span> <span class="s1">&#39;error&#39;</span>
+<span class="linenos" data-linenos="121 "></span>                <span class="c1"># Ensure that invisible characters are displayed</span>
+<span class="linenos" data-linenos="122 "></span>                <span class="n">display_text</span> <span class="o">=</span> <span class="n">display_text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">&#39;█&#39;</span>
+<span class="linenos" data-linenos="123 "></span>            <span class="n">typed_label</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">display_text</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;typed </span><span class="si">{</span><span class="n">color_class</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="124 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">query_one</span><span class="p">(</span><span class="s1">&#39;#typed-container&#39;</span><span class="p">,</span> <span class="n">Horizontal</span><span class="p">)</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">typed_label</span><span class="p">)</span>
+<span class="linenos" data-linenos="125 "></span>            <span class="n">textual_unknown</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="k">if</span> <span class="n">display_text</span> <span class="o">==</span> <span class="n">UNKNOWN</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+<span class="linenos" data-linenos="126 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">query_one</span><span class="p">(</span><span class="s1">&#39;#typed-unknown&#39;</span><span class="p">,</span> <span class="n">Label</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">textual_unknown</span><span class="p">)</span>
 </code></pre></div>
         </details>
 
@@ -1184,23 +1278,25 @@
 
 
 
-<h5 id="tui_typer_tutor.screens.main.Main.action_quit_and_save" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">action_quit_and_save</span>
+<h5 id="tui_typer_tutor.screens.main.Main.action_save_and_quit" class="doc doc-heading">
+        <span class="doc doc-object-name doc-function-name">action_save_and_quit</span>
 
 
-<a href="#tui_typer_tutor.screens.main.Main.action_quit_and_save" class="headerlink" title="Permanent link">⚓︎</a></h5>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">action_quit_and_save</span><span class="p">()</span>
+<a href="#tui_typer_tutor.screens.main.Main.action_save_and_quit" class="headerlink" title="Permanent link">⚓︎</a></h5>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">action_save_and_quit</span><span class="p">()</span>
 </code></pre></div>
 
   <div class="doc doc-contents ">
   
-      <p>Quit and save.</p>
+      <p>Save and quit.</p>
 
       <details class="quote">
         <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="62 "></span><span class="k">def</span> <span class="nf">action_quit_and_save</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos" data-linenos="63 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Quit and save.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="64 "></span>    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="71 "></span><span class="k">def</span> <span class="nf">action_save_and_quit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos" data-linenos="72 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Save and quit.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="73 "></span>    <span class="n">append_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">end_session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">))</span>
+<span class="linenos" data-linenos="74 "></span>    <span class="c1"># TODO: Print out or display a success message on completion!</span>
+<span class="linenos" data-linenos="75 "></span>    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
       </details>
   </div>
@@ -1225,19 +1321,17 @@
 
       <details class="quote">
         <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="67 "></span><span class="k">def</span> <span class="nf">compose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ComposeResult</span><span class="p">:</span>
-<span class="linenos" data-linenos="68 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Layout.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="69 "></span>    <span class="k">yield</span> <span class="n">Header</span><span class="p">()</span>
-<span class="linenos" data-linenos="70 "></span>    <span class="k">with</span> <span class="n">Horizontal</span><span class="p">():</span>
-<span class="linenos" data-linenos="71 "></span>        <span class="k">yield</span> <span class="n">Vertical</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;left-pad&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="72 "></span>        <span class="c1"># HACK: ^^ couldn&#39;t get &#39;center&#39; alignment to work</span>
-<span class="linenos" data-linenos="73 "></span>        <span class="k">with</span> <span class="n">Vertical</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;content&#39;</span><span class="p">):</span>
-<span class="linenos" data-linenos="74 "></span>            <span class="c1"># TOOD: Add a horizontal progress bar above the content</span>
-<span class="linenos" data-linenos="75 "></span>            <span class="c1">#   Docs: https://textual.textualize.io/widgets/progress_bar/#__tabbed_1_4</span>
-<span class="linenos" data-linenos="76 "></span>            <span class="k">yield</span> <span class="n">Horizontal</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;text-container&#39;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;tutor-container&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="77 "></span>            <span class="k">yield</span> <span class="n">Horizontal</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;typed-container&#39;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;tutor-container&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="78 "></span>    <span class="c1"># FYI: If using WezTerm, adjust font size with &lt;C-&gt; and &lt;C+&gt;, reset with &lt;C0&gt;</span>
-<span class="linenos" data-linenos="79 "></span>    <span class="k">yield</span> <span class="n">Footer</span><span class="p">()</span>
+        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="77 "></span><span class="k">def</span> <span class="nf">compose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ComposeResult</span><span class="p">:</span>
+<span class="linenos" data-linenos="78 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Layout.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="79 "></span>    <span class="k">yield</span> <span class="n">Header</span><span class="p">()</span>
+<span class="linenos" data-linenos="80 "></span>    <span class="k">with</span> <span class="n">Horizontal</span><span class="p">():</span>
+<span class="linenos" data-linenos="81 "></span>        <span class="k">yield</span> <span class="n">Vertical</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;left-pad&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="82 "></span>        <span class="c1"># FYI: ^^ couldn&#39;t get &#39;center&#39; alignment to work</span>
+<span class="linenos" data-linenos="83 "></span>        <span class="k">with</span> <span class="n">Vertical</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;content&#39;</span><span class="p">):</span>
+<span class="linenos" data-linenos="84 "></span>            <span class="k">yield</span> <span class="n">Horizontal</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;text-container&#39;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;tutor-container&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="85 "></span>            <span class="k">yield</span> <span class="n">Horizontal</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;typed-container&#39;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;tutor-container&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="86 "></span>            <span class="k">yield</span> <span class="n">Label</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;typed-unknown&#39;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;warning&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="87 "></span>    <span class="k">yield</span> <span class="n">Footer</span><span class="p">()</span>
 </code></pre></div>
       </details>
   </div>
@@ -1262,38 +1356,34 @@
 
       <details class="quote">
         <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 89 "></span><span class="nd">@beartype</span>
-<span class="linenos" data-linenos=" 90 "></span><span class="k">def</span> <span class="nf">on_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">Key</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># noqa: CAC001</span>
-<span class="linenos" data-linenos=" 91 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Capture all key presses and show in the typed input.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos=" 92 "></span>    <span class="k">try</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 93 "></span>        <span class="c1"># TODO: Export metrics from the session</span>
-<span class="linenos" data-linenos=" 94 "></span>        <span class="n">on_keypress</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 95 "></span>    <span class="k">except</span> <span class="n">AtEndOfExpectedError</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 96 "></span>        <span class="c1"># FIXME: Handle reaching the end!</span>
-<span class="linenos" data-linenos=" 97 "></span>        <span class="k">return</span>
-<span class="linenos" data-linenos=" 98 "></span>
-<span class="linenos" data-linenos=" 99 "></span>    <span class="n">width</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">)</span>
-<span class="linenos" data-linenos="100 "></span>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">last_was_delete</span><span class="p">:</span>
-<span class="linenos" data-linenos="101 "></span>        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="n">NoMatches</span><span class="p">):</span>
-<span class="linenos" data-linenos="102 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Label.typed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
-<span class="linenos" data-linenos="103 "></span>    <span class="k">elif</span> <span class="n">width</span><span class="p">:</span>
-<span class="linenos" data-linenos="104 "></span>        <span class="k">if</span> <span class="n">width</span> <span class="o">&gt;=</span> <span class="n">MAX_CHARS</span><span class="p">:</span>
-<span class="linenos" data-linenos="105 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Label.typed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
-<span class="linenos" data-linenos="106 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Label.text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
-<span class="linenos" data-linenos="107 "></span>        <span class="c1"># Choose the class</span>
-<span class="linenos" data-linenos="108 "></span>        <span class="n">color_class</span> <span class="o">=</span> <span class="s1">&#39;success&#39;</span>
-<span class="linenos" data-linenos="109 "></span>        <span class="n">display_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
-<span class="linenos" data-linenos="110 "></span>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">was_correct</span><span class="p">:</span>
-<span class="linenos" data-linenos="111 "></span>            <span class="n">color_class</span> <span class="o">=</span> <span class="s1">&#39;error&#39;</span>
-<span class="linenos" data-linenos="112 "></span>            <span class="c1"># Ensure that invisible characters are displayed</span>
-<span class="linenos" data-linenos="113 "></span>            <span class="n">display_text</span> <span class="o">=</span> <span class="n">display_text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">&#39;█&#39;</span>
-<span class="linenos" data-linenos="114 "></span>        <span class="n">typed_label</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">display_text</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;typed </span><span class="si">{</span><span class="n">color_class</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="115 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">query_one</span><span class="p">(</span><span class="s1">&#39;#typed-container&#39;</span><span class="p">,</span> <span class="n">Horizontal</span><span class="p">)</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">typed_label</span><span class="p">)</span>
-<span class="linenos" data-linenos="116 "></span>
-<span class="linenos" data-linenos="117 "></span>        <span class="k">if</span> <span class="p">(</span><span class="n">start</span> <span class="o">:=</span> <span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="n">MAX_CHARS</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="linenos" data-linenos="118 "></span>            <span class="n">expected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">expected</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">start</span> <span class="o">+</span> <span class="n">MAX_CHARS</span><span class="p">]</span>
-<span class="linenos" data-linenos="119 "></span>            <span class="n">next_label</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">expected</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="120 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">query_one</span><span class="p">(</span><span class="s1">&#39;#text-container&#39;</span><span class="p">,</span> <span class="n">Horizontal</span><span class="p">)</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">next_label</span><span class="p">)</span>
+        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 99 "></span><span class="nd">@beartype</span>
+<span class="linenos" data-linenos="100 "></span><span class="k">def</span> <span class="nf">on_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">Key</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># noqa: CAC001</span>
+<span class="linenos" data-linenos="101 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Capture all key presses and show in the typed input.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="102 "></span>    <span class="k">try</span><span class="p">:</span>
+<span class="linenos" data-linenos="103 "></span>        <span class="n">on_keypress</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">)</span>
+<span class="linenos" data-linenos="104 "></span>    <span class="k">except</span> <span class="n">AtEndOfExpectedError</span><span class="p">:</span>
+<span class="linenos" data-linenos="105 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">action_save_and_quit</span><span class="p">()</span>
+<span class="linenos" data-linenos="106 "></span>
+<span class="linenos" data-linenos="107 "></span>    <span class="n">width</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">)</span>
+<span class="linenos" data-linenos="108 "></span>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">last_was_delete</span><span class="p">:</span>
+<span class="linenos" data-linenos="109 "></span>        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="n">NoMatches</span><span class="p">):</span>
+<span class="linenos" data-linenos="110 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Label.typed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="linenos" data-linenos="111 "></span>    <span class="k">elif</span> <span class="n">width</span><span class="p">:</span>
+<span class="linenos" data-linenos="112 "></span>        <span class="n">cursor_width</span> <span class="o">=</span> <span class="n">MAX_CHARS</span> <span class="o">-</span> <span class="n">CHAR_OFFSET</span>
+<span class="linenos" data-linenos="113 "></span>        <span class="k">if</span> <span class="n">width</span> <span class="o">&gt;=</span> <span class="n">cursor_width</span><span class="p">:</span>
+<span class="linenos" data-linenos="114 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Label.typed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="linenos" data-linenos="115 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Label.text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="linenos" data-linenos="116 "></span>        <span class="c1"># Choose the class</span>
+<span class="linenos" data-linenos="117 "></span>        <span class="n">color_class</span> <span class="o">=</span> <span class="s1">&#39;success&#39;</span>
+<span class="linenos" data-linenos="118 "></span>        <span class="n">display_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+<span class="linenos" data-linenos="119 "></span>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">was_correct</span><span class="p">:</span>
+<span class="linenos" data-linenos="120 "></span>            <span class="n">color_class</span> <span class="o">=</span> <span class="s1">&#39;error&#39;</span>
+<span class="linenos" data-linenos="121 "></span>            <span class="c1"># Ensure that invisible characters are displayed</span>
+<span class="linenos" data-linenos="122 "></span>            <span class="n">display_text</span> <span class="o">=</span> <span class="n">display_text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">&#39;█&#39;</span>
+<span class="linenos" data-linenos="123 "></span>        <span class="n">typed_label</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">display_text</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;typed </span><span class="si">{</span><span class="n">color_class</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="124 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">query_one</span><span class="p">(</span><span class="s1">&#39;#typed-container&#39;</span><span class="p">,</span> <span class="n">Horizontal</span><span class="p">)</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">typed_label</span><span class="p">)</span>
+<span class="linenos" data-linenos="125 "></span>        <span class="n">textual_unknown</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="k">if</span> <span class="n">display_text</span> <span class="o">==</span> <span class="n">UNKNOWN</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+<span class="linenos" data-linenos="126 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">query_one</span><span class="p">(</span><span class="s1">&#39;#typed-unknown&#39;</span><span class="p">,</span> <span class="n">Label</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">textual_unknown</span><span class="p">)</span>
 </code></pre></div>
       </details>
   </div>
@@ -1318,13 +1408,15 @@
 
       <details class="quote">
         <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="81 "></span><span class="k">def</span> <span class="nf">on_mount</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos" data-linenos="82 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;On widget mount.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="83 "></span>    <span class="c1"># TODO: Support user-configurable seed data file and more customization</span>
-<span class="linenos" data-linenos="84 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">keys</span> <span class="o">=</span> <span class="n">Keys</span><span class="p">(</span><span class="n">expected</span><span class="o">=</span><span class="n">load_seed_data</span><span class="p">(</span><span class="n">seed_text</span><span class="o">=</span><span class="n">DEFAULT_SEED_FILE</span><span class="o">.</span><span class="n">read_text</span><span class="p">()))</span>
-<span class="linenos" data-linenos="85 "></span>    <span class="n">cont</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_one</span><span class="p">(</span><span class="s1">&#39;#text-container&#39;</span><span class="p">,</span> <span class="n">Horizontal</span><span class="p">)</span>
-<span class="linenos" data-linenos="86 "></span>    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">expected</span><span class="p">[:</span><span class="n">MAX_CHARS</span><span class="p">]:</span>
-<span class="linenos" data-linenos="87 "></span>        <span class="n">cont</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">Label</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">))</span>
+        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="89 "></span><span class="k">def</span> <span class="nf">on_mount</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos" data-linenos="90 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;On widget mount.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="91 "></span>    <span class="c1"># TODO: Support more customization</span>
+<span class="linenos" data-linenos="92 "></span>    <span class="n">seed_file</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">seed_file</span>
+<span class="linenos" data-linenos="93 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">keys</span> <span class="o">=</span> <span class="n">Keys</span><span class="p">(</span><span class="n">expected</span><span class="o">=</span><span class="n">load_seed_data</span><span class="p">(</span><span class="n">seed_text</span><span class="o">=</span><span class="n">seed_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">()))</span>
+<span class="linenos" data-linenos="94 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span> <span class="o">=</span> <span class="n">SessionMetrics</span><span class="o">.</span><span class="n">from_filename</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">seed_file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="linenos" data-linenos="95 "></span>    <span class="n">cont</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_one</span><span class="p">(</span><span class="s1">&#39;#text-container&#39;</span><span class="p">,</span> <span class="n">Horizontal</span><span class="p">)</span>
+<span class="linenos" data-linenos="96 "></span>    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">expected</span><span class="p">:</span>  <span class="c1"># FYI: Mounts all expected keys and crops</span>
+<span class="linenos" data-linenos="97 "></span>        <span class="n">cont</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">Label</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">))</span>
 </code></pre></div>
       </details>
   </div>
@@ -1353,11 +1445,11 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 26, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 28, 2023</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 26, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 28, 2023</span>
       
     
   </small>
