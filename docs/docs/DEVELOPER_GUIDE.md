@@ -48,7 +48,7 @@ poetry config pypi-token.pypi ...
 |---------------------------------------------------|--------------|-----------|------------|------------|
 | `tui_typer_tutor/__init__.py`                     |            6 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/app/__init__.py`                 |            0 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/app/ttt.py`                      |            6 |         6 |          0 | 0.0%       |
+| `tui_typer_tutor/app/ttt.py`                      |           12 |        12 |          0 | 0.0%       |
 | `tui_typer_tutor/constants/__init__.py`           |            1 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/constants/display_to_textual.py` |            5 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/core/__init__.py`                |            0 |         0 |          0 | 100.0%     |
@@ -59,9 +59,10 @@ poetry config pypi-token.pypi ...
 | `tui_typer_tutor/core/typing.py`                  |           44 |         1 |          0 | 96.6%      |
 | `tui_typer_tutor/core/uninstall.py`               |           18 |         0 |          0 | 96.2%      |
 | `tui_typer_tutor/screens/__init__.py`             |            0 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/screens/main.py`                 |           66 |        66 |          0 | 0.0%       |
+| `tui_typer_tutor/screens/help.py`                 |           14 |        14 |          0 | 0.0%       |
+| `tui_typer_tutor/screens/main.py`                 |           69 |        69 |          0 | 0.0%       |
 | `tui_typer_tutor/scripts.py`                      |           16 |        16 |         10 | 0.0%       |
-| **Totals**                                        |          224 |       103 |         10 | 55.7%      |
+| **Totals**                                        |          247 |       126 |         10 | 51.7%      |
 
 Generated on: 2023-06-27
 <!-- {cte} -->

@@ -2,6 +2,7 @@
 
 ### Feat
 
+- better handle edge cases
 - add user configurable --seed-file
 - add uninstall and test metrics
 - implement save metrics
