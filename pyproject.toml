@@ -29,6 +29,7 @@ version = "1.0.0"
 python = "^3.11.2"
 bidict = ">=0.22.1"
 corallium = ">=0.2.2"
+platformdirs = ">=3.8.0"
 pydantic = ">=1.10.9"
 textual = ">=0.28.0"
 
