@@ -68,6 +68,7 @@ class Main(Screen[None]):
     def action_save_and_quit(self) -> None:
         """Save and quit."""
         append_csv(self.metrics.end_session(self.keys))
+        # TODO: Print out or display a success message on completion!
         sys.exit(0)
 
     def compose(self) -> ComposeResult:
@@ -75,11 +76,12 @@ class Main(Screen[None]):
         yield Header()
         with Horizontal():
             yield Vertical(id='left-pad')
-            # HACK: ^^ couldn't get 'center' alignment to work
+            # FYI: ^^ couldn't get 'center' alignment to work
             with Vertical(id='content'):
                 yield Horizontal(id='text-container', classes='tutor-container')
                 yield Horizontal(id='typed-container', classes='tutor-container')
-        # FYI: If using WezTerm, adjust font size with <C-> and <C+>, reset with <C0>
+        # PLANNED: Add instructions in a help modal bound to '?'
+        # ^^ Example: If using WezTerm, adjust font size with <C-> and <C+>, reset with <C0>
         yield Footer()
 
     def on_mount(self) -> None:
@@ -89,7 +91,7 @@ class Main(Screen[None]):
         self.keys = Keys(expected=load_seed_data(seed_text=seed_file.read_text()))
         self.metrics = SessionMetrics.from_filename(filename=seed_file.name)
         cont = self.query_one('#text-container', Horizontal)
-        for key in self.keys.expected:  # HACK: Just show all expected keys and crop
+        for key in self.keys.expected:  # FYI: Mounts all expected keys and crops
             cont.mount(Label(key.text, classes='text'))
 
     @beartype
@@ -98,7 +100,6 @@ class Main(Screen[None]):
         try:
             on_keypress(event.key, self.keys)
         except AtEndOfExpectedError:
-            # FIXME: Handle reaching the end!
             self.action_save_and_quit()
 
         width = len(self.keys.typed)
@@ -119,9 +120,3 @@ class Main(Screen[None]):
                 display_text = display_text.strip() or '█'
             typed_label = Label(display_text, classes=f'typed {color_class}')
             self.query_one('#typed-container', Horizontal).mount(typed_label)
-
-            # # Generalize the scrolling text label widget
-            # > if (start := (width - MAX_CHARS)) > 0:
-            # >     expected = self.keys.expected[start:start + MAX_CHARS]
-            # >     next_label = Label(expected[-1].text, classes='text')
-            # >     self.query_one('#text-container', Horizontal).mount(next_label)

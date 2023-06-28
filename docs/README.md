@@ -1,26 +1,13 @@
 # tui-typer-tutor
 
-Fork of kraanzu/termtyper with a focus on special characters. Inspired by climech/typing-practice.
+Fork of `kraanzu/termtyper` with a focus on special characters. Inspired by `climech/typing-practice` and `justinsgithub/terminal-typing-tutor`.
 
-## Installation
+## Installation and Usage
 
-1. `poetry add `
-
-1. ...
-
-    ```sh
-    import
-
-    # < TODO: Add example code here >
-    ```
-
-1. ...
-
-## Usage
-
-<!-- < TODO: Show an example (screenshots, terminal recording, etc.) > -->
-
-For more example code, see the [scripts] directory or the [tests].
+1. `pipx install tui-typer-tutor`
+1. Launch a typing session with the default text: `ttt`
+1. Specify custom files with: `ttt --seed-file='./any-file.txt'`
+1. To uninstall run: `ttt --uninstall && pipx uninstall tui-typer-tutor`
 
 ## Project Status
 
@@ -54,6 +41,4 @@ If you have any security issue to report, please contact the project maintainers
 [contributor-covenant]: https://www.contributor-covenant.org
 [developer_guide]: https://tui-typer-tutor.kyleking.me/docs/DEVELOPER_GUIDE
 [license]: https://github.com/kyleking/tui-typer-tutor/blob/main/LICENSE
-[scripts]: https://github.com/kyleking/tui-typer-tutor/blob/main/scripts
 [style_guide]: https://tui-typer-tutor.kyleking.me/docs/STYLE_GUIDE
-[tests]: https://github.com/kyleking/tui-typer-tutor/blob/main/tests

@@ -2,6 +2,9 @@
 
 ### Feat
 
+- add user configurable --seed-file
+- add uninstall and test metrics
+- implement save metrics
 - load seed data from default file
 - use the actual character width per Key when displaying
 - implement an MVP of the TUI
@@ -11,6 +14,7 @@
 
 ### Fix
 
+- center the typed text
 - catch at the end of the input
 - show whitespace as a block for the fill color to work
 - remove accumulator for multi-width keys
