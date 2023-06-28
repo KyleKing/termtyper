@@ -1,4 +1,4 @@
-"""The main screen for the application."""
+"""The main screen."""
 
 import math
 import sys
@@ -18,7 +18,7 @@ from textual.widgets import Footer, Header, Label
 from ..core.config import get_config
 from ..core.metrics import SessionMetrics, append_csv
 from ..core.seed_data import load_seed_data
-from ..core.typing import AtEndOfExpectedError, Keys, on_keypress
+from ..core.typing import UNKNOWN, AtEndOfExpectedError, Keys, on_keypress
 
 MAX_CHARS = math.floor(0.80 * get_terminal_size()[0])
 """Determine maximum characters that can fit in 80% of the terminal width."""
@@ -56,6 +56,9 @@ class Main(Screen[None]):
     #typed-container .success {
         color: #99c794;
     }
+    #typed-unknown {
+        color: #b69855;
+    }
     """
 
     BINDINGS: ClassVar[list[Binding]] = [  # type: ignore[assignment]
@@ -80,8 +83,7 @@ class Main(Screen[None]):
             with Vertical(id='content'):
                 yield Horizontal(id='text-container', classes='tutor-container')
                 yield Horizontal(id='typed-container', classes='tutor-container')
-        # PLANNED: Add instructions in a help modal bound to '?'
-        # ^^ Example: If using WezTerm, adjust font size with <C-> and <C+>, reset with <C0>
+                yield Label(id='typed-unknown', classes='warning')
         yield Footer()
 
     def on_mount(self) -> None:
@@ -120,3 +122,5 @@ class Main(Screen[None]):
                 display_text = display_text.strip() or '█'
             typed_label = Label(display_text, classes=f'typed {color_class}')
             self.query_one('#typed-container', Horizontal).mount(typed_label)
+            textual_unknown = event.key if display_text == UNKNOWN else ''
+            self.query_one('#typed-unknown', Label).update(textual_unknown)
