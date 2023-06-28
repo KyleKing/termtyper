@@ -23,6 +23,9 @@ from ..core.typing import AtEndOfExpectedError, Keys, on_keypress
 MAX_CHARS = math.floor(0.80 * get_terminal_size()[0])
 """Determine maximum characters that can fit in 80% of the terminal width."""
 
+CHAR_OFFSET = math.floor(0.40 * MAX_CHARS)
+"""Offset to keep the next characters visible."""
+
 
 class Main(Screen[None]):
     """The main screen for the application."""
@@ -74,8 +77,6 @@ class Main(Screen[None]):
             yield Vertical(id='left-pad')
             # HACK: ^^ couldn't get 'center' alignment to work
             with Vertical(id='content'):
-                # TOOD: Add a horizontal progress bar above the content
-                #   Docs: https://textual.textualize.io/widgets/progress_bar/#__tabbed_1_4
                 yield Horizontal(id='text-container', classes='tutor-container')
                 yield Horizontal(id='typed-container', classes='tutor-container')
         # FYI: If using WezTerm, adjust font size with <C-> and <C+>, reset with <C0>
@@ -88,25 +89,25 @@ class Main(Screen[None]):
         self.keys = Keys(expected=load_seed_data(seed_text=seed_file.read_text()))
         self.metrics = SessionMetrics.from_filename(filename=seed_file.name)
         cont = self.query_one('#text-container', Horizontal)
-        for key in self.keys.expected[:MAX_CHARS]:
+        for key in self.keys.expected:  # HACK: Just show all expected keys and crop
             cont.mount(Label(key.text, classes='text'))
 
     @beartype
     def on_key(self, event: Key) -> None:  # noqa: CAC001
         """Capture all key presses and show in the typed input."""
         try:
-            # TODO: Export metrics from the session
             on_keypress(event.key, self.keys)
-        except AtEndOfExpectedError as exc:
+        except AtEndOfExpectedError:
             # FIXME: Handle reaching the end!
-            raise NotImplementedError('Should be a modal that asks if ready to quit!') from exc
+            self.action_save_and_quit()
 
         width = len(self.keys.typed)
         if self.keys.last_was_delete:
             with suppress(NoMatches):
                 self.query('Label.typed').last().remove()
         elif width:
-            if width >= MAX_CHARS:
+            cursor_width = MAX_CHARS - CHAR_OFFSET
+            if width >= cursor_width:
                 self.query('Label.typed').first().remove()
                 self.query('Label.text').first().remove()
             # Choose the class
@@ -119,7 +120,8 @@ class Main(Screen[None]):
             typed_label = Label(display_text, classes=f'typed {color_class}')
             self.query_one('#typed-container', Horizontal).mount(typed_label)
 
-            if (start := (width - MAX_CHARS)) > 0:
-                expected = self.keys.expected[start:start + MAX_CHARS]
-                next_label = Label(expected[-1].text, classes='text')
-                self.query_one('#text-container', Horizontal).mount(next_label)
+            # # Generalize the scrolling text label widget
+            # > if (start := (width - MAX_CHARS)) > 0:
+            # >     expected = self.keys.expected[start:start + MAX_CHARS]
+            # >     next_label = Label(expected[-1].text, classes='text')
+            # >     self.query_one('#text-container', Horizontal).mount(next_label)
