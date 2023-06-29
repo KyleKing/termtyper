@@ -967,28 +967,104 @@
 
 
 <a href="#tui_typer_tutor.scripts.parse_ttt_args" class="headerlink" title="Permanent link">⚓︎</a></h3>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">parse_ttt_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">parse_ttt_args</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">seed_file</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">uninstall</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
 
   <div class="doc doc-contents ">
   
-      <p>Parse custom CLI arguments for ttt.</p>
+      <p>Practice Touch Typing in your terminal.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th><b>PARAMETER</b></th>
+        <th><b>DESCRIPTION</b></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>seed_file</code></td>
+          <td class="doc-param-details">
+            <div class="doc-md-description">
+              <p>Optional path to seed file used for generating the prompt.</p>
+            </div>
+            <p>
+                <span class="doc-param-annotation">
+                  <b>TYPE:</b>
+                    <code>str</code>
+                </span>
+                <span class="doc-param-default">
+                  <b>DEFAULT:</b> 
+                    <code>&#39;&#39;</code>
+                </span>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td><code>version</code></td>
+          <td class="doc-param-details">
+            <div class="doc-md-description">
+              <p>Show program&rsquo;s version number and exit.</p>
+            </div>
+            <p>
+                <span class="doc-param-annotation">
+                  <b>TYPE:</b>
+                    <code>bool | None</code>
+                </span>
+                <span class="doc-param-default">
+                  <b>DEFAULT:</b> 
+                    <code>False</code>
+                </span>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td><code>uninstall</code></td>
+          <td class="doc-param-details">
+            <div class="doc-md-description">
+              <p>Remove all files created by tui-typer-tutor.</p>
+            </div>
+            <p>
+                <span class="doc-param-annotation">
+                  <b>TYPE:</b>
+                    <code>bool | None</code>
+                </span>
+                <span class="doc-param-default">
+                  <b>DEFAULT:</b> 
+                    <code>False</code>
+                </span>
+            </p>
+          </td>
+        </tr>
+    </tbody>
+  </table>
 
       <details class="quote">
         <summary>Source code in <code>tui_typer_tutor/scripts.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="15 "></span><span class="nd">@beartype</span>
-<span class="linenos" data-linenos="16 "></span><span class="k">def</span> <span class="nf">parse_ttt_args</span><span class="p">(</span><span class="n">argv</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">:</span>
-<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse custom CLI arguments for ttt.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="18 "></span>    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Practice Touch Typing&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="19 "></span>    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--seed-file&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Optional path to seed file used for generating the prompt.&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="20 "></span>    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-<span class="linenos" data-linenos="21 "></span>        <span class="s1">&#39;-v&#39;</span><span class="p">,</span> <span class="s1">&#39;--version&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;version&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="22 "></span>        <span class="n">version</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;%(prog)s </span><span class="si">{</span><span class="n">__version__</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Show program&#39;s version number and exit.&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos="23 "></span>    <span class="p">)</span>
-<span class="linenos" data-linenos="24 "></span>    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-<span class="linenos" data-linenos="25 "></span>        <span class="s1">&#39;--uninstall&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Remove all files created by tui-typer-tutor.&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="26 "></span>    <span class="p">)</span>
-<span class="linenos" data-linenos="27 "></span>    <span class="k">return</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="15 "></span><span class="nd">@arguably</span><span class="o">.</span><span class="n">command</span>
+<span class="linenos" data-linenos="16 "></span><span class="k">def</span> <span class="nf">parse_ttt_args</span><span class="p">(</span>
+<span class="linenos" data-linenos="17 "></span>    <span class="o">*</span><span class="p">,</span>
+<span class="linenos" data-linenos="18 "></span>    <span class="n">seed_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos="19 "></span>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="linenos" data-linenos="20 "></span>    <span class="n">uninstall</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="linenos" data-linenos="21 "></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Practice Touch Typing in your terminal.</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="25 "></span><span class="sd">        seed_file: Optional path to seed file used for generating the prompt.</span>
+<span class="linenos" data-linenos="26 "></span><span class="sd">        version: Show program&#39;s version number and exit.</span>
+<span class="linenos" data-linenos="27 "></span><span class="sd">        uninstall: Remove all files created by tui-typer-tutor.</span>
+<span class="linenos" data-linenos="28 "></span>
+<span class="linenos" data-linenos="29 "></span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="30 "></span>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+<span class="linenos" data-linenos="31 "></span>        <span class="n">logger</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;Version&#39;</span><span class="p">,</span> <span class="n">pkg_name</span><span class="o">=</span><span class="n">__pkg_name__</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">__version__</span><span class="p">)</span>
+<span class="linenos" data-linenos="32 "></span>    <span class="k">elif</span> <span class="n">uninstall</span><span class="p">:</span>
+<span class="linenos" data-linenos="33 "></span>        <span class="n">run_uninstall</span><span class="p">()</span>
+<span class="linenos" data-linenos="34 "></span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos" data-linenos="35 "></span>        <span class="n">config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span>
+<span class="linenos" data-linenos="36 "></span>        <span class="k">if</span> <span class="n">seed_file</span><span class="p">:</span>
+<span class="linenos" data-linenos="37 "></span>            <span class="n">config</span><span class="o">.</span><span class="n">seed_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">seed_file</span><span class="p">)</span>
+<span class="linenos" data-linenos="38 "></span>        <span class="n">TuiTyperTutor</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
       </details>
   </div>
@@ -1013,17 +1089,10 @@
 
       <details class="quote">
         <summary>Source code in <code>tui_typer_tutor/scripts.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="30 "></span><span class="nd">@beartype</span>
-<span class="linenos" data-linenos="31 "></span><span class="k">def</span> <span class="nf">start</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-<span class="linenos" data-linenos="32 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;CLI Entrypoint.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="33 "></span>    <span class="n">args</span> <span class="o">=</span> <span class="n">parse_ttt_args</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-<span class="linenos" data-linenos="34 "></span>    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">uninstall</span><span class="p">:</span>
-<span class="linenos" data-linenos="35 "></span>        <span class="n">uninstall</span><span class="p">()</span>
-<span class="linenos" data-linenos="36 "></span>    <span class="k">else</span><span class="p">:</span>
-<span class="linenos" data-linenos="37 "></span>        <span class="n">config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span>
-<span class="linenos" data-linenos="38 "></span>        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">seed_file</span><span class="p">:</span>
-<span class="linenos" data-linenos="39 "></span>            <span class="n">config</span><span class="o">.</span><span class="n">seed_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">seed_file</span><span class="p">)</span>
-<span class="linenos" data-linenos="40 "></span>        <span class="n">TuiTyperTutor</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="41 "></span><span class="nd">@beartype</span>
+<span class="linenos" data-linenos="42 "></span><span class="k">def</span> <span class="nf">start</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos" data-linenos="43 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;CLI Entrypoint.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="44 "></span>    <span class="n">arguably</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
       </details>
   </div>
@@ -1043,11 +1112,11 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 28, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 29, 2023</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 28, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 29, 2023</span>
       
     
   </small>

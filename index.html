@@ -270,9 +270,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installation-and-usage" class="md-nav__link">
-    Installation and Usage
+  <a href="#installation" class="md-nav__link">
+    Installation
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keys" class="md-nav__link">
+    Keys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seed-file" class="md-nav__link">
+    Seed File
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -894,9 +921,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installation-and-usage" class="md-nav__link">
-    Installation and Usage
+  <a href="#installation" class="md-nav__link">
+    Installation
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keys" class="md-nav__link">
+    Keys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seed-file" class="md-nav__link">
+    Seed File
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -967,14 +1021,38 @@
 
 
 <h1 id="tui-typer-tutor">tui-typer-tutor<a class="headerlink" href="#tui-typer-tutor" title="Permanent link">⚓︎</a></h1>
+<p><img alt=".github/assets/demo.gif" src="https://raw.githubusercontent.com/KyleKing/tui-typing-tutor/main/.github/assets/demo.gif" /></p>
+<p>Uncomplicated terminal typing practice.</p>
 <p>Fork of <code>kraanzu/termtyper</code> with a focus on special characters. Inspired by <code>climech/typing-practice</code> and <code>justinsgithub/terminal-typing-tutor</code>.</p>
-<h2 id="installation-and-usage">Installation and Usage<a class="headerlink" href="#installation-and-usage" title="Permanent link">⚓︎</a></h2>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">⚓︎</a></h2>
+<p><a href="https://pypi.org/project/pipx/">Install with <code>pipx</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>pipx<span class="w"> </span>install<span class="w"> </span>tui-typer-tutor
+</code></pre></div>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">⚓︎</a></h2>
+<p>Launch a typing session with the default text:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ttt
+</code></pre></div>
+<p>Or specify custom files with:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ttt<span class="w"> </span>--seed-file<span class="o">=</span><span class="s1">&#39;./any-file.txt&#39;</span>
+</code></pre></div>
+<p>To uninstall run:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ttt<span class="w"> </span>--uninstall<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pipx<span class="w"> </span>uninstall<span class="w"> </span>tui-typer-tutor
+</code></pre></div>
+<h3 id="keys">Keys<a class="headerlink" href="#keys" title="Permanent link">⚓︎</a></h3>
+<p>This app supports a few unicode characters when found in the seed file:</p>
+<ul>
+<li>enter/return: <code>⏎</code></li>
+<li>escape: <code>␛</code></li>
+</ul>
+<p><a href="https://github.com/KyleKing/tui-typer-tutor/blob/main/tui_typer_tutor/constants/display_to_textual.py">All supported characters are documented here</a>. <code>Ctrl</code> key combinations aren&rsquo;t yet supported and appear as an unknown character.</p>
+<h3 id="seed-file">Seed File<a class="headerlink" href="#seed-file" title="Permanent link">⚓︎</a></h3>
+<p>The algorithm for generating the expected text is:</p>
 <ol>
-<li><code>pipx install tui-typer-tutor</code></li>
-<li>Launch a typing session with the default text: <code>ttt</code></li>
-<li>Specify custom files with: <code>ttt --seed-file='./any-file.txt'</code></li>
-<li>To uninstall run: <code>ttt --uninstall &amp;&amp; pipx uninstall tui-typer-tutor</code></li>
+<li>Load each line of the seed file</li>
+<li>Reorder randomly (keeping each line of text together)</li>
+<li>Join with a single space</li>
 </ol>
+<p>Ideas for better seed text generation are welcome!</p>
 <h2 id="project-status">Project Status<a class="headerlink" href="#project-status" title="Permanent link">⚓︎</a></h2>
 <p>See the <code>Open Issues</code> and/or the <a href="https://tui-typer-tutor.kyleking.me/docs/CODE_TAG_SUMMARY">CODE_TAG_SUMMARY</a>. For release history, see the <a href="https://tui-typer-tutor.kyleking.me/docs/CHANGELOG">CHANGELOG</a>.</p>
 <h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">⚓︎</a></h2>
@@ -997,7 +1075,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 28, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 29, 2023</span>
       
         <br>
         Created:
