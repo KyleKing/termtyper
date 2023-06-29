@@ -78,6 +78,10 @@ Type ` (escape)`  Sleep 1000ms
 # Type ` `  Sleep 500ms
 Type `` Ctrl+q
 
+Hide
+Type `rm ./example-file.txt`  Sleep 10ms  Enter
+Show
+
 Type `` Sleep 1000ms
 Type `poetry run ttt --help`  Enter  Sleep 750ms
 Type `` Enter
@@ -85,7 +89,3 @@ Type `` Enter
 Type `` Sleep 750ms
 Type `poetry run ttt --version`  Enter  Sleep 1000ms
 Type `` Enter
-
-Hide
-Type `rm ./example-file.txt`  Sleep 10ms  Enter
-Show

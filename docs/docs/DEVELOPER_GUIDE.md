@@ -60,9 +60,9 @@ poetry config pypi-token.pypi ...
 | `tui_typer_tutor/core/uninstall.py`               |           18 |         0 |          0 | 96.2%      |
 | `tui_typer_tutor/screens/__init__.py`             |            0 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/screens/help.py`                 |           14 |        14 |          0 | 0.0%       |
-| `tui_typer_tutor/screens/main.py`                 |           69 |        69 |          0 | 0.0%       |
+| `tui_typer_tutor/screens/main.py`                 |           72 |        72 |          0 | 0.0%       |
 | `tui_typer_tutor/scripts.py`                      |           21 |        21 |          0 | 0.0%       |
-| **Totals**                                        |          252 |       131 |          0 | 49.7%      |
+| **Totals**                                        |          255 |       134 |          0 | 49.0%      |
 
 Generated on: 2023-06-29
 <!-- {cte} -->

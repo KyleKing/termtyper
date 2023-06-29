@@ -1,3 +1,14 @@
+## Unreleased
+
+### Feat
+
+- add VHS demo
+- switch to arguably for the CLI
+
+### Fix
+
+- ignore bound keys from metrics
+
 ## 1.0.1 (2023-06-27)
 
 ### Fix
