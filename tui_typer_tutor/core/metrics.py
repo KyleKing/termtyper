@@ -35,11 +35,10 @@ class SessionMetrics(BaseModel):
         """Update the typed counters based on `Keys`."""
         self.session_end = utcnow()
         for key in keys.typed_all:
-            if key.expected:
-                if key.was_correct:
-                    self.typed_correct += 1
-                else:
-                    self.typed_incorrect += 1
+            if key.was_correct:
+                self.typed_correct += 1
+            elif key.expected:
+                self.typed_incorrect += 1
         return self
 
 

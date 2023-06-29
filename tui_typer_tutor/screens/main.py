@@ -99,6 +99,9 @@ class Main(Screen[None]):
     @beartype
     def on_key(self, event: Key) -> None:  # noqa: CAC001
         """Capture all key presses and show in the typed input."""
+        if event.key in {'ctrl+q', 'ctrl+backslash'}:
+            return # ignore bound keys
+
         try:
             on_keypress(event.key, self.keys)
         except AtEndOfExpectedError:
