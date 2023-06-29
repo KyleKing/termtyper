@@ -1,6 +1,6 @@
 # tui-typer-tutor
 
-![.github/assets/demo.gif](https://raw.githubusercontent.com/KyleKing/tui-typing-tutor/main/.github/assets/demo.gif)
+![.github/assets/demo.gif](https://raw.githubusercontent.com/KyleKing/tui-typer-tutor/main/.github/assets/demo.gif)
 
 Uncomplicated terminal typing practice.
 
