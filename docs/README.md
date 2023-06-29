@@ -1,5 +1,7 @@
 # tui-typer-tutor
 
+![.github/assets/demo.gif](https://raw.githubusercontent.com/KyleKing/tui-typing-tutor/main/.github/assets/demo.gif)
+
 Uncomplicated terminal typing practice.
 
 Fork of `kraanzu/termtyper` with a focus on special characters. Inspired by `climech/typing-practice` and `justinsgithub/terminal-typing-tutor`.
@@ -31,6 +33,15 @@ To uninstall run:
 ```sh
 ttt --uninstall && pipx uninstall tui-typer-tutor
 ```
+
+### Keys
+
+This app supports a few unicode characters when found in the seed file:
+
+- enter/return: `⏎`
+- escape: `␛`
+
+[All supported characters are documented here](https://github.com/KyleKing/tui-typer-tutor/blob/main/tui_typer_tutor/constants/display_to_textual.py). `Ctrl` key combinations aren't yet supported and appear as an unknown character.
 
 ## Project Status
 
