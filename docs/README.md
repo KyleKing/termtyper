@@ -43,6 +43,16 @@ This app supports a few unicode characters when found in the seed file:
 
 [All supported characters are documented here](https://github.com/KyleKing/tui-typer-tutor/blob/main/tui_typer_tutor/constants/display_to_textual.py). `Ctrl` key combinations aren't yet supported and appear as an unknown character.
 
+### Seed File
+
+The algorithm for generating the expected text is:
+
+1. Load each line of the seed file
+1. Reorder randomly (keeping each line of text together)
+1. Join with a single space
+
+Ideas for better seed text generation are welcome!
+
 ## Project Status
 
 See the `Open Issues` and/or the [CODE_TAG_SUMMARY]. For release history, see the [CHANGELOG].

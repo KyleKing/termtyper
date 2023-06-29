@@ -100,7 +100,7 @@ class Main(Screen[None]):
     def on_key(self, event: Key) -> None:  # noqa: CAC001
         """Capture all key presses and show in the typed input."""
         if event.key in {'ctrl+q', 'ctrl+backslash'}:
-            return # ignore bound keys
+            return  # ignore bound keys
 
         try:
             on_keypress(event.key, self.keys)
@@ -111,6 +111,7 @@ class Main(Screen[None]):
         if self.keys.last_was_delete:
             with suppress(NoMatches):
                 self.query('Label.typed').last().remove()
+                self.query_one('#typed-unknown', Label).update('')
         elif width:
             cursor_width = MAX_CHARS - CHAR_OFFSET
             if width >= cursor_width:
