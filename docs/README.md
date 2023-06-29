@@ -1,13 +1,36 @@
 # tui-typer-tutor
 
+Uncomplicated terminal typing practice.
+
 Fork of `kraanzu/termtyper` with a focus on special characters. Inspired by `climech/typing-practice` and `justinsgithub/terminal-typing-tutor`.
 
-## Installation and Usage
+## Installation
 
-1. `pipx install tui-typer-tutor`
-1. Launch a typing session with the default text: `ttt`
-1. Specify custom files with: `ttt --seed-file='./any-file.txt'`
-1. To uninstall run: `ttt --uninstall && pipx uninstall tui-typer-tutor`
+[Install with `pipx`](https://pypi.org/project/pipx/)
+
+```sh
+pipx install tui-typer-tutor
+```
+
+## Usage
+
+Launch a typing session with the default text:
+
+```sh
+ttt
+```
+
+Or specify custom files with:
+
+```sh
+ttt --seed-file='./any-file.txt'
+```
+
+To uninstall run:
+
+```sh
+ttt --uninstall && pipx uninstall tui-typer-tutor
+```
 
 ## Project Status
 

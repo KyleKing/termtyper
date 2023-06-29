@@ -1,4 +1,10 @@
-## Unreleased
+## 1.0.1 (2023-06-27)
+
+### Fix
+
+- add missing platformdirs dependency
+
+## 1.0.0 (2023-06-27)
 
 ### Feat
 

@@ -1,40 +1,44 @@
 """Start the command line program."""
 
-import argparse
-import sys
 from pathlib import Path
 
+import arguably
 from beartype import beartype
+from corallium.log import logger
 
-from . import __version__
+from . import __pkg_name__, __version__
 from .app.ttt import TuiTyperTutor
 from .core.config import get_config
-from .core.uninstall import uninstall
+from .core.uninstall import uninstall as run_uninstall
 
 
-@beartype
-def parse_ttt_args(argv: list[str]) -> argparse.Namespace:
-    """Parse custom CLI arguments for ttt."""
-    parser = argparse.ArgumentParser(description='Practice Touch Typing')
-    parser.add_argument('--seed-file', help='Optional path to seed file used for generating the prompt.')
-    parser.add_argument(
-        '-v', '--version', action='version',
-        version=f'%(prog)s {__version__}', help="Show program's version number and exit.",
-    )
-    parser.add_argument(
-        '--uninstall', action='store_true', help='Remove all files created by tui-typer-tutor.',
-    )
-    return parser.parse_args(argv)
+@arguably.command
+def parse_ttt_args(
+    *,
+    seed_file: str = '',
+    version: bool | None = False,
+    uninstall: bool | None = False,
+) -> None:
+    """Practice Touch Typing in your terminal.
 
+    Args:
+        seed_file: Optional path to seed file used for generating the prompt.
+        version: Show program's version number and exit.
+        uninstall: Remove all files created by tui-typer-tutor.
 
-@beartype
-def start() -> None:  # pragma: no cover
-    """CLI Entrypoint."""
-    args = parse_ttt_args(sys.argv[1:])
-    if args.uninstall:
-        uninstall()
+    """
+    if version:
+        logger.text('Version', pkg_name=__pkg_name__, version=__version__)
+    elif uninstall:
+        run_uninstall()
     else:
         config = get_config()
-        if args.seed_file:
-            config.seed_file = Path(args.seed_file)
+        if seed_file:
+            config.seed_file = Path(seed_file)
         TuiTyperTutor().run()
+
+
+@beartype
+def start() -> None:
+    """CLI Entrypoint."""
+    arguably.run()

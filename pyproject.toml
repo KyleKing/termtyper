@@ -14,7 +14,7 @@ classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3.11",
 ] # https://pypi.org/classifiers/
-description = "Fork of kraanzu/termtyper with a focus on special characters. Inspired by climech/typing-practice."
+description = "Uncomplicated terminal typing practice."
 documentation = "https://tui-typer-tutor.kyleking.me"
 include = ["LICENSE"]
 keywords = []
@@ -27,6 +27,7 @@ version = "1.0.1"
 
 [tool.poetry.dependencies]
 python = "^3.11.2"
+arguably = ">=1.2.5"
 bidict = ">=0.22.1"
 corallium = ">=0.2.2"
 platformdirs = ">=3.8.0"
