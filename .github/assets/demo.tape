@@ -60,7 +60,7 @@ Type `echo 'practice touch typing with any text you want. 1234567890-=_+\][{}|.,
 Type `clear`  Enter
 Show
 
-Type `poetry run ttt --seed-file='./example-file.txt'`  Enter  Sleep 1500ms
+Type `ttt --seed-file='./example-file.txt'`  Enter  Sleep 1500ms
 Type `practice touch typing with any text you want.`
 Type `` Sleep 200ms
 Type ` errors appear in red: `
@@ -79,13 +79,14 @@ Type ` (escape)`  Sleep 1000ms
 Type `` Ctrl+q
 
 Hide
-Type `rm ./example-file.txt`  Sleep 10ms  Enter
+Type ``  Sleep 100ms  Enter
+Type `rm ./example-file.txt`  Sleep 200ms  Enter
 Show
 
-Type `` Sleep 1000ms
-Type `poetry run ttt --help`  Enter  Sleep 750ms
+Type `` Sleep 800ms
+Type `ttt --help`  Enter  Sleep 750ms
 Type `` Enter
 
 Type `` Sleep 750ms
-Type `poetry run ttt --version`  Enter  Sleep 1000ms
+Type `ttt --version`  Enter  Sleep 1000ms
 Type `` Enter
