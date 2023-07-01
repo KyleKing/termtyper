@@ -38,6 +38,8 @@ _special_keys = {
     '|': 'vertical_line',
     '}': 'right_curly_bracket',
     '~': 'tilde',
+    '←': 'shift+tab',
+    '→': 'tab',
     '⏎': 'enter',
     '␛': 'escape',
 }

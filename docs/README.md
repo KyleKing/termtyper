@@ -38,6 +38,8 @@ ttt --uninstall && pipx uninstall tui-typer-tutor
 
 This app supports a few unicode characters when found in the seed file:
 
+- tab: `→`
+- shift+tab: `←`
 - enter/return: `⏎`
 - escape: `␛`
 
@@ -49,7 +51,9 @@ The algorithm for generating the expected text is:
 
 1. Load each line of the seed file
 1. Reorder randomly (keeping each line of text together)
-1. Join with a single space
+1. Join without a delimeter keeping any leading white space per line
+
+The default seed file is here: [./tui_typer_tutor/core/seed_data.txt](https://github.com/KyleKing/tui-typer-tutor/blob/main/tui_typer_tutor/core/seed_data.txt)
 
 Ideas for better seed text generation are welcome!
 
