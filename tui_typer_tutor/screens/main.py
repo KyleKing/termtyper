@@ -67,6 +67,7 @@ class Main(Screen[None]):
 
     keys: Keys
     metrics: SessionMetrics
+    width: int = 0
 
     def action_save_and_quit(self) -> None:
         """Save and quit."""
@@ -107,14 +108,16 @@ class Main(Screen[None]):
         except AtEndOfExpectedError:
             self.action_save_and_quit()
 
-        width = len(self.keys.typed)
         if self.keys.last_was_delete:
+            if self.width:
+                self.width -= 1
             with suppress(NoMatches):
                 self.query('Label.typed').last().remove()
                 self.query_one('#typed-unknown', Label).update('')
-        elif width:
+        else:
+            self.width += 1
             cursor_width = MAX_CHARS - CHAR_OFFSET
-            if width >= cursor_width:
+            if self.width >= cursor_width:
                 self.query('Label.typed').first().remove()
                 self.query('Label.text').first().remove()
             # Choose the class
