@@ -1041,6 +1041,8 @@
 <h3 id="keys">Keys<a class="headerlink" href="#keys" title="Permanent link">⚓︎</a></h3>
 <p>This app supports a few unicode characters when found in the seed file:</p>
 <ul>
+<li>tab: <code>→</code></li>
+<li>shift+tab: <code>←</code></li>
 <li>enter/return: <code>⏎</code></li>
 <li>escape: <code>␛</code></li>
 </ul>
@@ -1050,8 +1052,9 @@
 <ol>
 <li>Load each line of the seed file</li>
 <li>Reorder randomly (keeping each line of text together)</li>
-<li>Join with a single space</li>
+<li>Join without a delimeter keeping any leading white space per line</li>
 </ol>
+<p>The default seed file is here: <a href="https://github.com/KyleKing/tui-typer-tutor/blob/main/tui_typer_tutor/core/seed_data.txt">./tui_typer_tutor/core/seed_data.txt</a></p>
 <p>Ideas for better seed text generation are welcome!</p>
 <h2 id="project-status">Project Status<a class="headerlink" href="#project-status" title="Permanent link">⚓︎</a></h2>
 <p>See the <code>Open Issues</code> and/or the <a href="https://tui-typer-tutor.kyleking.me/docs/CODE_TAG_SUMMARY">CODE_TAG_SUMMARY</a>. For release history, see the <a href="https://tui-typer-tutor.kyleking.me/docs/CHANGELOG">CHANGELOG</a>.</p>
@@ -1075,7 +1078,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 29, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 1, 2023</span>
       
         <br>
         Created:
