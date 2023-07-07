@@ -2,11 +2,14 @@
 
 ### Feat
 
+- expand default seed data
+- keep text centered on many deletes
 - add VHS demo
 - switch to arguably for the CLI
 
 ### Fix
 
+- cleanup demo tape
 - ignore bound keys from metrics
 
 ## 1.0.1 (2023-06-27)

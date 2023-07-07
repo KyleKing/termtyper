@@ -1,6 +1,6 @@
 """tui_typer_tutor."""
 
-__version__ = '1.0.1'
+__version__ = '1.1.0'
 __pkg_name__ = 'tui_typer_tutor'
 
 # ====== Above is the recommended code from calcipy_template and may be updated on new releases ======
