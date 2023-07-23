@@ -31,7 +31,7 @@ class ExpectedKey(BaseModel):
 class TypedKey(ExpectedKey):
     """Typed Key."""
 
-    expected: ExpectedKey | None
+    expected: ExpectedKey | None = None
     """Store the expected key when typed and expected become out-of-sync."""
 
     @property
