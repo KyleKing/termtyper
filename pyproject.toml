@@ -3,7 +3,7 @@ build-backend = "poetry.core.masonry.api"
 requires = ["poetry-core"]
 
 [tool.commitizen]
-version = "1.1.0"
+version = "1.1.1"
 version_files = ["pyproject.toml:^version", "tui_typer_tutor/__init__.py:^__version"]
 
 [tool.poetry]
@@ -23,7 +23,7 @@ maintainers = []
 name = "tui_typer_tutor"
 readme = "docs/README.md"
 repository = "https://github.com/kyleking/tui-typer-tutor"
-version = "1.1.0"
+version = "1.1.1"
 
 [tool.poetry.dependencies]
 python = "^3.11.2"
