@@ -21,7 +21,7 @@
         <link rel="next" href="../uninstall/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.eebd395e.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ecc896b0.min.css">
@@ -1300,28 +1300,27 @@
 
 
 <h3 id="tui_typer_tutor.core.typing.AtEndOfExpectedError" class="doc doc-heading">
-        <span class="doc doc-object-name doc-class-name">AtEndOfExpectedError</span>
+          <span class="doc doc-object-name doc-class-name">AtEndOfExpectedError</span>
 
 
 <a href="#tui_typer_tutor.core.typing.AtEndOfExpectedError" class="headerlink" title="Permanent link">⚓︎</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code>Exception</code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code>Exception</code></p>
 
   
       <p>Reached end of the expected keys.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="13 "></span><span class="k">class</span> <span class="nc">AtEndOfExpectedError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+            <details class="quote">
+              <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="13 "></span><span class="k">class</span> <span class="nc">AtEndOfExpectedError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Reached end of the expected keys.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos="15 "></span>
 <span class="linenos" data-linenos="16 "></span>    <span class="o">...</span>
 </code></pre></div>
-        </details>
+            </details>
 
   </div>
 
@@ -1332,23 +1331,22 @@
 
 
 <h3 id="tui_typer_tutor.core.typing.ExpectedKey" class="doc doc-heading">
-        <span class="doc doc-object-name doc-class-name">ExpectedKey</span>
+          <span class="doc doc-object-name doc-class-name">ExpectedKey</span>
 
 
 <a href="#tui_typer_tutor.core.typing.ExpectedKey" class="headerlink" title="Permanent link">⚓︎</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
 
   
       <p>Expected Key.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="19 "></span><span class="k">class</span> <span class="nc">ExpectedKey</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+            <details class="quote">
+              <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="19 "></span><span class="k">class</span> <span class="nc">ExpectedKey</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Expected Key.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos="21 "></span>
 <span class="linenos" data-linenos="22 "></span>    <span class="n">textual</span><span class="p">:</span> <span class="nb">str</span>
@@ -1359,7 +1357,7 @@
 <span class="linenos" data-linenos="27 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Displayed text.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos="28 "></span>        <span class="k">return</span> <span class="n">DISPLAY_TO_TEXTUAL</span><span class="o">.</span><span class="n">inverse</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">textual</span><span class="p">)</span> <span class="ow">or</span> <span class="n">UNKNOWN</span>
 </code></pre></div>
-        </details>
+            </details>
 
   
 
@@ -1376,7 +1374,7 @@
 
 
 <h5 id="tui_typer_tutor.core.typing.ExpectedKey.text" class="doc doc-heading">
-        <span class="doc doc-object-name doc-attribute-name">text</span>
+          <span class="doc doc-object-name doc-attribute-name">text</span>
 
   
   <span class="doc doc-labels">
@@ -1399,7 +1397,7 @@
 
 
 <h5 id="tui_typer_tutor.core.typing.ExpectedKey.textual" class="doc doc-heading">
-        <span class="doc doc-object-name doc-attribute-name">textual</span>
+          <span class="doc doc-object-name doc-attribute-name">textual</span>
 
   
   <span class="doc doc-labels">
@@ -1432,23 +1430,22 @@
 
 
 <h3 id="tui_typer_tutor.core.typing.Keys" class="doc doc-heading">
-        <span class="doc doc-object-name doc-class-name">Keys</span>
+          <span class="doc doc-object-name doc-class-name">Keys</span>
 
 
 <a href="#tui_typer_tutor.core.typing.Keys" class="headerlink" title="Permanent link">⚓︎</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
 
   
       <p>Key Model.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="43 "></span><span class="k">class</span> <span class="nc">Keys</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+            <details class="quote">
+              <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="43 "></span><span class="k">class</span> <span class="nc">Keys</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="linenos" data-linenos="44 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Key Model.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos="45 "></span>
 <span class="linenos" data-linenos="46 "></span>    <span class="n">expected</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ExpectedKey</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
@@ -1473,7 +1470,7 @@
 <span class="linenos" data-linenos="65 "></span>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="p">:</span>
 <span class="linenos" data-linenos="66 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">typed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
-        </details>
+            </details>
 
   
 
@@ -1490,12 +1487,12 @@
 
 
 <h5 id="tui_typer_tutor.core.typing.Keys.expected" class="doc doc-heading">
-        <span class="doc doc-object-name doc-attribute-name">expected</span>
+          <span class="doc doc-object-name doc-attribute-name">expected</span>
 
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#tui_typer_tutor.core.typing.Keys.expected" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1514,12 +1511,12 @@
 
 
 <h5 id="tui_typer_tutor.core.typing.Keys.last_was_delete" class="doc doc-heading">
-        <span class="doc doc-object-name doc-attribute-name">last_was_delete</span>
+          <span class="doc doc-object-name doc-attribute-name">last_was_delete</span>
 
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#tui_typer_tutor.core.typing.Keys.last_was_delete" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1538,12 +1535,12 @@
 
 
 <h5 id="tui_typer_tutor.core.typing.Keys.typed" class="doc doc-heading">
-        <span class="doc doc-object-name doc-attribute-name">typed</span>
+          <span class="doc doc-object-name doc-attribute-name">typed</span>
 
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#tui_typer_tutor.core.typing.Keys.typed" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1562,12 +1559,12 @@
 
 
 <h5 id="tui_typer_tutor.core.typing.Keys.typed_all" class="doc doc-heading">
-        <span class="doc doc-object-name doc-attribute-name">typed_all</span>
+          <span class="doc doc-object-name doc-attribute-name">typed_all</span>
 
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#tui_typer_tutor.core.typing.Keys.typed_all" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1583,12 +1580,13 @@
 
 <h4 id="tui_typer_tutor.core.typing.Keys-functions">Functions<a href="#tui_typer_tutor.core.typing.Keys-functions" class="headerlink" title="Permanent link">⚓︎</a></h4>
 
+
 <div class="doc doc-object doc-function">
 
 
 
 <h5 id="tui_typer_tutor.core.typing.Keys.store" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">store</span>
+          <span class="doc doc-object-name doc-function-name">store</span>
 
 
 <a href="#tui_typer_tutor.core.typing.Keys.store" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1599,9 +1597,9 @@
   
       <p>Store a new typed key.</p>
 
-      <details class="quote">
-        <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="58 "></span><span class="nd">@beartype</span>
+          <details class="quote">
+            <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="58 "></span><span class="nd">@beartype</span>
 <span class="linenos" data-linenos="59 "></span><span class="k">def</span> <span class="nf">store</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">TypedKey</span><span class="p">,</span> <span class="n">is_delete</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="linenos" data-linenos="60 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Store a new typed key.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos="61 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">typed_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
@@ -1611,7 +1609,7 @@
 <span class="linenos" data-linenos="65 "></span>    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="p">:</span>
 <span class="linenos" data-linenos="66 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">typed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -1629,26 +1627,25 @@
 
 
 <h3 id="tui_typer_tutor.core.typing.TypedKey" class="doc doc-heading">
-        <span class="doc doc-object-name doc-class-name">TypedKey</span>
+          <span class="doc doc-object-name doc-class-name">TypedKey</span>
 
 
 <a href="#tui_typer_tutor.core.typing.TypedKey" class="headerlink" title="Permanent link">⚓︎</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="tui_typer_tutor.core.typing.ExpectedKey" href="#tui_typer_tutor.core.typing.ExpectedKey">ExpectedKey</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="tui_typer_tutor.core.typing.ExpectedKey" href="#tui_typer_tutor.core.typing.ExpectedKey">ExpectedKey</a></code></p>
 
   
       <p>Typed Key.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="31 "></span><span class="k">class</span> <span class="nc">TypedKey</span><span class="p">(</span><span class="n">ExpectedKey</span><span class="p">):</span>
+            <details class="quote">
+              <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="31 "></span><span class="k">class</span> <span class="nc">TypedKey</span><span class="p">(</span><span class="n">ExpectedKey</span><span class="p">):</span>
 <span class="linenos" data-linenos="32 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Typed Key.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos="33 "></span>
-<span class="linenos" data-linenos="34 "></span>    <span class="n">expected</span><span class="p">:</span> <span class="n">ExpectedKey</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="linenos" data-linenos="34 "></span>    <span class="n">expected</span><span class="p">:</span> <span class="n">ExpectedKey</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="linenos" data-linenos="35 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Store the expected key when typed and expected become out-of-sync.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos="36 "></span>
 <span class="linenos" data-linenos="37 "></span>    <span class="nd">@property</span>
@@ -1656,7 +1653,7 @@
 <span class="linenos" data-linenos="39 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;If typed key matches expected.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos="40 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">expected</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">text</span>
 </code></pre></div>
-        </details>
+            </details>
 
   
 
@@ -1673,15 +1670,16 @@
 
 
 <h5 id="tui_typer_tutor.core.typing.TypedKey.expected" class="doc doc-heading">
-        <span class="doc doc-object-name doc-attribute-name">expected</span>
+          <span class="doc doc-object-name doc-attribute-name">expected</span>
 
   
   <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#tui_typer_tutor.core.typing.TypedKey.expected" class="headerlink" title="Permanent link">⚓︎</a></h5>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">expected</span><span class="p">:</span> <span class="n">ExpectedKey</span> <span class="o">|</span> <span class="kc">None</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">expected</span><span class="p">:</span> <span class="n">ExpectedKey</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div>
 
   <div class="doc doc-contents ">
@@ -1696,7 +1694,7 @@
 
 
 <h5 id="tui_typer_tutor.core.typing.TypedKey.was_correct" class="doc doc-heading">
-        <span class="doc doc-object-name doc-attribute-name">was_correct</span>
+          <span class="doc doc-object-name doc-attribute-name">was_correct</span>
 
   
   <span class="doc doc-labels">
@@ -1725,12 +1723,13 @@
 </div>
 <h2 id="tui_typer_tutor.core.typing-functions">Functions<a href="#tui_typer_tutor.core.typing-functions" class="headerlink" title="Permanent link">⚓︎</a></h2>
 
+
 <div class="doc doc-object doc-function">
 
 
 
 <h3 id="tui_typer_tutor.core.typing.on_keypress" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">on_keypress</span>
+          <span class="doc doc-object-name doc-function-name">on_keypress</span>
 
 
 <a href="#tui_typer_tutor.core.typing.on_keypress" class="headerlink" title="Permanent link">⚓︎</a></h3>
@@ -1741,9 +1740,9 @@
   
       <p>Process a key press.</p>
 
-      <details class="quote">
-        <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="69 "></span><span class="nd">@beartype</span>
+          <details class="quote">
+            <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="69 "></span><span class="nd">@beartype</span>
 <span class="linenos" data-linenos="70 "></span><span class="k">def</span> <span class="nf">on_keypress</span><span class="p">(</span><span class="n">textual</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="n">Keys</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="linenos" data-linenos="71 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Process a key press.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos="72 "></span>    <span class="n">is_delete</span> <span class="o">=</span> <span class="n">textual</span> <span class="o">==</span> <span class="n">BACKSPACE</span>
@@ -1753,7 +1752,7 @@
 <span class="linenos" data-linenos="76 "></span>    <span class="n">key</span> <span class="o">=</span> <span class="n">TypedKey</span><span class="p">(</span><span class="n">textual</span><span class="o">=</span><span class="n">textual</span><span class="p">,</span> <span class="n">expected</span><span class="o">=</span><span class="n">expected</span><span class="p">)</span>
 <span class="linenos" data-linenos="77 "></span>    <span class="n">keys</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">is_delete</span><span class="o">=</span><span class="n">is_delete</span><span class="p">)</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -1771,11 +1770,11 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 7, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 23, 2023</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 7, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 23, 2023</span>
       
     
   </small>
@@ -1817,10 +1816,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["toc.autohide"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["toc.autohide"], "search": "../../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
         
           <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>

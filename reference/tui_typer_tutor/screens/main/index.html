@@ -21,7 +21,7 @@
         <link rel="next" href="../../scripts/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.eebd395e.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ecc896b0.min.css">
@@ -1099,7 +1099,7 @@
 
 
 <h3 id="tui_typer_tutor.screens.main.CHAR_OFFSET" class="doc doc-heading">
-        <span class="doc doc-object-name doc-attribute-name">CHAR_OFFSET</span>
+          <span class="doc doc-object-name doc-attribute-name">CHAR_OFFSET</span>
 
   
   <span class="doc doc-labels">
@@ -1122,7 +1122,7 @@
 
 
 <h3 id="tui_typer_tutor.screens.main.MAX_CHARS" class="doc doc-heading">
-        <span class="doc doc-object-name doc-attribute-name">MAX_CHARS</span>
+          <span class="doc doc-object-name doc-attribute-name">MAX_CHARS</span>
 
   
   <span class="doc doc-labels">
@@ -1146,23 +1146,22 @@
 
 
 <h3 id="tui_typer_tutor.screens.main.Main" class="doc doc-heading">
-        <span class="doc doc-object-name doc-class-name">Main</span>
+          <span class="doc doc-object-name doc-class-name">Main</span>
 
 
 <a href="#tui_typer_tutor.screens.main.Main" class="headerlink" title="Permanent link">⚓︎</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="textual.screen.Screen">Screen</span>[None]</code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="textual.screen.Screen">Screen</span>[None]</code></p>
 
   
       <p>The main screen for the application.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 30 "></span><span class="k">class</span> <span class="nc">Main</span><span class="p">(</span><span class="n">Screen</span><span class="p">[</span><span class="kc">None</span><span class="p">]):</span>
+            <details class="quote">
+              <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 30 "></span><span class="k">class</span> <span class="nc">Main</span><span class="p">(</span><span class="n">Screen</span><span class="p">[</span><span class="kc">None</span><span class="p">]):</span>
 <span class="linenos" data-linenos=" 31 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;The main screen for the application.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos=" 32 "></span>
 <span class="linenos" data-linenos=" 33 "></span>    <span class="n">DEFAULT_CSS</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -1267,7 +1266,7 @@
 <span class="linenos" data-linenos="132 "></span>            <span class="n">textual_unknown</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="k">if</span> <span class="n">display_text</span> <span class="o">==</span> <span class="n">UNKNOWN</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
 <span class="linenos" data-linenos="133 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">query_one</span><span class="p">(</span><span class="s1">&#39;#typed-unknown&#39;</span><span class="p">,</span> <span class="n">Label</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">textual_unknown</span><span class="p">)</span>
 </code></pre></div>
-        </details>
+            </details>
 
   
 
@@ -1281,12 +1280,13 @@
 
 <h4 id="tui_typer_tutor.screens.main.Main-functions">Functions<a href="#tui_typer_tutor.screens.main.Main-functions" class="headerlink" title="Permanent link">⚓︎</a></h4>
 
+
 <div class="doc doc-object doc-function">
 
 
 
 <h5 id="tui_typer_tutor.screens.main.Main.action_save_and_quit" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">action_save_and_quit</span>
+          <span class="doc doc-object-name doc-function-name">action_save_and_quit</span>
 
 
 <a href="#tui_typer_tutor.screens.main.Main.action_save_and_quit" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1297,25 +1297,26 @@
   
       <p>Save and quit.</p>
 
-      <details class="quote">
-        <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="72 "></span><span class="k">def</span> <span class="nf">action_save_and_quit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+          <details class="quote">
+            <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="72 "></span><span class="k">def</span> <span class="nf">action_save_and_quit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="linenos" data-linenos="73 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Save and quit.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos="74 "></span>    <span class="n">append_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">end_session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">))</span>
 <span class="linenos" data-linenos="75 "></span>    <span class="c1"># TODO: Print out or display a success message on completion!</span>
 <span class="linenos" data-linenos="76 "></span>    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h5 id="tui_typer_tutor.screens.main.Main.compose" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">compose</span>
+          <span class="doc doc-object-name doc-function-name">compose</span>
 
 
 <a href="#tui_typer_tutor.screens.main.Main.compose" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1326,9 +1327,9 @@
   
       <p>Layout.</p>
 
-      <details class="quote">
-        <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="78 "></span><span class="k">def</span> <span class="nf">compose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ComposeResult</span><span class="p">:</span>
+          <details class="quote">
+            <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="78 "></span><span class="k">def</span> <span class="nf">compose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ComposeResult</span><span class="p">:</span>
 <span class="linenos" data-linenos="79 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Layout.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos="80 "></span>    <span class="k">yield</span> <span class="n">Header</span><span class="p">()</span>
 <span class="linenos" data-linenos="81 "></span>    <span class="k">with</span> <span class="n">Horizontal</span><span class="p">():</span>
@@ -1340,17 +1341,18 @@
 <span class="linenos" data-linenos="87 "></span>            <span class="k">yield</span> <span class="n">Label</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;typed-unknown&#39;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;warning&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos="88 "></span>    <span class="k">yield</span> <span class="n">Footer</span><span class="p">()</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h5 id="tui_typer_tutor.screens.main.Main.on_key" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">on_key</span>
+          <span class="doc doc-object-name doc-function-name">on_key</span>
 
 
 <a href="#tui_typer_tutor.screens.main.Main.on_key" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1361,9 +1363,9 @@
   
       <p>Capture all key presses and show in the typed input.</p>
 
-      <details class="quote">
-        <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="100 "></span><span class="nd">@beartype</span>
+          <details class="quote">
+            <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="100 "></span><span class="nd">@beartype</span>
 <span class="linenos" data-linenos="101 "></span><span class="k">def</span> <span class="nf">on_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">Key</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># noqa: CAC001</span>
 <span class="linenos" data-linenos="102 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Capture all key presses and show in the typed input.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos="103 "></span>    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;ctrl+q&#39;</span><span class="p">,</span> <span class="s1">&#39;ctrl+backslash&#39;</span><span class="p">}:</span>
@@ -1398,17 +1400,18 @@
 <span class="linenos" data-linenos="132 "></span>        <span class="n">textual_unknown</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="k">if</span> <span class="n">display_text</span> <span class="o">==</span> <span class="n">UNKNOWN</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
 <span class="linenos" data-linenos="133 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">query_one</span><span class="p">(</span><span class="s1">&#39;#typed-unknown&#39;</span><span class="p">,</span> <span class="n">Label</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">textual_unknown</span><span class="p">)</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h5 id="tui_typer_tutor.screens.main.Main.on_mount" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">on_mount</span>
+          <span class="doc doc-object-name doc-function-name">on_mount</span>
 
 
 <a href="#tui_typer_tutor.screens.main.Main.on_mount" class="headerlink" title="Permanent link">⚓︎</a></h5>
@@ -1419,9 +1422,9 @@
   
       <p>On widget mount.</p>
 
-      <details class="quote">
-        <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="90 "></span><span class="k">def</span> <span class="nf">on_mount</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+          <details class="quote">
+            <summary>Source code in <code>tui_typer_tutor/screens/main.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="90 "></span><span class="k">def</span> <span class="nf">on_mount</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="linenos" data-linenos="91 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;On widget mount.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos="92 "></span>    <span class="c1"># TODO: Support more customization</span>
 <span class="linenos" data-linenos="93 "></span>    <span class="n">seed_file</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">seed_file</span>
@@ -1431,7 +1434,7 @@
 <span class="linenos" data-linenos="97 "></span>    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">expected</span><span class="p">:</span>  <span class="c1"># FYI: Mounts all expected keys and crops</span>
 <span class="linenos" data-linenos="98 "></span>        <span class="n">cont</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">Label</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">))</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -1458,11 +1461,11 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 7, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 23, 2023</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 7, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 23, 2023</span>
       
     
   </small>
@@ -1504,10 +1507,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["toc.autohide"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["toc.autohide"], "search": "../../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
         
           <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>

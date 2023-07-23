@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.eebd395e.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
@@ -958,12 +958,13 @@
 <h2 id="tui_typer_tutor.scripts-classes">Classes<a href="#tui_typer_tutor.scripts-classes" class="headerlink" title="Permanent link">⚓︎</a></h2>
 <h2 id="tui_typer_tutor.scripts-functions">Functions<a href="#tui_typer_tutor.scripts-functions" class="headerlink" title="Permanent link">⚓︎</a></h2>
 
+
 <div class="doc doc-object doc-function">
 
 
 
 <h3 id="tui_typer_tutor.scripts.parse_ttt_args" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">parse_ttt_args</span>
+          <span class="doc doc-object-name doc-function-name">parse_ttt_args</span>
 
 
 <a href="#tui_typer_tutor.scripts.parse_ttt_args" class="headerlink" title="Permanent link">⚓︎</a></h3>
@@ -974,11 +975,13 @@
   
       <p>Practice Touch Typing in your terminal.</p>
 
+
+
   <table>
     <thead>
       <tr>
         <th><b>PARAMETER</b></th>
-        <th><b>DESCRIPTION</b></th>
+        <th><b> DESCRIPTION</b></th>
       </tr>
     </thead>
     <tbody>
@@ -1039,9 +1042,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>tui_typer_tutor/scripts.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="15 "></span><span class="nd">@arguably</span><span class="o">.</span><span class="n">command</span>
+          <details class="quote">
+            <summary>Source code in <code>tui_typer_tutor/scripts.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="15 "></span><span class="nd">@arguably</span><span class="o">.</span><span class="n">command</span>
 <span class="linenos" data-linenos="16 "></span><span class="k">def</span> <span class="nf">parse_ttt_args</span><span class="p">(</span>
 <span class="linenos" data-linenos="17 "></span>    <span class="o">*</span><span class="p">,</span>
 <span class="linenos" data-linenos="18 "></span>    <span class="n">seed_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
@@ -1066,17 +1069,18 @@
 <span class="linenos" data-linenos="37 "></span>            <span class="n">config</span><span class="o">.</span><span class="n">seed_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">seed_file</span><span class="p">)</span>
 <span class="linenos" data-linenos="38 "></span>        <span class="n">TuiTyperTutor</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h3 id="tui_typer_tutor.scripts.start" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">start</span>
+          <span class="doc doc-object-name doc-function-name">start</span>
 
 
 <a href="#tui_typer_tutor.scripts.start" class="headerlink" title="Permanent link">⚓︎</a></h3>
@@ -1087,14 +1091,14 @@
   
       <p>CLI Entrypoint.</p>
 
-      <details class="quote">
-        <summary>Source code in <code>tui_typer_tutor/scripts.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="41 "></span><span class="nd">@beartype</span>
+          <details class="quote">
+            <summary>Source code in <code>tui_typer_tutor/scripts.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="41 "></span><span class="nd">@beartype</span>
 <span class="linenos" data-linenos="42 "></span><span class="k">def</span> <span class="nf">start</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="linenos" data-linenos="43 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;CLI Entrypoint.&quot;&quot;&quot;</span>
 <span class="linenos" data-linenos="44 "></span>    <span class="n">arguably</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -1112,11 +1116,11 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 7, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 23, 2023</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 7, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 23, 2023</span>
       
     
   </small>
@@ -1158,10 +1162,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["toc.autohide"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["toc.autohide"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
         
           <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
