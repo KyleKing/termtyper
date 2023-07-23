@@ -711,6 +711,14 @@
         "name": "pydantic-core",
         "version": "2.3.0"
     },
+    "pydantic-settings": {
+        "datetime": "2023-07-14T12:42:19.719605+00:00",
+        "domain": "https://pypi.org/pypi/{name}/json",
+        "latest_datetime": "2023-07-14T12:42:19.719605+00:00",
+        "latest_version": "2.0.2",
+        "name": "pydantic-settings",
+        "version": "2.0.2"
+    },
     "pygments": {
         "datetime": "2023-04-18T18:49:18.695613+00:00",
         "domain": "https://pypi.org/pypi/{name}/json",
@@ -798,6 +806,14 @@
         "latest_version": "2.8.2",
         "name": "python-dateutil",
         "version": "2.8.2"
+    },
+    "python-dotenv": {
+        "datetime": "2023-02-24T06:46:36.009474+00:00",
+        "domain": "https://pypi.org/pypi/{name}/json",
+        "latest_datetime": "2023-02-24T06:46:36.009474+00:00",
+        "latest_version": "1.0.0",
+        "name": "python-dotenv",
+        "version": "1.0.0"
     },
     "python-lsp-jsonrpc": {
         "datetime": "2021-04-14T21:19:18.698784+00:00",

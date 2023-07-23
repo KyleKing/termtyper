@@ -1,5 +1,15 @@
 ## Unreleased
 
+### Fix
+
+- add pydantic-settings
+
+## 1.1.1 (2023-07-23)
+
+### Fix
+
+- copier update
+
 ## 1.1.0 (2023-07-07)
 
 ### Feat

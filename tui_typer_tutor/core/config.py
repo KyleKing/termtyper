@@ -10,7 +10,7 @@ DEFAULT_SEED_FILE = Path(__file__).parent / 'seed_data.txt'
 """Default seed file if not specified."""
 
 
-class Config(BaseSettings):  # type: ignore[misc]
+class Config(BaseSettings):
     """Application config."""
 
     seed_file: Path = DEFAULT_SEED_FILE
