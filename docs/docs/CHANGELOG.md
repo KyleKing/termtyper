@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 1.1.0 (2023-07-07)
+
 ### Feat
 
 - expand default seed data

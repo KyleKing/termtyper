@@ -5,7 +5,7 @@ from tui_typer_tutor.core.typing import ExpectedKey
 def test_load_seed_data():
     result = load_seed_data('d }\nl')
 
-    index = [idx for idx, _r in enumerate(result) if _r.textual == 'l'][0]
+    index = next(idx for idx, _r in enumerate(result) if _r.textual == 'l')
     # Due to randomness, the index should either be first or last, but never internal
     result_removed = result.pop(0) if index == 0 else result.pop()
     assert result_removed == ExpectedKey(textual='l'), index

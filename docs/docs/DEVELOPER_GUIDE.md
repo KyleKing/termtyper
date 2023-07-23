@@ -46,13 +46,13 @@ poetry config pypi-token.pypi ...
 <!-- {cts} COVERAGE -->
 | File                                              |   Statements |   Missing |   Excluded | Coverage   |
 |---------------------------------------------------|--------------|-----------|------------|------------|
-| `tui_typer_tutor/__init__.py`                     |            6 |         0 |          0 | 100.0%     |
+| `tui_typer_tutor/__init__.py`                     |           30 |         6 |          0 | 75.0%      |
 | `tui_typer_tutor/app/__init__.py`                 |            0 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/app/ttt.py`                      |           12 |        12 |          0 | 0.0%       |
 | `tui_typer_tutor/constants/__init__.py`           |            1 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/constants/display_to_textual.py` |            5 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/core/__init__.py`                |            0 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/core/config.py`                  |           14 |        14 |          0 | 0.0%       |
+| `tui_typer_tutor/core/config.py`                  |           13 |        13 |          0 | 0.0%       |
 | `tui_typer_tutor/core/metrics.py`                 |           39 |         0 |          0 | 98.3%      |
 | `tui_typer_tutor/core/scrolled_labels.py`         |            0 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/core/seed_data.py`               |            9 |         0 |          0 | 100.0%     |
@@ -62,7 +62,7 @@ poetry config pypi-token.pypi ...
 | `tui_typer_tutor/screens/help.py`                 |           14 |        14 |          0 | 0.0%       |
 | `tui_typer_tutor/screens/main.py`                 |           74 |        74 |          0 | 0.0%       |
 | `tui_typer_tutor/scripts.py`                      |           21 |        21 |          0 | 0.0%       |
-| **Totals**                                        |          257 |       136 |          0 | 48.7%      |
+| **Totals**                                        |          280 |       141 |          0 | 50.5%      |
 
-Generated on: 2023-07-07
+Generated on: 2023-07-23
 <!-- {cte} -->
