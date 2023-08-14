@@ -1317,8 +1317,6 @@
               <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
               <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="13 "></span><span class="k">class</span> <span class="nc">AtEndOfExpectedError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Reached end of the expected keys.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="15 "></span>
-<span class="linenos" data-linenos="16 "></span>    <span class="o">...</span>
 </code></pre></div>
             </details>
 
@@ -1346,16 +1344,16 @@
 
             <details class="quote">
               <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
-              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="19 "></span><span class="k">class</span> <span class="nc">ExpectedKey</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Expected Key.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="21 "></span>
-<span class="linenos" data-linenos="22 "></span>    <span class="n">textual</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="23 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Textual Key Name.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="24 "></span>
-<span class="linenos" data-linenos="25 "></span>    <span class="nd">@property</span>
-<span class="linenos" data-linenos="26 "></span>    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="linenos" data-linenos="27 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Displayed text.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="28 "></span>        <span class="k">return</span> <span class="n">DISPLAY_TO_TEXTUAL</span><span class="o">.</span><span class="n">inverse</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">textual</span><span class="p">)</span> <span class="ow">or</span> <span class="n">UNKNOWN</span>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="17 "></span><span class="k">class</span> <span class="nc">ExpectedKey</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Expected Key.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span>    <span class="n">textual</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Textual Key Name.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="22 "></span>
+<span class="linenos" data-linenos="23 "></span>    <span class="nd">@property</span>
+<span class="linenos" data-linenos="24 "></span>    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Displayed text.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="26 "></span>        <span class="k">return</span> <span class="n">DISPLAY_TO_TEXTUAL</span><span class="o">.</span><span class="n">inverse</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">textual</span><span class="p">)</span> <span class="ow">or</span> <span class="n">UNKNOWN</span>
 </code></pre></div>
             </details>
 
@@ -1445,30 +1443,30 @@
 
             <details class="quote">
               <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
-              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="43 "></span><span class="k">class</span> <span class="nc">Keys</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-<span class="linenos" data-linenos="44 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Key Model.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="45 "></span>
-<span class="linenos" data-linenos="46 "></span>    <span class="n">expected</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ExpectedKey</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
-<span class="linenos" data-linenos="47 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;The expected keys for practice.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="48 "></span>
-<span class="linenos" data-linenos="49 "></span>    <span class="n">typed_all</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TypedKey</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
-<span class="linenos" data-linenos="50 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Append-only list of typed keys.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="51 "></span>
-<span class="linenos" data-linenos="52 "></span>    <span class="n">typed</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TypedKey</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
-<span class="linenos" data-linenos="53 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Only tracks non-deleted typed keys.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="54 "></span>
-<span class="linenos" data-linenos="55 "></span>    <span class="n">last_was_delete</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="linenos" data-linenos="56 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Indicate if last operation was a delete.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="57 "></span>
-<span class="linenos" data-linenos="58 "></span>    <span class="nd">@beartype</span>
-<span class="linenos" data-linenos="59 "></span>    <span class="k">def</span> <span class="nf">store</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">TypedKey</span><span class="p">,</span> <span class="n">is_delete</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos" data-linenos="60 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Store a new typed key.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="61 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">typed_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="linenos" data-linenos="62 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">last_was_delete</span> <span class="o">=</span> <span class="n">is_delete</span>
-<span class="linenos" data-linenos="63 "></span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_delete</span><span class="p">:</span>
-<span class="linenos" data-linenos="64 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="linenos" data-linenos="65 "></span>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="p">:</span>
-<span class="linenos" data-linenos="66 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">typed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="41 "></span><span class="k">class</span> <span class="nc">Keys</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="linenos" data-linenos="42 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Key Model.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="43 "></span>
+<span class="linenos" data-linenos="44 "></span>    <span class="n">expected</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ExpectedKey</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+<span class="linenos" data-linenos="45 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;The expected keys for practice.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="46 "></span>
+<span class="linenos" data-linenos="47 "></span>    <span class="n">typed_all</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TypedKey</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+<span class="linenos" data-linenos="48 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Append-only list of typed keys.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="49 "></span>
+<span class="linenos" data-linenos="50 "></span>    <span class="n">typed</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TypedKey</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+<span class="linenos" data-linenos="51 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Only tracks non-deleted typed keys.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="52 "></span>
+<span class="linenos" data-linenos="53 "></span>    <span class="n">last_was_delete</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos" data-linenos="54 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Indicate if last operation was a delete.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="55 "></span>
+<span class="linenos" data-linenos="56 "></span>    <span class="nd">@beartype</span>
+<span class="linenos" data-linenos="57 "></span>    <span class="k">def</span> <span class="nf">store</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">TypedKey</span><span class="p">,</span> <span class="n">is_delete</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos" data-linenos="58 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Store a new typed key.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="59 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">typed_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="linenos" data-linenos="60 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">last_was_delete</span> <span class="o">=</span> <span class="n">is_delete</span>
+<span class="linenos" data-linenos="61 "></span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_delete</span><span class="p">:</span>
+<span class="linenos" data-linenos="62 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="linenos" data-linenos="63 "></span>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="p">:</span>
+<span class="linenos" data-linenos="64 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">typed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
             </details>
 
@@ -1599,15 +1597,15 @@
 
           <details class="quote">
             <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
-            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="58 "></span><span class="nd">@beartype</span>
-<span class="linenos" data-linenos="59 "></span><span class="k">def</span> <span class="nf">store</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">TypedKey</span><span class="p">,</span> <span class="n">is_delete</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos" data-linenos="60 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Store a new typed key.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="61 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">typed_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="linenos" data-linenos="62 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">last_was_delete</span> <span class="o">=</span> <span class="n">is_delete</span>
-<span class="linenos" data-linenos="63 "></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_delete</span><span class="p">:</span>
-<span class="linenos" data-linenos="64 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="linenos" data-linenos="65 "></span>    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="p">:</span>
-<span class="linenos" data-linenos="66 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">typed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="56 "></span><span class="nd">@beartype</span>
+<span class="linenos" data-linenos="57 "></span><span class="k">def</span> <span class="nf">store</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">TypedKey</span><span class="p">,</span> <span class="n">is_delete</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos" data-linenos="58 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Store a new typed key.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="59 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">typed_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="linenos" data-linenos="60 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">last_was_delete</span> <span class="o">=</span> <span class="n">is_delete</span>
+<span class="linenos" data-linenos="61 "></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_delete</span><span class="p">:</span>
+<span class="linenos" data-linenos="62 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="linenos" data-linenos="63 "></span>    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="p">:</span>
+<span class="linenos" data-linenos="64 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">typed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">typed</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
           </details>
   </div>
@@ -1642,16 +1640,16 @@
 
             <details class="quote">
               <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
-              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="31 "></span><span class="k">class</span> <span class="nc">TypedKey</span><span class="p">(</span><span class="n">ExpectedKey</span><span class="p">):</span>
-<span class="linenos" data-linenos="32 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Typed Key.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="33 "></span>
-<span class="linenos" data-linenos="34 "></span>    <span class="n">expected</span><span class="p">:</span> <span class="n">ExpectedKey</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="linenos" data-linenos="35 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Store the expected key when typed and expected become out-of-sync.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="36 "></span>
-<span class="linenos" data-linenos="37 "></span>    <span class="nd">@property</span>
-<span class="linenos" data-linenos="38 "></span>    <span class="k">def</span> <span class="nf">was_correct</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="linenos" data-linenos="39 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;If typed key matches expected.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="40 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">expected</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">text</span>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="29 "></span><span class="k">class</span> <span class="nc">TypedKey</span><span class="p">(</span><span class="n">ExpectedKey</span><span class="p">):</span>
+<span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Typed Key.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="31 "></span>
+<span class="linenos" data-linenos="32 "></span>    <span class="n">expected</span><span class="p">:</span> <span class="n">ExpectedKey</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="linenos" data-linenos="33 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Store the expected key when typed and expected become out-of-sync.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="34 "></span>
+<span class="linenos" data-linenos="35 "></span>    <span class="nd">@property</span>
+<span class="linenos" data-linenos="36 "></span>    <span class="k">def</span> <span class="nf">was_correct</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="linenos" data-linenos="37 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;If typed key matches expected.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="38 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">expected</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">text</span>
 </code></pre></div>
             </details>
 
@@ -1742,15 +1740,15 @@
 
           <details class="quote">
             <summary>Source code in <code>tui_typer_tutor/core/typing.py</code></summary>
-            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="69 "></span><span class="nd">@beartype</span>
-<span class="linenos" data-linenos="70 "></span><span class="k">def</span> <span class="nf">on_keypress</span><span class="p">(</span><span class="n">textual</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="n">Keys</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos" data-linenos="71 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Process a key press.&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="72 "></span>    <span class="n">is_delete</span> <span class="o">=</span> <span class="n">textual</span> <span class="o">==</span> <span class="n">BACKSPACE</span>
-<span class="linenos" data-linenos="73 "></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_delete</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="o">.</span><span class="n">expected</span><span class="p">):</span>
-<span class="linenos" data-linenos="74 "></span>        <span class="k">raise</span> <span class="n">AtEndOfExpectedError</span>
-<span class="linenos" data-linenos="75 "></span>    <span class="n">expected</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">is_delete</span> <span class="k">else</span> <span class="n">keys</span><span class="o">.</span><span class="n">expected</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">)]</span>
-<span class="linenos" data-linenos="76 "></span>    <span class="n">key</span> <span class="o">=</span> <span class="n">TypedKey</span><span class="p">(</span><span class="n">textual</span><span class="o">=</span><span class="n">textual</span><span class="p">,</span> <span class="n">expected</span><span class="o">=</span><span class="n">expected</span><span class="p">)</span>
-<span class="linenos" data-linenos="77 "></span>    <span class="n">keys</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">is_delete</span><span class="o">=</span><span class="n">is_delete</span><span class="p">)</span>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="67 "></span><span class="nd">@beartype</span>
+<span class="linenos" data-linenos="68 "></span><span class="k">def</span> <span class="nf">on_keypress</span><span class="p">(</span><span class="n">textual</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="n">Keys</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos" data-linenos="69 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Process a key press.&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="70 "></span>    <span class="n">is_delete</span> <span class="o">=</span> <span class="n">textual</span> <span class="o">==</span> <span class="n">BACKSPACE</span>
+<span class="linenos" data-linenos="71 "></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_delete</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="o">.</span><span class="n">expected</span><span class="p">):</span>
+<span class="linenos" data-linenos="72 "></span>        <span class="k">raise</span> <span class="n">AtEndOfExpectedError</span>
+<span class="linenos" data-linenos="73 "></span>    <span class="n">expected</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">is_delete</span> <span class="k">else</span> <span class="n">keys</span><span class="o">.</span><span class="n">expected</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="o">.</span><span class="n">typed</span><span class="p">)]</span>
+<span class="linenos" data-linenos="74 "></span>    <span class="n">key</span> <span class="o">=</span> <span class="n">TypedKey</span><span class="p">(</span><span class="n">textual</span><span class="o">=</span><span class="n">textual</span><span class="p">,</span> <span class="n">expected</span><span class="o">=</span><span class="n">expected</span><span class="p">)</span>
+<span class="linenos" data-linenos="75 "></span>    <span class="n">keys</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">is_delete</span><span class="o">=</span><span class="n">is_delete</span><span class="p">)</span>
 </code></pre></div>
           </details>
   </div>
@@ -1770,11 +1768,11 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 23, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 14, 2023</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 23, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 14, 2023</span>
       
     
   </small>
