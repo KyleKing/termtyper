@@ -29,14 +29,13 @@ version = "1.1.2"
 python = "^3.11.2"
 arguably = ">=1.2.5"
 bidict = ">=0.22.1"
-corallium = ">=0.3.0"
+corallium = ">=0.3.3"
 platformdirs = ">=3.8.0"
-pydantic = ">=2.0.3"
 pydantic-settings = ">=2.0.2"
 textual = ">=0.28.0"
 
 [tool.poetry.group.dev.dependencies]
-calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=1.5.0"}
+calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=1.6.3"}
 freezegun = ">=1.2.2"
 pytest-cache-assert = ">=3.0.8"
 

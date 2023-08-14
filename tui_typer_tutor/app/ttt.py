@@ -9,7 +9,7 @@ from ..screens.help import Help
 from ..screens.main import Main
 
 
-class TuiTyperTutor(App[None]):
+class TuiTyperTutor(App):  # type: ignore[type-arg]
     """Main Application."""
 
     TITLE = 'TUI Typer Tutor'

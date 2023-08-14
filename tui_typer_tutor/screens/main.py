@@ -27,7 +27,7 @@ CHAR_OFFSET = math.floor(0.40 * MAX_CHARS)
 """Offset to keep the next characters visible."""
 
 
-class Main(Screen[None]):
+class Main(Screen):  # type: ignore[type-arg]
     """The main screen for the application."""
 
     DEFAULT_CSS: ClassVar[str] = """

@@ -112,12 +112,12 @@
         "version": "2.3.post1"
     },
     "calcipy": {
-        "datetime": "2023-07-22T16:05:43.253529+00:00",
+        "datetime": "2023-08-14T03:00:35.682234+00:00",
         "domain": "https://pypi.org/pypi/{name}/json",
-        "latest_datetime": "2023-07-23T22:36:57.866748+00:00",
-        "latest_version": "1.6.0",
+        "latest_datetime": "2023-08-14T03:00:35.682234+00:00",
+        "latest_version": "1.6.3",
         "name": "calcipy",
-        "version": "1.5.0"
+        "version": "1.6.3"
     },
     "certifi": {
         "datetime": "2023-07-22T08:39:25.345436+00:00",
@@ -176,12 +176,12 @@
         "version": "3.5.3"
     },
     "corallium": {
-        "datetime": "2023-06-21T12:44:26.492033+00:00",
+        "datetime": "2023-08-14T01:26:51.193311+00:00",
         "domain": "https://pypi.org/pypi/{name}/json",
-        "latest_datetime": "2023-06-21T12:44:26.492033+00:00",
-        "latest_version": "0.3.0",
+        "latest_datetime": "2023-08-14T01:26:51.193311+00:00",
+        "latest_version": "0.3.3",
         "name": "corallium",
-        "version": "0.3.0"
+        "version": "0.3.3"
     },
     "coverage": {
         "datetime": "2023-05-29T20:07:03.422791+00:00",
@@ -696,20 +696,20 @@
         "version": "2.10.0"
     },
     "pydantic": {
-        "datetime": "2023-07-14T11:10:52.864425+00:00",
+        "datetime": "2023-07-25T23:11:45.747313+00:00",
         "domain": "https://pypi.org/pypi/{name}/json",
-        "latest_datetime": "2023-07-14T11:10:52.864425+00:00",
-        "latest_version": "2.0.3",
+        "latest_datetime": "2023-07-25T23:11:45.747313+00:00",
+        "latest_version": "2.1.1",
         "name": "pydantic",
-        "version": "2.0.3"
+        "version": "2.1.1"
     },
     "pydantic-core": {
-        "datetime": "2023-07-13T19:49:28.867461+00:00",
+        "datetime": "2023-07-24T17:49:14.171931+00:00",
         "domain": "https://pypi.org/pypi/{name}/json",
-        "latest_datetime": "2023-07-19T10:47:44.106094+00:00",
-        "latest_version": "2.3.1",
+        "latest_datetime": "2023-08-10T14:43:13.196861+00:00",
+        "latest_version": "2.5.0",
         "name": "pydantic-core",
-        "version": "2.3.0"
+        "version": "2.4.0"
     },
     "pydantic-settings": {
         "datetime": "2023-07-14T12:42:19.719605+00:00",
@@ -912,12 +912,12 @@
         "version": "0.2.7"
     },
     "ruff": {
-        "datetime": "2023-07-22T03:49:52.613475+00:00",
+        "datetime": "2023-08-09T19:03:08.081240+00:00",
         "domain": "https://pypi.org/pypi/{name}/json",
-        "latest_datetime": "2023-07-22T03:49:52.613475+00:00",
-        "latest_version": "0.0.280",
+        "latest_datetime": "2023-08-09T19:03:08.081240+00:00",
+        "latest_version": "0.0.284",
         "name": "ruff",
-        "version": "0.0.280"
+        "version": "0.0.284"
     },
     "semgrep": {
         "datetime": "2023-07-21T23:00:38.418602+00:00",
@@ -926,6 +926,14 @@
         "latest_version": "1.33.2",
         "name": "semgrep",
         "version": "1.33.2"
+    },
+    "semver": {
+        "datetime": "2023-06-14T11:43:20.066631+00:00",
+        "domain": "https://pypi.org/pypi/{name}/json",
+        "latest_datetime": "2023-06-14T11:43:20.066631+00:00",
+        "latest_version": "3.0.1",
+        "name": "semver",
+        "version": "3.0.1"
     },
     "six": {
         "datetime": "2021-05-05T14:18:17.237677+00:00",

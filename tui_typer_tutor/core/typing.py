@@ -13,8 +13,6 @@ UNKNOWN = '�'
 class AtEndOfExpectedError(Exception):
     """Reached end of the expected keys."""
 
-    ...
-
 
 class ExpectedKey(BaseModel):
     """Expected Key."""

@@ -21,7 +21,7 @@ Press `ESC` to close.
 
 
 # PLANNED: Improve the Help Screen style
-class Help(ModalScreen[None]):
+class Help(ModalScreen):  # type: ignore[type-arg]
     """Screen with the help dialog."""
 
     DEFAULT_CSS: ClassVar[str] = """

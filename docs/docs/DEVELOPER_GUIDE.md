@@ -46,23 +46,23 @@ poetry config pypi-token.pypi ...
 <!-- {cts} COVERAGE -->
 | File                                              |   Statements |   Missing |   Excluded | Coverage   |
 |---------------------------------------------------|--------------|-----------|------------|------------|
-| `tui_typer_tutor/__init__.py`                     |           30 |         6 |          0 | 75.0%      |
+| `tui_typer_tutor/__init__.py`                     |           21 |         0 |         17 | 100.0%     |
 | `tui_typer_tutor/app/__init__.py`                 |            0 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/app/ttt.py`                      |           12 |        12 |          0 | 0.0%       |
 | `tui_typer_tutor/constants/__init__.py`           |            1 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/constants/display_to_textual.py` |            5 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/core/__init__.py`                |            0 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/core/config.py`                  |           13 |        13 |          0 | 0.0%       |
-| `tui_typer_tutor/core/metrics.py`                 |           39 |         0 |          0 | 98.3%      |
+| `tui_typer_tutor/core/metrics.py`                 |           39 |         0 |          0 | 96.6%      |
 | `tui_typer_tutor/core/scrolled_labels.py`         |            0 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/core/seed_data.py`               |            9 |         0 |          0 | 100.0%     |
-| `tui_typer_tutor/core/typing.py`                  |           44 |         1 |          0 | 96.6%      |
-| `tui_typer_tutor/core/uninstall.py`               |           18 |         0 |          0 | 96.2%      |
+| `tui_typer_tutor/core/seed_data.py`               |            9 |         0 |          0 | 93.3%      |
+| `tui_typer_tutor/core/typing.py`                  |           43 |         1 |          0 | 96.5%      |
+| `tui_typer_tutor/core/uninstall.py`               |           18 |         0 |          0 | 92.3%      |
 | `tui_typer_tutor/screens/__init__.py`             |            0 |         0 |          0 | 100.0%     |
 | `tui_typer_tutor/screens/help.py`                 |           14 |        14 |          0 | 0.0%       |
 | `tui_typer_tutor/screens/main.py`                 |           74 |        74 |          0 | 0.0%       |
 | `tui_typer_tutor/scripts.py`                      |           21 |        21 |          0 | 0.0%       |
-| **Totals**                                        |          280 |       141 |          0 | 50.5%      |
+| **Totals**                                        |          270 |       135 |         17 | 50.0%      |
 
-Generated on: 2023-07-23
+Generated on: 2023-08-14
 <!-- {cte} -->
