@@ -17,7 +17,7 @@ from ..seed_data import lol_keys
 @pytest.mark.parametrize('iterations', [1, 2])
 def test_append_csv(
     iterations: int,
-    assert_against_cache,
+    snapshot,
     monkeypatch,
     fix_test_cache,  # noqa: ARG001
 ):
@@ -38,7 +38,7 @@ def test_append_csv(
         on_keypress(str(idx), keys)
 
     df_csv = pd.read_csv(csv_path)
-    assert_against_cache({
+    assert {
         'metrics': all_metrics[-1].dict(),
         'csv': df_csv.to_dict(orient='list'),
-    })
+    } == snapshot

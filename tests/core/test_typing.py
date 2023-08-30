@@ -21,12 +21,12 @@ from ..seed_data import lol_keys
 def test_on_keypress(
     raws: str,
     keys: Keys,
-    assert_against_cache,
+    snapshot,
 ):
     for raw in raws:
         on_keypress(raw, keys)  # act
 
-    assert_against_cache(keys)
+    assert keys == snapshot
 
 
 @pytest.mark.parametrize(
@@ -40,11 +40,11 @@ def test_on_keypress___extended(
     *,
     raw: str,
     was_correct: bool,
-    assert_against_cache,
+    snapshot,
 ):
     keys = lol_keys()
 
     on_keypress(raw, keys)  # act
 
     assert keys.typed[-1].was_correct == was_correct
-    assert_against_cache(keys)
+    assert keys == snapshot

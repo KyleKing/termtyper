@@ -1,0 +1,19 @@
+# serializer version: 1
+# name: test_on_keypress[raws0-keys0]
+  Keys(expected=[ExpectedKey(textual='s')], typed_all=[TypedKey(textual='ctrl+q', expected=ExpectedKey(textual='s'))], typed=[TypedKey(textual='ctrl+q', expected=ExpectedKey(textual='s'))], last_was_delete=False)
+# ---
+# name: test_on_keypress[raws1-keys1]
+  Keys(expected=[ExpectedKey(textual='l'), ExpectedKey(textual='o'), ExpectedKey(textual='l')], typed_all=[TypedKey(textual='l', expected=ExpectedKey(textual='l')), TypedKey(textual='t', expected=ExpectedKey(textual='o'))], typed=[TypedKey(textual='l', expected=ExpectedKey(textual='l')), TypedKey(textual='t', expected=ExpectedKey(textual='o'))], last_was_delete=False)
+# ---
+# name: test_on_keypress[raws2-keys2]
+  Keys(expected=[ExpectedKey(textual='l'), ExpectedKey(textual='o'), ExpectedKey(textual='l')], typed_all=[TypedKey(textual='l', expected=ExpectedKey(textual='l')), TypedKey(textual='backspace', expected=None)], typed=[], last_was_delete=True)
+# ---
+# name: test_on_keypress[raws3-keys3]
+  Keys(expected=[ExpectedKey(textual='l'), ExpectedKey(textual='o'), ExpectedKey(textual='l')], typed_all=[TypedKey(textual='l', expected=ExpectedKey(textual='l')), TypedKey(textual='backspace', expected=None), TypedKey(textual='backspace', expected=None), TypedKey(textual='l', expected=ExpectedKey(textual='l')), TypedKey(textual='o', expected=ExpectedKey(textual='o')), TypedKey(textual='l', expected=ExpectedKey(textual='l'))], typed=[TypedKey(textual='l', expected=ExpectedKey(textual='l')), TypedKey(textual='o', expected=ExpectedKey(textual='o')), TypedKey(textual='l', expected=ExpectedKey(textual='l'))], last_was_delete=False)
+# ---
+# name: test_on_keypress___extended[0-False]
+  Keys(expected=[ExpectedKey(textual='l'), ExpectedKey(textual='o'), ExpectedKey(textual='l')], typed_all=[TypedKey(textual='l', expected=ExpectedKey(textual='l')), TypedKey(textual='0', expected=ExpectedKey(textual='o'))], typed=[TypedKey(textual='l', expected=ExpectedKey(textual='l')), TypedKey(textual='0', expected=ExpectedKey(textual='o'))], last_was_delete=False)
+# ---
+# name: test_on_keypress___extended[o-True]
+  Keys(expected=[ExpectedKey(textual='l'), ExpectedKey(textual='o'), ExpectedKey(textual='l')], typed_all=[TypedKey(textual='l', expected=ExpectedKey(textual='l')), TypedKey(textual='o', expected=ExpectedKey(textual='o'))], typed=[TypedKey(textual='l', expected=ExpectedKey(textual='l')), TypedKey(textual='o', expected=ExpectedKey(textual='o'))], last_was_delete=False)
+# ---
