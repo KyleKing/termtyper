@@ -3,12 +3,12 @@
 from datetime import UTC, datetime, timezone
 from enum import Enum
 from os import getenv
+from typing import Self
 from warnings import filterwarnings
 
 from beartype import BeartypeConf
 from beartype.claw import beartype_this_package
 from beartype.roar import BeartypeDecorHintPep585DeprecationWarning
-from typing_extensions import Self  # noqa: UP035
 
 __version__ = '1.1.2'
 __pkg_name__ = 'tui_typer_tutor'
