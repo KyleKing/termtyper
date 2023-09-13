@@ -16,5 +16,5 @@ def load_seed_data(seed_text: str) -> list[ExpectedKey]:
         for line in seed_text.split('\n')
         if line.strip()
     ]
-    random.shuffle(grouped_keys)  # noqa: DUO102
+    random.SystemRandom().shuffle(grouped_keys)
     return [_k for _keys in grouped_keys for _k in _keys]

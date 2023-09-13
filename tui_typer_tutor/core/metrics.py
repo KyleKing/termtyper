@@ -27,11 +27,11 @@ class SessionMetrics(BaseModel):
     typed_incorrect: int = 0
 
     @classmethod
-    def from_filename(cls, filename: str) -> 'SessionMetrics':  # noqa: RBT002
+    def from_filename(cls, filename: str) -> 'SessionMetrics':
         """Initialize Metrics based on the filename."""
         return cls(filename=filename, session_start=utcnow())
 
-    def end_session(self, keys: Keys) -> 'SessionMetrics':  # noqa: RBT002
+    def end_session(self, keys: Keys) -> 'SessionMetrics':
         """Update the typed counters based on `Keys`."""
         self.session_end = utcnow()
         for key in keys.typed_all:
