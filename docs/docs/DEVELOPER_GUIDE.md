@@ -64,5 +64,5 @@ poetry config pypi-token.pypi ...
 | `tui_typer_tutor/scripts.py`                      |           21 |        21 |          0 | 0.0%       |
 | **Totals**                                        |          270 |       135 |         17 | 50.0%      |
 
-Generated on: 2023-09-12
+Generated on: 2023-10-14
 <!-- {cte} -->
