@@ -40,7 +40,7 @@ class Help(ModalScreen):  # type: ignore[type-arg]
         Binding('escape', 'close', 'Close'),
     ]
 
-    def compose(self) -> ComposeResult:
+    def compose(self) -> ComposeResult:  # noqa: PLR6301
         """Layout."""
         yield Markdown(_HELP_TEXT.strip(), id='text')
 

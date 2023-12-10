@@ -75,7 +75,7 @@ class Main(Screen):  # type: ignore[type-arg]
         # TODO: Print out or display a success message on completion!
         sys.exit(0)
 
-    def compose(self) -> ComposeResult:
+    def compose(self) -> ComposeResult:  # noqa: PLR6301
         """Layout."""
         yield Header()
         with Horizontal():

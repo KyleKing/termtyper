@@ -35,9 +35,9 @@ pydantic-settings = ">=2.0.2"
 textual = ">=0.28.0"
 
 [tool.poetry.group.dev.dependencies]
-calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=2.0.1"}
+calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=2.0.3"}
 freezegun = ">=1.2.2"
-syrupy = "^4.4.0"
+syrupy = ">=4.6.0"
 
 [tool.poetry.scripts]
 ttt = "tui_typer_tutor.scripts:start"

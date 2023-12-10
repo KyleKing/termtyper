@@ -53,7 +53,7 @@ def append_csv(metrics: SessionMetrics) -> None:
         with csv_path.open(mode='w', newline='', encoding='utf-8') as _f:
             csv.writer(_f).writerow(csv_columns)  # nosemgrep
 
-    ser_metrics = metrics.dict()
+    ser_metrics = metrics.model_dump()
     metrics_row = [ser_metrics[_c] for _c in csv_columns]
     with csv_path.open('a', newline='', encoding='utf-8') as _f:
         csv.writer(_f).writerow(metrics_row)  # nosemgrep
