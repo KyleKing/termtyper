@@ -38,7 +38,7 @@ def test_append_csv(
         on_keypress(str(idx), keys)
 
     df_csv = pd.read_csv(csv_path)
-    assert {
+    assert snapshot == {
         'metrics': all_metrics[-1].model_dump(),
         'csv': df_csv.to_dict(orient='list'),
-    } == snapshot
+    }
