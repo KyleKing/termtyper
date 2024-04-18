@@ -50,3 +50,9 @@ tui-typer-tutor = "tui_typer_tutor.scripts:start"
 [tool.pyright]
 include = ["tui_typer_tutor"]
 pythonVersion = "3.11"
+
+[tool.tomlsort]
+all = true
+in_place = true
+sort_first = ["python"]
+trailing_comma_inline_array = true
